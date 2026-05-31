@@ -1,0 +1,13 @@
+# Angular / Ionic
+node_modules/
+dist/
+www/
+
+# .NET
+bin/
+obj/
+.vs/
+
+# IDE
+.idea/
+.vscode/

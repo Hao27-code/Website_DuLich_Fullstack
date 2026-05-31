@@ -1,0 +1,48 @@
+<section
+  class="page-banner"
+  [style.background-image]="'url(' + background + ')'">
+
+  <div class="overlay"></div>
+
+  <div class="banner-content">
+
+    <h1>{{ title }}</h1>
+
+    <div
+      class="breadcrumb"
+      *ngIf="breadcrumbs.length">
+
+      <ng-container
+        *ngFor="
+          let item of breadcrumbs;
+          let last = last
+        ">
+
+        <a
+          *ngIf="
+            item.link && !last
+          "
+          [routerLink]="item.link">
+
+          {{ item.label }}
+
+        </a>
+
+        <span
+          *ngIf="
+            !item.link || last
+          ">
+          {{ item.label }}
+        </span>
+
+        <span *ngIf="!last">
+          /
+        </span>
+
+      </ng-container>
+
+    </div>
+
+  </div>
+
+</section>

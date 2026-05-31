@@ -1,0 +1,156 @@
+<div class="tour-tabs">
+
+  <!-- tab menu -->
+
+  <div class="tab-header">
+
+    <button
+      [class.active]="activeTab==='overview'"
+      (click)="activeTab='overview'">
+
+      Tổng quan
+
+    </button>
+
+    <button
+      [class.active]="activeTab==='itinerary'"
+      (click)="activeTab='itinerary'">
+
+      Hành trình
+
+    </button>
+
+    <button
+      [class.active]="activeTab==='faq'"
+      (click)="activeTab='faq'">
+
+      FAQs
+
+    </button>
+
+  </div>
+
+  <!-- OVERVIEW -->
+
+  <div
+    *ngIf="activeTab==='overview'"
+    class="tab-content">
+
+    <h3>
+      Tổng quan
+    </h3>
+
+    <p>
+      {{ tour.description }}
+    </p>
+
+    <h4>
+      Điểm nổi bật
+    </h4>
+
+    <ul>
+
+      <li>
+        Khám phá vẻ đẹp thiên nhiên
+        {{ tour.location }}
+      </li>
+
+      <li *ngIf="tour.activities">
+        Hoạt động:
+        {{ tour.activities }}
+      </li>
+
+      <li *ngIf="tour.tripType">
+        Loại tour:
+        {{ tour.tripType }}
+      </li>
+
+      <li *ngIf="tour.difficulty">
+        Độ khó:
+        {{ tour.difficulty }}
+      </li>
+
+    </ul>
+
+  </div>
+
+  <!-- ITINERARY -->
+
+  <div
+    *ngIf="activeTab==='itinerary'"
+    class="tab-content">
+
+    <h3>
+      Hành trình
+    </h3>
+
+    <div class="timeline">
+
+      <div
+        *ngFor="
+          let day of [].constructor(
+            tour.days
+          );
+          let i=index
+        "
+        class="timeline-item">
+
+        <div class="dot"></div>
+
+        <div>
+
+          <h4>
+            Ngày {{ i+1 }}
+          </h4>
+
+          <p>
+            Hành trình khám phá
+            {{ tour.location }}
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- FAQ -->
+
+  <div
+    *ngIf="activeTab==='faq'"
+    class="tab-content">
+
+    <h3>
+      FAQs
+    </h3>
+
+    <div class="faq-item">
+
+      <h4>
+        Tour này bao gồm gì?
+      </h4>
+
+      <p>
+        Bao gồm dịch vụ cơ bản và
+        trải nghiệm tham quan.
+      </p>
+
+    </div>
+
+    <div class="faq-item">
+
+      <h4>
+        Có phù hợp cho gia đình?
+      </h4>
+
+      <p>
+        Có, phù hợp nhiều đối tượng.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>

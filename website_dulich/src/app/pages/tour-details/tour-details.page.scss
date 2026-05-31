@@ -1,0 +1,233 @@
+.tour-detail-layout{
+  max-width:1320px;
+  margin:80px auto;
+  padding:0 24px;
+
+  display:grid;
+  grid-template-columns:
+    minmax(0,2fr)
+    380px;
+
+  gap:48px;
+}
+
+/* left */
+
+.tour-main{
+  min-width:0;
+}
+
+/* right */
+.tour-sidebar{
+  position:relative;
+}
+
+.booking-card{
+  position:sticky;
+  top:120px;
+  background:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  margin-top:55px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+/* badge */
+
+.discount{
+  display:inline-block;
+  margin:32px 32px 18px;
+  padding:10px 18px;
+  background:#4CAF50;
+  color:#fff;
+  border-radius:30px;
+  font-size:14px;
+  font-weight:600;
+}
+
+/* giá */
+
+.price-section{
+  padding:0 32px 32px;
+  border-bottom:1px solid #ececec;
+}
+
+.price-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:8px;
+}
+
+.label{
+  font-size:18px;
+  color:#777;
+}
+
+.old-price{
+  font-size:18px;
+  color:#9a9a9a;
+  text-decoration:line-through;
+}
+
+.new-price{
+  font-size:28px;
+  font-weight:700;
+  color:#666;
+  line-height:1.3;
+}
+
+.new-price small{
+  font-size:18px;
+  font-weight:400;
+  color:#777;
+}
+
+/* button */
+
+.button-section{
+  border-bottom:1px solid #ececec;
+}
+
+.booking-btn{
+  width:100%;
+  height:64px;
+  border:none;
+  border-radius:6px;
+  background:#4CAF50;
+  color:#fff;
+  font-size:18px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.booking-btn:hover{
+  background:#43a047;
+}
+
+/* support */
+
+.support-section{
+  padding:30px 32px;
+  font-size:18px;
+  color:#777;
+}
+
+.support-section a{
+  color:#4CAF50;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* tablet */
+
+@media(max-width:991px){
+
+  .booking-card{
+    position:static;
+  }
+
+}
+
+/* badge giảm giá */
+
+.discount{
+  display:inline-block;
+  margin:32px 32px 20px;
+  padding:8px 18px;
+  background:#4CAF50;
+  color:#fff;
+  border-radius:30px;
+  font-size:14px;
+  font-weight:600;
+}
+
+/* giá */
+
+.price-box{
+  padding:0 32px 32px;
+  border-bottom:1px solid #e5e5e5;
+}
+
+.price-row{
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.label{
+  font-size:18px;
+  font-weight:600;
+  color:#333;
+}
+
+.new-price{
+  font-size:28px;
+  font-weight:700;
+  color:#6a6a6a;
+  line-height:1.2;
+}
+
+.new-price small{
+  font-size:18px;
+  font-weight:400;
+  color:#666;
+}
+
+.old-price{
+  margin-top:10px;
+  font-size:18px;
+  color:#999;
+  text-decoration:line-through;
+}
+
+/* button */
+
+.booking-btn{
+  width:calc(100% - 64px);
+  margin:32px;
+  height:62px;
+  border:none;
+  border-radius:8px;
+  background:#4CAF50;
+  color:#fff;
+  font-size:18px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.booking-btn:hover{
+  background:#43a047;
+}
+
+/* support */
+
+.support-text{
+  padding:28px 32px;
+  border-top:1px solid #e5e5e5;
+  font-size:18px;
+  color:#777;
+}
+
+.support-text a{
+  color:#4CAF50;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* tablet */
+
+@media(max-width:991px){
+
+  .tour-detail-layout{
+    grid-template-columns:1fr;
+  }
+
+  .booking-card{
+    position:static;
+  }
+
+}

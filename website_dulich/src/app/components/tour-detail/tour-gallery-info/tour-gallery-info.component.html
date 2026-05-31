@@ -1,0 +1,149 @@
+<div class="tour-gallery-info">
+
+  <!-- top -->
+  <div class="top-info">
+
+    <h2>
+      {{ tour.title }}
+    </h2>
+
+    <div class="day-box">
+      <span>{{ tour.days }}</span>
+      <small>Days</small>
+    </div>
+
+  </div>
+
+  <!-- slider -->
+  <div class="gallery">
+
+    <swiper-container
+      navigation="true"
+      loop="true"
+      autoplay-delay="3000"
+      autoplay-disable-on-interaction="false"
+
+      speed="800">
+
+      <swiper-slide
+        *ngFor="let img of tour.images">
+
+        <img
+          [src]="img.imageUrl"
+          [alt]="tour.title">
+
+      </swiper-slide>
+
+    </swiper-container>
+
+  </div>
+
+  <!-- trip info -->
+  <div class="trip-info">
+
+    <h3>
+      Thông tin chuyến đi
+    </h3>
+
+    <div class="info-grid">
+
+      <!-- location -->
+      <div class="info-item">
+
+        <img
+          src="assets/icon/tour_chitiet/diemden.svg"
+          alt="location">
+
+        <div>
+
+          <small>Điểm đến</small>
+
+          <p>
+            {{ tour.location }}
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- days -->
+      <div class="info-item">
+
+        <img
+          src="assets/icon/tour_chitiet/songay.svg"
+          alt="days">
+
+        <div>
+
+          <small>Số ngày</small>
+
+          <p>
+            {{ tour.days }} ngày
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- activities -->
+      <div class="info-item">
+
+        <img
+          src="assets/icon/tour_chitiet/hoatdong.svg"
+          alt="activities">
+
+        <div>
+
+          <small>Hoạt động</small>
+
+          <p>
+            {{ tour.activities }}
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- trip type -->
+      <div class="info-item">
+
+        <img
+          src="assets/icon/tour_chitiet/loaitour.svg"
+          alt="trip">
+
+        <div>
+
+          <small>Loại tour</small>
+
+          <p>
+            {{ tour.tripType }}
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- difficulty -->
+      <div class="info-item">
+
+        <img
+          src="assets/icon/tour_chitiet/dokho.svg"
+          alt="difficulty">
+
+        <div>
+
+          <small>Độ khó</small>
+
+          <p>
+            {{ tour.difficulty }}
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

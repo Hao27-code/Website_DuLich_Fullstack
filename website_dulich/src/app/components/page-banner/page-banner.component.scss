@@ -1,0 +1,56 @@
+.page-banner{
+  position:relative;
+  height:320px;
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.overlay{
+  position:absolute;
+  inset:0;
+}
+
+.banner-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  color:#fff;
+}
+.banner-content h1{
+  font-size: 54px;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin: 0;
+}
+.breadcrumb{
+  margin-top:12px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+
+  font-size:20px;
+  color:#fff;
+}
+
+.breadcrumb a,
+.breadcrumb span{
+  color:#fff;
+  text-decoration:none;
+}
+
+.breadcrumb a{
+  color:#fff;
+  text-decoration:none;
+  font-weight: 400;
+}
+
+.breadcrumb span{
+  color:#fff;
+  font-weight: 400;
+}

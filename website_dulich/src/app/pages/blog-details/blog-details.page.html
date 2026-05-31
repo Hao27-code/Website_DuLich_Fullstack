@@ -1,0 +1,67 @@
+<ion-content class="blog-details">
+  <app-page-banner
+    title="Chi tiết tin tức"
+    background="assets/images/banner.jpg"
+    [breadcrumbs]="[
+      { label:'Trang chủ', link:'/' },
+      { label:'Tin tức', link:'/blog' },
+      { label: post?.title  || '' }
+    ]">
+  </app-page-banner>
+  <div class="details-shell" *ngIf="post; else notFound">
+    <div class="details-main">
+      <div class="breadcrumb">
+        <a class="crumb" routerLink="/blog">Blog</a>
+        <span class="sep">/</span>
+        <span class="crumb current">{{ post.title }}</span>
+      </div>
+
+      <div class="post-meta">
+        <span class="meta-item">
+          <i class="fa-regular fa-calendar"></i>
+          {{ post.date }}
+        </span>
+        <span class="dot">•</span>
+        <span class="meta-item">
+          <i class="fa-regular fa-folder"></i>
+          {{ post.category }}
+        </span>
+      </div>
+
+      <h1 class="post-title">{{ post.title }}</h1>
+      <p class="post-excerpt">{{ post.excerpt }}</p>
+
+      <div class="post-media" [class.is-video]="post.media.kind === 'video'">
+        <img
+          [src]="post.media.kind === 'image' ? post.media.src : post.media.posterSrc"
+          [alt]="post.media.alt"
+        >
+        <div class="play-badge" *ngIf="post.media.kind === 'video'">
+          <i class="fa-solid fa-play"></i>
+        </div>
+      </div>
+
+      <div class="post-content">
+        <p *ngFor="let p of post.content">{{ p }}</p>
+      </div>
+    </div>
+
+    <aside class="details-side">
+      <div class="side-card">
+        <h3 class="side-title">Từ khóa</h3>
+        <div class="tag-list">
+          <span class="tag" *ngFor="let t of post.tags">{{ t }}</span>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+
+  <ng-template #notFound>
+    <div class="not-found">
+      <h2>Không tìm thấy bài viết</h2>
+      <a class="back-btn" routerLink="/blog">Quay lại Blog</a>
+    </div>
+  </ng-template>
+  <app-footer></app-footer>
+</ion-content>

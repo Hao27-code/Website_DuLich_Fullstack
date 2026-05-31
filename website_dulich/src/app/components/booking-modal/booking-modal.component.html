@@ -1,0 +1,207 @@
+
+<div class="booking-layout">
+
+  <!-- LEFT -->
+
+  <div class="booking-main">
+
+    <!-- steps -->
+
+    <div class="steps">
+
+      <div
+        class="step"
+        [class.active]="step===1">
+
+        Date & Time
+
+      </div>
+
+      <div
+        class="step"
+        [class.active]="step===2">
+
+        Package Type
+
+      </div>
+
+    </div>
+
+    <!-- STEP 1 -->
+
+    <ng-container *ngIf="step===1">
+
+      <ion-datetime
+        presentation="date"
+        [preferWheel]="false"
+        size="cover"
+        locale="vi-VN"
+        [(ngModel)]="selectedDate"
+        class="booking-calendar">
+
+      </ion-datetime>
+
+      <div class="calendar-action">
+
+        <button
+          class="continue-btn"
+          (click)="nextStep()">
+
+          Continue
+
+        </button>
+
+      </div>
+
+    </ng-container>
+
+    <!-- STEP 2 -->
+
+    <ng-container *ngIf="step===2">
+
+      <div class="package-tag">
+        Cơ Bản
+      </div>
+
+      <div class="traveller-header">
+
+        <span>TRAVELLERS</span>
+
+        <span>QUANTITY</span>
+
+      </div>
+
+      <!-- adult -->
+
+      <div class="traveller-row">
+
+        <h3>Người lớn</h3>
+
+        <div class="price">
+          {{
+            (tour.discountPrice || tour.price)
+              | number
+          }}đ / Người
+        </div>
+
+        <div class="qty-box">
+
+          <button
+            (click)="adultQty=adultQty>1 ? adultQty-1 : 1">
+
+            −
+
+          </button>
+
+          <span>{{adultQty}}</span>
+
+          <button
+            (click)="adultQty=adultQty+1">
+
+            +
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- child -->
+
+      <div class="traveller-row">
+
+        <h3>Trẻ em</h3>
+
+        <div class="price">
+          599,000đ / Người
+        </div>
+
+        <div class="qty-box">
+
+          <button
+            (click)="childQty=childQty>0 ? childQty-1 : 0">
+
+            −
+
+          </button>
+
+          <span>{{childQty}}</span>
+
+          <button
+            (click)="childQty=childQty+1">
+
+            +
+
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="bottom-action">
+
+        <a
+          class="back-btn"
+          (click)="backStep()">
+
+          Back
+
+        </a>
+
+        <button class="continue-btn">
+          Proceed To Checkout
+        </button>
+
+      </div>
+
+    </ng-container>
+
+  </div>
+
+  <!-- RIGHT -->
+
+  <div class="summary">
+
+    <button
+      class="close-btn"
+      (click)="close()">
+
+      ×
+
+    </button>
+
+    <h4>BOOKING SUMMARY</h4>
+
+    <h2>{{tour?.title}}</h2>
+
+    <p>
+      Starting Date:
+      <b>
+        {{ selectedDate | date:'dd/MM/yyyy' }}
+      </b>
+    </p>
+
+    <div class="package-box">
+      Package: Cơ bản
+    </div>
+
+    <div class="total">
+
+      <span>Total :</span>
+
+      <strong>
+        {{
+          (
+            adultQty *
+            (tour.discountPrice || tour.price)
+          ) +
+          (childQty * 599000)
+            | number
+        }}đ
+      </strong>
+
+    </div>
+
+  </div>
+
+</div>

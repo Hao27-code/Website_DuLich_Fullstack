@@ -1,0 +1,211 @@
+<div class="filter-box">
+
+  <!-- ======================
+       DESTINATION
+  ======================= -->
+
+  <div class="filter-item destination-filter">
+
+    <img src="assets/icon/home/map-pin.svg">
+
+    <div
+      class="filter-preview"
+      (click)="showDestination=!showDestination"
+    >
+
+      <span>
+        {{ (filter.destination ?? []).join(', ') || 'Điểm đến' }}
+      </span>
+
+      <ion-icon
+        name="chevron-down-outline"
+        class="arrow-icon"
+      ></ion-icon>
+
+    </div>
+
+    <div
+      class="filter-panel destination-panel"
+      *ngIf="showDestination"
+    >
+
+      <div
+        class="destination-option"
+        *ngFor="let location
+        of destinations"
+        (click)="toggleDestination(location )">
+
+        <div
+          class="destination-check"
+          [class.active]="filter.destination?.[0]=== location">
+
+          <span>
+            {{ location }}
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ======================
+       DURATION
+  ======================= -->
+
+  <div class="filter-item dropdown-filter">
+
+
+    <div
+      class="filter-preview"
+      (click)="toggleDuration()"
+    >
+
+      <div class="preview-left">
+
+        <img src="assets/icon/home/clock-4.svg">
+
+        <span>
+          {{ filter.minDays || 0 }}
+          Ngày -
+          {{ filter.maxDays || 5 }}
+          Ngày
+    </span>
+
+      </div>
+
+      <ion-icon
+        [name]="
+      showDuration
+      ? 'chevron-up-outline'
+      : 'chevron-down-outline'
+    "
+        class="arrow-icon"
+      ></ion-icon>
+
+    </div>
+
+    <div
+      class="filter-panel"
+      [hidden]="!showDuration"
+    >
+
+      <div
+        #durationSlider
+        class="slider"
+      ></div>
+
+      <div class="range-values">
+
+        <input
+          type="number"
+          [value]="filter.minDays"
+          (change)="onMinDaysChange($event)"
+        >
+
+        <input
+          type="number"
+          [value]="filter.maxDays"
+          (change)="onMaxDaysChange($event)"
+        >
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ======================
+       PRICE
+  ======================= -->
+
+  <div class="filter-item dropdown-filter">
+
+
+    <div
+      class="filter-preview"
+      (click)="togglePrice()"
+    >
+
+      <div class="preview-left">
+
+        <img src="assets/icon/home/circle-dollar-sign.svg">
+
+        <span>
+
+            {{
+              filter.minPrice !== undefined
+                ? formatPrice(filter.minPrice)
+                : '0đ'
+            }}
+
+          -
+
+          {{
+            filter.maxPrice !== undefined
+              ? formatPrice(filter.maxPrice)
+              : '10.000.000đ'
+          }}
+
+        </span>
+
+      </div>
+
+      <ion-icon
+        [name]="
+      showPrice
+      ? 'chevron-up-outline'
+      : 'chevron-down-outline'
+    "
+        class="arrow-icon"
+      ></ion-icon>
+
+    </div>
+
+    <div
+      class="filter-panel"
+      [hidden]="!showPrice"
+    >
+
+      <div
+        #priceSlider
+        class="slider"
+      ></div>
+
+      <div class="range-values">
+
+        <input
+          type="text"
+          [value]="filter.minPrice !== undefined? formatPrice(filter.minPrice) : '' "
+          (change)="onMinPriceChange($event)"
+        >
+
+        <input
+          type="text"
+          [value]="filter.maxPrice !== undefined ? formatPrice(filter.maxPrice): '' "
+          (change)="onMaxPriceChange($event)"
+        >
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ======================
+       SEARCH BUTTON
+  ======================= -->
+
+  <button
+    class="search-btn"
+    (click)="submitFilter()"
+  >
+
+    Tìm kiếm
+
+  </button>
+
+</div>

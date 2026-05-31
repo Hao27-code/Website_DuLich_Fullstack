@@ -1,0 +1,141 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/effect-coverflow';
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import '@ionic/angular/css/palettes/dark.system.css';
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+@import 'aos/dist/aos.css';
+
+
+
+*{
+  font-family: 'Manrope', sans-serif;
+}
+
+ion-header ion-toolbar{
+  --min-height: var(--header-height);
+}
+
+:root {
+  --header-height: 103px;
+  --app-footer-height: 0px;
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --header-height: 74px; /* logo 50px + padding 12px*2 */
+  }
+  ion-content{
+    --padding-top: 73px;
+  }
+
+
+}
+ion-header{
+  background: #fff;
+
+}
+ion-toolbar{
+  --background: #fff;
+  --min-height: var(--header-height);
+
+  box-shadow: 0 2px 10px rgba(0,0,0,.05);
+}
+
+
+@media screen and (min-width: 769px){
+  ion-content{
+    --padding-top: 103px;
+  }
+}
+
+/* Ionic pages are absolutely positioned (top/bottom = 0) so the app-level footer
+   rendered outside <ion-router-outlet> can visually overlap the page content.
+   Reserve space for it using the measured CSS variable set by FooterComponent. */
+ion-router-outlet > .ion-page{
+  bottom: var(--app-footer-height);
+}
+/* Reset for when we actually WANT fullscreen, but the requirement says prevent all sections from going under */
+/* If we want to allow some pages to be truly fullscreen (behind header), we would need a specific class */
+/* MOBILE ONLY */
+
+/* IONIC SCROLLBAR MOBILE */
+
+/* IONIC MOBILE SCROLLBAR FIX */
+
+@media(max-width:767px){
+
+  ion-content::part(scroll){
+    overflow-y:auto !important;
+
+    /* Firefox */
+    scrollbar-width:none !important;
+  }
+
+  /* Chrome / Edge / Safari */
+
+  ion-content::part(scroll)::-webkit-scrollbar{
+    width:0 !important;
+    display:none !important;
+  }
+
+  /* Ionic inner scroll */
+
+  .inner-scroll{
+    scrollbar-width:none !important;
+  }
+
+  .inner-scroll::-webkit-scrollbar{
+    width:0 !important;
+    display:none !important;
+  }
+
+}
+@media screen and (min-width:769px) and (max-width:1024px){
+  ion-content::part(scroll){
+    overflow-y:auto !important;
+
+    /* Firefox */
+    scrollbar-width:none !important;
+  }
+  ion-content{
+    --padding-top: 60px;
+  }
+}
