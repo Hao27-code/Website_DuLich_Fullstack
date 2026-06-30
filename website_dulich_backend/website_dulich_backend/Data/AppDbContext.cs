@@ -9,9 +9,8 @@ public class AppDbContext : DbContext
         : base(options)
     {
     }
-
+    public DbSet<User> Users => Set<User>();
     public DbSet<Tour> Tours => Set<Tour>();
-
 
     public DbSet<TourImage> TourImages { get; set; }
     public DbSet<TourHighlight> TourHighlights { get; set; }

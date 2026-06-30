@@ -3,9 +3,9 @@
     //hành trình
     public class TourItinerary
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
-        public int TourId { get; set; }
+        public Guid TourId { get; set; }
 
         public int DayNumber { get; set; }
 

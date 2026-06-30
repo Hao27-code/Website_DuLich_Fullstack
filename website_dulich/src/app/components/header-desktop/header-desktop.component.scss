@@ -184,3 +184,57 @@
   }
 
 }
+.user-info {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  color: #159640;
+
+  transition: .25s;
+}
+
+.user-info:hover {
+  color: #0f7b34;
+}
+.user-menu-popover {
+  --offset-x: -60px;
+  --width: 260px;
+}
+.user-info{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+}
+
+.avatar{
+  width:40px;
+  height:40px;
+
+  border-radius:50%;
+
+  background:#159640;
+
+  color:#fff;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  font-size:16px;
+  font-weight:600;
+
+  flex-shrink:0;
+
+  user-select:none;
+}
+.user-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #159640;
+  text-transform: uppercase;
+}

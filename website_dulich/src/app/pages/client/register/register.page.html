@@ -1,0 +1,146 @@
+<ion-content class="signup-content">
+  <div class="signup-container">
+    <div class="signup-card">
+      <!-- Left Column - Image -->
+      <div class="left-column">
+        <img src="../../../../assets/images/banner_register.png" alt="Sign up banner" />
+      </div>
+
+      <!-- Right Column - Form -->
+      <div class="right-column">
+        <div class="form-wrapper">
+          <h1 class="form-title">Đăng ký tài khoản</h1>
+          <p class="form-subtitle">Vui lòng điền đầy đủ thông tin để tạo tài khoản</p>
+
+          <form (ngSubmit)="register()">
+            <div class="form-group">
+              <ion-label>Email</ion-label>
+              <ion-input
+                name="email"
+                [(ngModel)]="registerData.email"
+                type="email"
+                placeholder="Nhập email của bạn">
+              </ion-input>
+              <div
+                class="error-message"
+                *ngIf="validationErrors['Email']">
+
+                {{ validationErrors['Email'] }}
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <ion-label>Họ và tên</ion-label>
+              <ion-input
+                name="fullName"
+                [(ngModel)]="registerData.fullName"
+                placeholder="Nhập họ và tên của bạn">
+              </ion-input>
+              <div
+                class="error-message"
+                *ngIf="validationErrors['FullName']">
+
+                {{ validationErrors['FullName'] }}
+
+              </div>
+            </div>
+
+            <div class="form-group ">
+              <ion-label>Mật khẩu</ion-label>
+              <ion-input
+                name="password"
+                [(ngModel)]="registerData.password"
+                type="password"
+                placeholder="Nhập mật khẩu">
+              </ion-input>
+              <div
+                class="error-message"
+                *ngIf="validationErrors['Password']">
+
+                {{ validationErrors['Password'] }}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <ion-label>Nhập lại mật khẩu</ion-label>
+              <ion-input
+                name="confirmPassword"
+                [(ngModel)]="registerData.confirmPassword"
+                type="password"
+                placeholder="Xác nhận mật khẩu">
+              </ion-input>
+              <div
+                class="error-message"
+                *ngIf="validationErrors['ConfirmPassword']">
+
+                {{ validationErrors['ConfirmPassword'] }}
+              </div>
+            </div>
+
+            <ion-button
+              type="submit"
+              expand="block"
+              class="submit-btn">
+              Đăng ký
+            </ion-button>
+            <div
+              class="server-error"
+              *ngIf="errorMessage">
+
+              <ion-icon name="alert-circle-outline"></ion-icon>
+
+              {{ errorMessage }}
+
+            </div>
+
+            <div class="divider">
+              <span>hoặc</span>
+            </div>
+
+            <div class="login-link">
+              Đã có tài khoản? <a (click)="goLogin()">Đăng nhập ngay</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div
+    class="success-overlay"
+    *ngIf="showSuccessModal"
+    (click)="closeModal()">
+
+    <div
+      class="success-modal"
+      (click)="$event.stopPropagation()">
+
+      <div class="success-icon">
+        ✓
+      </div>
+
+      <h2>Đăng ký thành công!</h2>
+
+      <p>
+        Chúng tôi đã gửi email xác thực đến địa chỉ email của bạn.
+      </p>
+
+      <p>
+        Vui lòng kiểm tra hộp thư và nhấn vào liên kết xác thực trước khi đăng nhập.
+      </p>
+
+      <ion-button
+        expand="block"
+        class="login-btn"
+        (click)="goLogin()">
+
+        Quay về đăng nhập
+
+      </ion-button>
+
+    </div>
+
+  </div>
+</ion-content>

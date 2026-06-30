@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-import { TourService } from 'src/app/services/tour';
+import { TourService } from 'src/app/core/services/tour.service';
 
-import { Tour } from 'src/app/models/tour.model';
+import { Tour } from 'src/app/core/models/tour.model';
 
 @Component({
   selector: 'app-offer',

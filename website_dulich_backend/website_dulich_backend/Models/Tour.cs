@@ -1,8 +1,10 @@
-﻿namespace website_dulich_backend.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace website_dulich_backend.Models
 {
     public class Tour
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public string Title { get; set; } = string.Empty;
 
@@ -33,5 +35,13 @@
         public ICollection<TourItinerary> Itineraries { get; set; } = new List<TourItinerary>();
 
         public ICollection<TourFaq> Faqs { get; set; } = new List<TourFaq>();
+
+
+        //lưu thời gian bản ghi được tạo
+        public DateTime CreatedAt { get; set; }
+
+
+        //lưu thời gian bản ghi được cập nhật lần cuối
+        public DateTime UpdatedAt { get; set; }
     }
 }

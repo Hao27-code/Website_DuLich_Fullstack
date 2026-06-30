@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using website_dulich_backend.DTOs;
+using website_dulich_backend.DTOs.Tour;
 using website_dulich_backend.Models;
 using website_dulich_backend.Services;
 
@@ -40,7 +41,7 @@ namespace website_dulich_backend.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult>GetTourById(int id)
+        public async Task<IActionResult>GetTourById(Guid id)
         {
             var tour =await _tourService.GetTourByIdAsync(id);
 
@@ -52,19 +53,20 @@ namespace website_dulich_backend.Controllers
             return Ok(tour);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Tour tour)
+        public async Task<IActionResult> Create([FromBody] CreateTourRequest request)
         {
-            var createdTour = await _tourService.CreateTour(tour);
+            var createdTour = await _tourService.CreateTour(request);
 
             return Ok(createdTour);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTour(int id,[FromBody] Tour tour)
+        public async Task<IActionResult> UpdateTour(Guid id, [FromBody] UpdateTourRequest request)
         {
-            var updatedTour =
-                await _tourService.UpdateTour(id, tour);
+            var updatedTour = await _tourService.UpdateTour(id, request);
 
             if (updatedTour == null)
             {
@@ -72,6 +74,29 @@ namespace website_dulich_backend.Controllers
             }
 
             return Ok(updatedTour);
+        }
+
+        [Authorize]
+        [HttpGet("profile")]
+        public IActionResult Profile()
+        {
+            return Ok("Đã đăng nhập");
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTour(Guid id)
+        {
+            var result =
+                await _tourService.DeleteTour(id);
+
+            if (!result)
+            {
+                return NotFound();
+            }
+
+            return Ok("Xóa thành công");
         }
     }
 }

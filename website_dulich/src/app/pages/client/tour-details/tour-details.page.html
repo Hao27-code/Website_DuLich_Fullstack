@@ -1,0 +1,111 @@
+<ion-content>
+
+  <app-page-banner
+    title="Chi tiết Tour"
+    background="../../../../assets/images/banner.jpg"
+    [breadcrumbs]="[
+      { label:'Trang chủ', link:'/' },
+      { label:'Tour', link:'/tours' },
+      { label: tour?.title || '' }
+    ]">
+  </app-page-banner>
+
+  <div
+    class="tour-detail-layout"
+    *ngIf="tour">
+
+    <!-- LEFT -->
+
+    <div class="tour-main">
+
+      <app-tour-gallery-info
+        [tour]="tour">
+      </app-tour-gallery-info>
+
+      <app-tour-tabs
+        *ngIf="tour"
+        [tour]="tour">
+      </app-tour-tabs>
+    </div>
+
+    <!-- RIGHT -->
+
+    <aside class="tour-sidebar">
+
+      <div class="booking-card">
+
+        <!-- giảm giá -->
+        <span
+          *ngIf="tour.discountPrice"
+          class="discount">
+
+    {{
+            (
+              (tour.price - tour.discountPrice)
+              / tour.price * 100
+            ) | number:'1.0-0'
+          }}% Off
+
+  </span>
+
+        <!-- section giá -->
+        <div class="price-section">
+
+          <div class="price-row">
+
+            <span class="label">Từ</span>
+
+            <div
+              *ngIf="tour.discountPrice"
+              class="old-price">
+
+              {{ tour.price | number }}đ
+
+            </div>
+
+          </div>
+
+          <div class="new-price">
+
+            {{
+              (tour.discountPrice || tour.price)
+                | number
+            }}đ
+
+            <small>/ Người lớn</small>
+
+          </div>
+
+        </div>
+
+        <!-- button -->
+        <div class="button-section">
+
+          <button
+            class="booking-btn"
+            routerLink="/contact">
+
+            Tiến hành đặt tour
+
+          </button>
+
+        </div>
+
+        <!-- support -->
+        <div class="support-section">
+
+          Hỗ trợ đặt phòng?
+
+          <a routerLink="/contact">
+            Gửi tin nhắn ngay
+          </a>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+  </div>
+  <app-footer></app-footer>
+</ion-content>

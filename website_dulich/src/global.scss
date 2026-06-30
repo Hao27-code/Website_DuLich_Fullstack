@@ -39,7 +39,7 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+/* @import '@ionic/angular/css/palettes/dark.system.css'; */
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
 @import 'aos/dist/aos.css';
 
@@ -138,4 +138,13 @@ ion-router-outlet > .ion-page{
   ion-content{
     --padding-top: 60px;
   }
+}
+.logout-alert .cancel-button {
+  color: #087525 !important;
+  font-weight: 600;
+}
+
+.logout-alert .logout-button {
+  color: #087525 !important;
+  font-weight: 600;
 }

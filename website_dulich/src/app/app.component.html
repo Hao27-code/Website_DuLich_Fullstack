@@ -1,6 +1,6 @@
 <ion-app>
-  <app-header-desktop></app-header-desktop>
-  <app-header-mobile></app-header-mobile>
+  <app-header-desktop *ngIf="showHeader"></app-header-desktop>
+  <app-header-mobile *ngIf="showHeader"></app-header-mobile>
 
 
   <div class="main-content">

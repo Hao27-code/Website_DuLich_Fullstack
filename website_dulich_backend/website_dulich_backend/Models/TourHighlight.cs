@@ -3,9 +3,9 @@
     //điểm nổi bật
     public class TourHighlight
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
-        public int TourId { get; set; }
+        public Guid TourId { get; set; }
 
         public string Content { get; set; } = string.Empty;
 

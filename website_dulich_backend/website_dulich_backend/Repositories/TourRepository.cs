@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using website_dulich_backend.Data;
-using website_dulich_backend.DTOs;
+using website_dulich_backend.DTOs.Tour;
 using website_dulich_backend.Models;
 
 namespace website_dulich_backend.Repositories
@@ -66,19 +66,38 @@ namespace website_dulich_backend.Repositories
             if (!string.IsNullOrEmpty(query.Keyword))
             {
                 tours = tours.Where(t =>
-                    t.Title.Contains(query.Keyword));
+                    t.Title.Contains(query.Keyword) || t.Description.Contains(query.Keyword));
             }
 
             /* sort */
+            //sắp xếp dữ liệu
 
-            if (query.Sort == "priceAsc")
+            switch (query.Sort?.ToLower())
             {
-                tours = tours.OrderBy(t => t.Price);
-            }
-            else if (query.Sort == "priceDesc")
-            {
-                tours = tours.OrderByDescending(
-                    t => t.Price);
+                //giá tăng dần
+                case "priceAsc":
+                    tours = tours.OrderBy(t => t.Price);
+                    break;
+
+                //giá giảm dần
+                case "priceDesc":
+                    tours = tours.OrderByDescending(t => t.Price);
+                    break;
+
+                //tour mới nhất
+                case "newest":
+                    tours = tours.OrderByDescending(t => t.CreatedAt);
+                    break;
+
+                //tour cũ nhất
+                case "oldest":
+                    tours = tours.OrderBy(t => t.CreatedAt);
+                    break;
+
+                // Mặc định nếu không truyền sort
+                default:
+                    tours = tours.OrderByDescending(t => t.CreatedAt);
+                    break;
             }
 
             int total = await tours.CountAsync();
@@ -91,15 +110,33 @@ namespace website_dulich_backend.Repositories
             return (data, total);
         }
 
-        public async Task<Tour> CreateTour(Tour tour)
+        public async Task<Tour> CreateTour(CreateTourRequest request)
         {
+            var tour = new Tour
+            {
+                Title = request.Title,
+                Location = request.Location,
+                Days = request.Days,
+                Price = request.Price,
+                DiscountPrice = request.DiscountPrice,
+                Description = request.Description,
+                DealEndDate = request.DealEndDate,
+                CoverImage = request.CoverImage,
+                Activities = request.Activities,
+                TripType = request.TripType,
+                Difficulty = request.Difficulty,
+
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            };
+
             _context.Tours.Add(tour);
 
             await _context.SaveChangesAsync();
 
             return tour;
         }
-        public async Task<Tour?> UpdateTour(int id, Tour tour)
+        public async Task<Tour?> UpdateTour(Guid id, UpdateTourRequest request)
         {
             var existingTour =
                 await _context.Tours.FindAsync(id);
@@ -109,30 +146,51 @@ namespace website_dulich_backend.Repositories
                 return null;
             }
 
-            existingTour.Title = tour.Title;
-            existingTour.Location = tour.Location;
-            existingTour.Days = tour.Days;
-            existingTour.Price = tour.Price;
-            existingTour.DiscountPrice = tour.DiscountPrice;
-            existingTour.Description = tour.Description;
-            existingTour.DealEndDate = tour.DealEndDate;
-            existingTour.CoverImage = tour.CoverImage;
-            existingTour.Activities = tour.Activities;
+            existingTour.Title = request.Title;
+            existingTour.Location = request.Location;
+            existingTour.Days = request.Days;
+            existingTour.Price = request.Price;
+            existingTour.DiscountPrice = request.DiscountPrice;
+            existingTour.Description = request.Description;
+            existingTour.DealEndDate = request.DealEndDate;
+            existingTour.CoverImage = request.CoverImage;
+            existingTour.Activities = request.Activities;
 
-            existingTour.TripType = tour.TripType;
+            existingTour.TripType = request.TripType;
 
-            existingTour.Difficulty = tour.Difficulty;
+            existingTour.Difficulty = request.Difficulty;
+            existingTour.UpdatedAt = DateTime.UtcNow;
 
             await _context.SaveChangesAsync();
 
             return existingTour;
         }
 
-        public async Task<Tour?> GetTourByIdAsync(int id)
+        public async Task<Tour?> GetTourByIdAsync(Guid id)
         {
             return await _context.Tours
-                .Include(t => t.Images)
-                .FirstOrDefaultAsync(t => t.Id == id);
+             .Include(t => t.Images)
+             .Include(t => t.Highlights)
+             .Include(t => t.Itineraries)
+             .Include(t => t.Faqs)
+             .FirstOrDefaultAsync(t => t.Id == id);
+        }
+
+        public async Task<bool> DeleteTour(Guid id)
+        {
+            var tour =
+                await _context.Tours.FindAsync(id);
+
+            if (tour == null)
+            {
+                return false;
+            }
+
+            _context.Tours.Remove(tour);
+
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 

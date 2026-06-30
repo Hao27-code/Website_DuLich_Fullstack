@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Tour } from '../../../models/tour.model';
+import { Tour } from '../../../core/models/tour.model';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule, JsonPipe } from '@angular/common';
 

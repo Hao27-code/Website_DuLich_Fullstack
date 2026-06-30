@@ -4,9 +4,9 @@
     //FAQs
     public class TourFaq
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
-        public int TourId { get; set; }
+        public Guid TourId { get; set; }
 
         public string Question { get; set; } = string.Empty;
 
@@ -15,5 +15,5 @@
         public int SortOrder { get; set; }
 
         public Tour Tour { get; set; } = null!;
-    }
+    }  
 }

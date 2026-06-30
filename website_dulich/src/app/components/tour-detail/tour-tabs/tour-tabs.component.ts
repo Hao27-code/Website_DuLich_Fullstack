@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { Tour } from 'src/app/models/tour.model';
+import { Tour } from 'src/app/core/models/tour.model';
 
 @Component({
   selector: 'app-tour-tabs',

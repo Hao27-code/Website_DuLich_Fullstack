@@ -30,11 +30,93 @@
       </div>
 
 
-      <div class="btn">
-        <button class="book-btn" routerLink="/tours">
-          Đặt ngay
+      <!-- Chưa đăng nhập -->
+      <div class="btn" *ngIf="!isLoggedIn">
+
+        <button
+          class="book-btn"
+          routerLink="/login">
+
+          Đăng nhập
+
         </button>
+
       </div>
+
+      <!-- Đã đăng nhập -->
+      <div
+        id="user-menu"
+        class="user-info"
+        *ngIf="isLoggedIn"
+        (click)="openUserMenu()">
+
+        <div class="avatar">
+          {{ avatarLetter }}
+        </div>
+
+        <span class="user-name">
+          {{ fullName }}
+        </span>
+
+        <ion-icon name="chevron-down-outline"></ion-icon>
+
+      </div>
+      <ion-popover
+        trigger="user-menu"
+        [isOpen]="isPopoverOpen"
+        cssClass="user-menu-popover"
+        (didDismiss)="closeUserMenu()">
+
+        <ng-template>
+
+          <ion-list>
+
+            <ion-item  [button]="true"
+                       [detail]="true">
+
+              <ion-label>
+
+                Thông tin cá nhân
+
+              </ion-label>
+
+            </ion-item>
+
+            <ion-item   [button]="true"
+                        [detail]="true">
+
+              <ion-label>
+
+                Lịch sử đặt tour
+
+              </ion-label>
+
+            </ion-item>
+
+            <ion-item  [button]="true"
+                       [detail]="true">
+
+              <ion-label>
+
+                Đổi mật khẩu
+
+              </ion-label>
+
+            </ion-item>
+
+            <ion-item
+              button
+              (click)="logout()">
+
+              <ion-label>Đăng xuất</ion-label>
+
+            </ion-item>
+
+          </ion-list>
+
+        </ng-template>
+
+      </ion-popover>
     </div>
 
   </ion-toolbar>

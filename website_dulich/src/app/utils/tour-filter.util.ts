@@ -1,6 +1,6 @@
 import { Params } from '@angular/router';
 
-import { TourFilter } from '../models/tour-filter.model';
+import { TourFilter } from '../core/models/tour-filter.model';
 
 export function mapQueryToFilter(query: Params): TourFilter {
   return {

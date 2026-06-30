@@ -1,4 +1,4 @@
-﻿using website_dulich_backend.DTOs;
+﻿using website_dulich_backend.DTOs.Tour;
 using website_dulich_backend.Models;
 using website_dulich_backend.Repositories;
 
@@ -21,23 +21,28 @@ namespace website_dulich_backend.Services
                 .GetToursAsync(query);
         }
 
-        public async Task<Tour> CreateTour(Tour tour)
+        public async Task<Tour> CreateTour(CreateTourRequest request)
         {
-            return await _tourRepository.CreateTour(
-                tour
-            );
-        }
-        public async Task<Tour?> UpdateTour(int id, Tour tour)
-        {
-            return await _tourRepository.UpdateTour(id, tour);
+            return await _tourRepository.CreateTour(request);
         }
 
-        public async Task<Tour?> GetTourByIdAsync(int id)
+
+        public async Task<Tour?> UpdateTour(Guid id, UpdateTourRequest request)
+        {
+            return await _tourRepository.UpdateTour(id, request);
+        }
+
+        public async Task<Tour?> GetTourByIdAsync(Guid id)
         {
             return await _tourRepository
                 .GetTourByIdAsync(id);
 
 
+        }
+
+        public async Task<bool> DeleteTour(Guid id)
+        {
+            return await _tourRepository.DeleteTour(id);
         }
     }
 }

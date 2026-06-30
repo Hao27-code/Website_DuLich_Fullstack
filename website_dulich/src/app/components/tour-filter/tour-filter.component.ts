@@ -16,12 +16,12 @@ import { CommonModule } from '@angular/common';
 import noUiSlider from 'nouislider';
 
 // Interface chứa kiểu dữ liệu filter tour
-import { TourFilter } from 'src/app/models/tour-filter.model';
+import { TourFilter } from 'src/app/core/models/tour-filter.model';
 import { DecimalPipe } from '@angular/common';
 import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { chevronDownOutline } from 'ionicons/icons';
-import { Tour } from '../../models/tour.model';
+import { Tour } from '../../core/models/tour.model';
 
 @Component({
   selector: 'app-tour-filter',

@@ -4,9 +4,9 @@ namespace website_dulich_backend.Models
 {
     public class TourImage
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
-        public int TourId { get; set; }
+        public Guid TourId { get; set; }
 
         public string ImageUrl { get; set; } = string.Empty;
 

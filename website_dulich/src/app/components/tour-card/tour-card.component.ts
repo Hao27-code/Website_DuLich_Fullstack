@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Tour } from '../../models/tour.model';
+import { Tour } from '../../core/models/tour.model';
 import { DecimalPipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';

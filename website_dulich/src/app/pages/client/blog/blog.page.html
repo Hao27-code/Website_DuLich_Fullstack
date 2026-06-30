@@ -1,0 +1,150 @@
+<ion-content class="blog-page">
+
+  <app-page-banner
+    title="Tin tức"
+    background="../../../../assets/images/banner.jpg"
+    [breadcrumbs]="[
+    { label:'Trang chủ', link:'/' },
+    { label:'Tin tức', link:'/blog' },
+  ]">
+  </app-page-banner>
+  <div class="blog-shell">
+    <div class="blog-main">
+      <article class="blog-post" *ngFor="let post of filteredPosts; trackBy: trackBySlug">
+        <div class="post-media" [class.is-video]="post.media.kind === 'video'">
+          <img
+            *ngIf="post.media.kind === 'image'"
+            [src]="post.media.src"
+            [alt]="post.media.alt"
+          >
+
+          <img
+            *ngIf="post.media.kind === 'video'"
+            [src]="post.media.posterSrc"
+            [alt]="post.media.alt"
+          >
+
+          <div class="play-badge" *ngIf="post.media.kind === 'video'">
+            <i class="fa-solid fa-play"></i>
+          </div>
+        </div>
+
+        <div class="post-meta">
+          <span class="meta-item">
+            <i class="fa-regular fa-calendar"></i>
+            {{ post.date }}
+          </span>
+          <span class="dot">•</span>
+          <span class="meta-item">
+            <i class="fa-regular fa-folder"></i>
+            {{ post.category }}
+          </span>
+        </div>
+
+        <h2 class="post-title">
+          {{ post.title }}
+        </h2>
+
+        <p class="post-excerpt">
+          {{ post.excerpt }}
+        </p>
+
+        <a class="post-btn" [routerLink]="['/blog', post.slug]">
+          Xem Thêm
+        </a>
+
+        <div class="post-media" [class.is-video]="post.media.kind === 'video'">
+          <img
+            *ngIf="post.media.kind === 'image'"
+            [src]="post.media.src"
+            [alt]="post.media.alt"
+          >
+
+          <img
+            *ngIf="post.media.kind === 'video'"
+            [src]="post.media.posterSrc"
+            [alt]="post.media.alt"
+          >
+
+          <div class="play-badge" *ngIf="post.media.kind === 'video'">
+            <i class="fa-solid fa-play"></i>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <aside class="blog-sidebar">
+      <div class="side-card">
+        <h3 class="side-title">Tìm kiếm</h3>
+        <div class="search-box">
+          <input
+            type="text"
+            placeholder=""
+            [ngModel]="searchText"
+            (ngModelChange)="onSearchTextChange($event)"
+          >
+          <button type="button" class="search-btn" aria-label="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <h3 class="side-title">Danh mục</h3>
+        <div class="side-list">
+          <button
+            type="button"
+            class="side-row"
+            *ngFor="let c of categories"
+            [class.active]="activeCategory === c.name"
+            (click)="toggleCategory(c.name)"
+          >
+            <span class="side-row__label">{{ c.name }}</span>
+            <span class="side-row__count">{{ c.count }}</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <h3 class="side-title">Bài viết mới nhất</h3>
+        <div class="recent-list">
+          <a
+            class="recent-item"
+            *ngFor="let p of recentPosts"
+            [routerLink]="['/blog', p.slug]"
+          >
+            <div class="recent-thumb">
+              <img
+                [src]="p.media.kind === 'image' ? p.media.src : p.media.posterSrc"
+                [alt]="p.title"
+              >
+            </div>
+            <div class="recent-info">
+              <div class="recent-title">{{ p.title }}</div>
+              <div class="recent-date">
+                <i class="fa-regular fa-calendar"></i>
+                {{ p.date }}
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <h3 class="side-title">Từ khóa</h3>
+        <div class="tag-list">
+          <button
+            type="button"
+            class="tag"
+            *ngFor="let t of tags"
+            [class.active]="selectedTag === t"
+            (click)="selectTag(t)"
+          >
+            {{ t }}
+          </button>
+        </div>
+      </div>
+    </aside>
+  </div>
+  <app-footer></app-footer>
+</ion-content>
