@@ -8,7 +8,7 @@ import { TourFilter } from '../models/tour-filter.model';
 import { TourResponse } from '../models/tour-response.model';
 import { Tour } from '../models/tour.model';
 import { environment } from '../../../environments/environment';
-
+import { CreateTourRequest } from '../models/create-tour-request.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -136,5 +136,9 @@ export class TourService {
 
   getTourById(id: string) {
     return this.http.get<Tour>(`${environment.apiUrl}/Tour/${id}`);
+  }
+
+  createTour(request: CreateTourRequest) {
+    return this.http.post<Tour>(this.apiUrl, request);
   }
 }

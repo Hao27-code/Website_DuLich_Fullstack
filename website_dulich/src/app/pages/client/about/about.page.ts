@@ -13,7 +13,6 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import Swiper from 'swiper';
 import { Navigation, EffectCoverflow } from 'swiper/modules';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { FooterComponent } from '../../../components/footer/footer.component';
 
 Swiper.use([Navigation, EffectCoverflow]);
 
@@ -32,7 +31,6 @@ Swiper.use([Navigation, EffectCoverflow]);
     FormsModule,
     PageBannerComponent,
     IonIcon,
-    FooterComponent,
   ],
 })
 export class AboutPage {

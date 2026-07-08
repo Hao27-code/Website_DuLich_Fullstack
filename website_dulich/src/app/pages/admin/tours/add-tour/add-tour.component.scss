@@ -1,0 +1,228 @@
+:host {
+  display: block;
+}
+
+.page-content {
+  padding: 0 28px 28px;
+}
+
+/* ==========================
+   Card
+========================== */
+
+.card {
+  margin-top: 24px;
+
+  background: #fff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .05);
+
+  overflow: hidden;
+}
+
+.card-header {
+  padding: 20px 24px;
+
+  border-bottom: 1px solid #eef2f7;
+}
+
+.card-header h3 {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  color: #142033;
+}
+
+/* ==========================
+   Form
+========================== */
+
+.form-grid {
+  padding: 24px;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 20px 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #334155;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+
+  padding: 12px 14px;
+
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition: .2s;
+}
+
+.form-group textarea {
+  resize: vertical;
+
+  min-height: 140px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #22c55e;
+
+  box-shadow: 0 0 0 3px rgba(34,197,94,.12);
+}
+
+/* ==========================
+   Upload
+========================== */
+
+.upload-box {
+  border: 2px dashed #dbe3ef;
+  border-radius: 12px;
+
+  padding: 36px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.upload-box:hover {
+  border-color: #22c55e;
+
+  background: #f8fffa;
+}
+
+.upload-box ion-icon {
+  font-size: 42px;
+
+  color: #22c55e;
+}
+
+.upload-box p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+/* ==========================
+   Footer
+========================== */
+
+.action-bar {
+  margin-top: 24px;
+
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 12px;
+}
+
+.action-bar button {
+  height: 44px;
+
+  padding: 0 24px;
+
+  border-radius: 10px;
+
+  border: none;
+
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: .2s;
+}
+
+.btn-cancel {
+  background: #f1f5f9;
+
+  color: #475569;
+}
+
+.btn-cancel:hover {
+  background: #e2e8f0;
+}
+
+.btn-save {
+  background: #22c55e;
+
+  color: #fff;
+}
+
+.btn-save:hover {
+  background: #16a34a;
+}
+
+/* ==========================
+   Responsive
+========================== */
+
+@media (max-width: 992px) {
+
+  .form-grid {
+
+    grid-template-columns: 1fr;
+
+  }
+
+  .action-bar {
+
+    justify-content: stretch;
+
+  }
+
+  .action-bar button {
+
+    flex: 1;
+
+  }
+
+}
+.error{
+
+  margin-top:4px;
+
+  color:#dc2626;
+
+  font-size:13px;
+}

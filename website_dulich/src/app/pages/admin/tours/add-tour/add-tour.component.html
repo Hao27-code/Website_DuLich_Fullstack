@@ -1,0 +1,303 @@
+<ion-content>
+
+  <div class="page-content">
+    <app-breadcrumb></app-breadcrumb>
+
+    <app-admin-header
+      title="Thêm tour mới"
+      subtitle="Tạo tour du lịch mới">
+    </app-admin-header>
+
+    <div class="card">
+
+      <div class="card-header">
+        <h3>Thông tin cơ bản</h3>
+      </div>
+
+      <div class="form-grid">
+
+        <!-- ==========================
+             Tên tour
+        =========================== -->
+
+        <div class="form-group">
+
+          <label>Tên tour *</label>
+
+          <input
+            type="text"
+            name="title"
+            [(ngModel)]="tour.title"
+            #title="ngModel"
+            required>
+
+          @if (title.invalid && title.touched) {
+
+            <small class="error">
+              Vui lòng nhập tên tour.
+            </small>
+
+          }
+
+        </div>
+
+        <!-- ==========================
+             Địa điểm
+        =========================== -->
+
+        <div class="form-group">
+
+          <label>Địa điểm *</label>
+
+          <input
+            type="text"
+            name="location"
+            [(ngModel)]="tour.location"
+            #location="ngModel"
+            required>
+
+          @if (location.invalid && location.touched) {
+
+            <small class="error">
+              Vui lòng nhập địa điểm.
+            </small>
+
+          }
+
+        </div>
+
+        <!-- ==========================
+             Số ngày
+        =========================== -->
+
+        <div class="form-group">
+
+          <label>Số ngày *</label>
+
+          <input
+            type="number"
+            name="days"
+            [(ngModel)]="tour.days"
+            min="1"
+            #days="ngModel"
+            required>
+
+          @if (days.invalid && days.touched) {
+
+            <small class="error">
+              Số ngày không hợp lệ.
+            </small>
+
+          }
+
+        </div>
+
+        <!-- ==========================
+             Loại chuyến đi
+        =========================== -->
+
+        <div class="form-group">
+
+          <label>Loại chuyến đi</label>
+
+          <select
+            name="tripType"
+            [(ngModel)]="tour.tripType">
+
+            <option value="">Chọn loại</option>
+
+            <option value="Du lịch biển">
+              Du lịch biển
+            </option>
+
+            <option value="Du lịch núi">
+              Du lịch núi
+            </option>
+
+            <option value="Du lịch quốc tế">
+              Du lịch quốc tế
+            </option>
+
+          </select>
+
+        </div>
+
+        <!-- ==========================
+             Giá gốc
+        =========================== -->
+
+        <div class="form-group">
+
+          <label>Giá gốc *</label>
+
+          <input
+            type="number"
+            name="price"
+            [(ngModel)]="tour.price"
+            min="0"
+            #price="ngModel"
+            required>
+
+          @if (price.invalid && price.touched) {
+
+            <small class="error">
+              Giá không hợp lệ.
+            </small>
+
+          }
+
+        </div>
+
+        <!-- ==========================
+             Giá khuyến mãi
+        =========================== -->
+
+        <div class="form-group">
+
+          <label>Giá khuyến mãi</label>
+
+          <input
+            type="number"
+            name="discountPrice"
+            [(ngModel)]="tour.discountPrice">
+
+        </div>
+
+        <!-- ==========================
+             Deal End Date
+        =========================== -->
+
+        <div class="form-group">
+
+          <label>Ngày kết thúc khuyến mãi</label>
+
+          <input
+            type="date"
+            name="dealEndDate"
+            [(ngModel)]="tour.dealEndDate">
+
+        </div>
+
+        <!-- ==========================
+             Độ khó
+        =========================== -->
+
+        <div class="form-group">
+
+          <label>Độ khó</label>
+
+          <select
+            name="difficulty"
+            [(ngModel)]="tour.difficulty">
+
+            <option value="">
+              Chọn độ khó
+            </option>
+
+            <option value="Dễ">
+              Dễ
+            </option>
+
+            <option value="Trung bình">
+              Trung bình
+            </option>
+
+            <option value="Khó">
+              Khó
+            </option>
+
+          </select>
+
+        </div>
+
+        <!-- ==========================
+             Hoạt động
+        =========================== -->
+
+        <div class="form-group full">
+
+          <label>Hoạt động</label>
+
+          <input
+            type="text"
+            name="activities"
+            [(ngModel)]="tour.activities"
+            placeholder="Ví dụ: Trekking, Lặn biển">
+
+        </div>
+
+        <!-- ==========================
+             Mô tả
+        =========================== -->
+
+        <div class="form-group full">
+
+          <label>Mô tả</label>
+
+          <textarea
+            rows="6"
+            name="description"
+            [(ngModel)]="tour.description">
+          </textarea>
+
+        </div>
+
+        <!-- ==========================
+             Ảnh đại diện
+        =========================== -->
+
+        <div class="form-group full">
+
+          <label>Ảnh đại diện</label>
+
+          <input
+            type="file"
+            accept="image/*"
+            (change)="onFileSelected($event)">
+
+          @if (selectedFile) {
+
+            <small class="file-name">
+
+              {{ selectedFile.name }}
+
+            </small>
+
+          }
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ==========================
+         Button
+    =========================== -->
+
+    <div class="action-bar">
+
+      <button
+        type="button"
+        class="btn-cancel"
+        (click)="cancel()">
+
+        Hủy
+
+      </button>
+
+      <button
+        type="button"
+        class="btn-save"
+        [disabled]="isSaving"
+        (click)="saveTour()">
+
+        {{ isSaving ? 'Đang lưu...' : 'Lưu tour' }}
+
+      </button>
+
+    </div>
+
+  </div>
+
+</ion-content>

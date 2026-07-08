@@ -22,7 +22,6 @@ import { TourCardComponent } from '../../../components/tour-card/tour-card.compo
 import { addIcons } from 'ionicons';
 import { chevronUpOutline, chevronDownOutline } from 'ionicons/icons';
 import { PageBannerComponent } from '../../../components/page-banner/page-banner.component';
-import { FooterComponent } from '../../../components/footer/footer.component';
 addIcons({
   chevronUpOutline,
   chevronDownOutline,
@@ -44,7 +43,6 @@ addIcons({
     TourCardComponent,
     IonIcon,
     PageBannerComponent,
-    FooterComponent,
   ],
 })
 export class ToursPage implements OnInit {

@@ -1,0 +1,64 @@
+<article class="dashboard-card revenue-card">
+  <header class="card-header">
+    <h2>Doanh thu</h2>
+
+    <div class="chart-actions">
+      <button type="button">
+        Doanh thu
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </button>
+      <button type="button">
+        Theo ng&#224;y
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </button>
+    </div>
+  </header>
+
+  <div class="revenue-body">
+    <div class="chart-wrap">
+      <div class="axis-y">
+        <span>100M</span>
+        <span>80M</span>
+        <span>60M</span>
+        <span>40M</span>
+        <span>20M</span>
+        <span>0</span>
+      </div>
+
+      <div class="chart-main">
+        <svg viewBox="0 0 550 190" preserveAspectRatio="none" aria-label="Bi&#7875;u &#273;&#7891; doanh thu">
+          <g class="grid-lines">
+            <line x1="0" y1="0" x2="550" y2="0"></line>
+            <line x1="0" y1="38" x2="550" y2="38"></line>
+            <line x1="0" y1="76" x2="550" y2="76"></line>
+            <line x1="0" y1="114" x2="550" y2="114"></line>
+            <line x1="0" y1="152" x2="550" y2="152"></line>
+            <line x1="0" y1="190" x2="550" y2="190"></line>
+          </g>
+          <polygon class="area" [attr.points]="areaPoints"></polygon>
+          <polyline class="line" [attr.points]="linePoints"></polyline>
+          @for (point of chartPoints; track point.x) {
+            <circle class="point" [attr.cx]="point.x" [attr.cy]="point.y" r="4"></circle>
+          }
+        </svg>
+
+        <div class="axis-x">
+          @for (point of chartPoints; track point.x) {
+            @if (point.label) {
+              <span>{{ point.label }}</span>
+            }
+          }
+        </div>
+      </div>
+    </div>
+
+    <aside class="revenue-summary">
+      <span>T&#7893;ng doanh thu</span>
+      <strong>585.450.000 &#273;</strong>
+      <small>
+        <ion-icon name="caret-up-outline" aria-hidden="true"></ion-icon>
+        20% so v&#7899;i k&#7923; tr&#432;&#7899;c
+      </small>
+    </aside>
+  </div>
+</article>

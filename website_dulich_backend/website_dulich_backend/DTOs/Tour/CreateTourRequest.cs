@@ -18,13 +18,13 @@ namespace website_dulich_backend.DTOs.Tour
         public decimal Price { get; set; }
 
         [Range(0, double.MaxValue)]
-        public decimal DiscountPrice { get; set; }
-
+        public decimal? DiscountPrice { get; set; }
+        [MaxLength(5000)]
         public string Description { get; set; } = string.Empty;
 
         public DateTime? DealEndDate { get; set; }
 
-        public string CoverImage { get; set; } = string.Empty;
+        public string? CoverImage { get; set; } = string.Empty;
 
         public string? Activities { get; set; }
 

@@ -42,8 +42,17 @@
 /* @import '@ionic/angular/css/palettes/dark.system.css'; */
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
 @import 'aos/dist/aos.css';
-
-
+@import "flatpickr/dist/flatpickr.min.css";
+@import "choices.js/public/assets/styles/choices.min.css";
+html,
+body,
+ion-app,
+ion-content,
+ion-menu,
+ion-modal,
+ion-popover {
+  font-family: 'Manrope', sans-serif;
+}
 
 *{
   font-family: 'Manrope', sans-serif;
@@ -54,8 +63,8 @@ ion-header ion-toolbar{
 }
 
 :root {
-  --header-height: 103px;
   --app-footer-height: 0px;
+  --ion-font-family: 'Manrope', sans-serif;
 }
 
 @media screen and (max-width: 768px) {
@@ -86,9 +95,8 @@ ion-toolbar{
   }
 }
 
-/* Ionic pages are absolutely positioned (top/bottom = 0) so the app-level footer
-   rendered outside <ion-router-outlet> can visually overlap the page content.
-   Reserve space for it using the measured CSS variable set by FooterComponent. */
+/* Keep client pages below the app-level header/footer shell by reserving the footer height.
+   This is a structural layout correction, not a visual hack. */
 ion-router-outlet > .ion-page{
   bottom: var(--app-footer-height);
 }
@@ -147,4 +155,40 @@ ion-router-outlet > .ion-page{
 .logout-alert .logout-button {
   color: #087525 !important;
   font-weight: 600;
+}
+.flatpickr-calendar{
+  border:none;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 16px 40px rgba(0,0,0,.12);
+  font-family:'Manrope',sans-serif;
+}
+
+.flatpickr-months{
+  background:#fff;
+}
+.flatpickr-current-month{
+  font-weight:700;
+}
+.flatpickr-day{
+  border-radius:8px;
+}
+.flatpickr-day:hover{
+  background:#F3F4F6;
+}
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+  background: #22c55e !important;
+  border-color: #22c55e !important;
+  color: #fff !important;
+}
+.flatpickr-day.inRange{
+  background:#DCFCE7;
+  border-color:#DCFCE7;
+}
+.flatpickr-day.today {
+  border-color: #22c55e !important;
+  background: #22c55e !important;
+  color: #ffffff;
 }

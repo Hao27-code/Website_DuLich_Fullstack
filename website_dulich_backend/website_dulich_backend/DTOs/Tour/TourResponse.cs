@@ -12,8 +12,8 @@
 
         public decimal Price { get; set; }
 
-        public decimal DiscountPrice { get; set; }
+        public decimal? DiscountPrice { get; set; }
 
-        public string CoverImage { get; set; }
+        public string? CoverImage { get; set; }
     }
 }

@@ -19,7 +19,6 @@ import {
 
 import { addIcons } from 'ionicons';
 import { PageBannerComponent } from '../../../components/page-banner/page-banner.component';
-import { FooterComponent } from '../../../components/footer/footer.component';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.page.html',
@@ -34,7 +33,6 @@ import { FooterComponent } from '../../../components/footer/footer.component';
     FormsModule,
     IonIcon,
     PageBannerComponent,
-    FooterComponent,
   ],
 })
 export class ContactPage {

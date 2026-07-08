@@ -1,0 +1,502 @@
+:host {
+  display: block;
+  margin-top: 20px;
+}
+
+.table-card {
+  width: 100%;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, .05);
+
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.tour-table {
+  width: 1234px;
+  min-width: 1234px;
+
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+thead {
+  background: #fff;
+}
+
+thead tr {
+  border-bottom: 1px solid #eef2f7;
+}
+
+th {
+  padding: 17px 10px;
+
+  text-align: left;
+
+  font-size: 14px;
+  font-weight: 700;
+  color: #142033;
+
+  white-space: nowrap;
+}
+
+td {
+  padding: 14px 10px;
+
+  border-bottom: 1px solid #eef2f7;
+
+  vertical-align: middle;
+
+  font-size: 14px;
+  color: #475569;
+}
+
+tbody tr {
+  transition: .2s;
+}
+
+tbody tr:hover {
+  background: #fafbfd;
+}
+
+/* =========================
+   Width Column
+========================= */
+
+.checkbox-col {
+  width: 38px;
+  text-align: center;
+}
+
+.index-col {
+  width: 42px;
+  text-align: center;
+}
+
+.image-col {
+  width: 64px;
+}
+
+.name-col {
+  width: 190px;
+}
+
+.category-col {
+  width: 105px;
+}
+
+.destination-col {
+  width: 105px;
+}
+
+.duration-col {
+  width: 120px;
+  white-space: nowrap;
+}
+
+.price-col {
+  width: 110px;
+}
+
+.sale-col {
+  width: 120px;
+}
+
+.status-col {
+  width: 120px;
+}
+
+.views-col {
+  width: 75px;
+  text-align: center;
+}
+
+.action-col {
+  width: 110px;
+}
+
+/* =========================
+   Checkbox
+========================= */
+
+.checkbox-col input {
+  width: 16px;
+  height: 16px;
+}
+
+/* =========================
+   Image
+========================= */
+
+.tour-image {
+  width: 52px;
+  height: 52px;
+
+  border-radius: 8px;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+/* =========================
+   Tour info
+========================= */
+
+.tour-info {
+  width: 100%;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tour-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #142033;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.tour-description {
+  font-size: 12px;
+  color: #64748b;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* =========================
+   Price
+========================= */
+
+.old-price {
+  color: #94a3b8;
+  text-decoration: line-through;
+  white-space: nowrap;
+}
+
+.sale-price {
+  color: #ef4444;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* =========================
+   Status
+========================= */
+
+.status {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 100px;
+
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.status.active {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.status.coming {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.status.closed {
+  background: #e5e7eb;
+  color: #475569;
+}
+
+/* =========================
+   Actions
+========================= */
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.btn-action {
+  width: 34px;
+  height: 34px;
+
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+
+  background: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.btn-action ion-icon {
+  font-size: 18px;
+}
+
+.btn-action.view {
+  color: #475569;
+}
+
+.btn-action.view:hover {
+  background: #f8fafc;
+}
+
+.btn-action.edit {
+  color: #2563eb;
+}
+
+.btn-action.edit:hover {
+  background: #eff6ff;
+}
+
+.btn-action.delete {
+  color: #ef4444;
+}
+
+.btn-action.delete:hover {
+  background: #fef2f2;
+}
+
+/* =========================
+   Scrollbar
+========================= */
+
+.table-card::-webkit-scrollbar {
+  height: 8px;
+}
+
+.table-card::-webkit-scrollbar-thumb {
+  background: #d6dce5;
+  border-radius: 999px;
+}
+.table-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 10px;
+
+  border-top: 1px solid #eef2f7;
+  background: #fff;
+}
+
+.table-info {
+  font-size: 15px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+/* Pagination */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-btn {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: #475569;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.page-btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.page-btn.active {
+  background: #22c55e;
+  border-color: #22c55e;
+  color: #ffffff;
+
+  box-shadow: 0 6px 18px rgba(34, 197, 94, .25);
+}
+
+.page-btn.active:hover {
+  background: #16a34a;
+  border-color: #16a34a;
+}
+
+.page-btn:disabled {
+  color: #cbd5e1;
+  background: #f8fafc;
+  cursor: not-allowed;
+}
+
+.dots {
+  width: 28px;
+  text-align: center;
+
+  color: #94a3b8;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+
+.checkbox-col input[type="checkbox"]{
+  appearance:none;
+  -webkit-appearance:none;
+
+  width:18px;
+  height:18px;
+
+  border:2px solid #cbd5e1;
+  border-radius:4px;
+
+  background:#fff;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.checkbox-col input[type="checkbox"]:hover{
+  border-color:#22c55e;
+}
+
+.checkbox-col input[type="checkbox"]:checked{
+  background:#22c55e;
+  border-color:#22c55e;
+
+  position:relative;
+}
+
+.checkbox-col input[type="checkbox"]:checked::after{
+  content:"✓";
+
+  position:absolute;
+  left:50%;
+  top:50%;
+
+  transform:translate(-50%,-58%);
+
+  color:#fff;
+
+  font-size:12px;
+  font-weight:700;
+}
+.bulk-toolbar{
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:16px 0px;
+
+  border-bottom:1px solid #eef2f7;
+
+  background:#f8fafc;
+}
+
+.selected-count{
+
+  font-size:15px;
+  color:#475569;
+}
+
+.selected-count strong{
+
+  color:#16a34a;
+}
+
+.bulk-actions{
+
+  display:flex;
+  gap:10px;
+  padding-left: 10px;
+}
+
+.bulk-actions button{
+
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  height:38px;
+
+  padding:0 16px;
+
+  border:none;
+
+  border-radius:8px;
+
+  cursor:pointer;
+
+  font-weight:600;
+
+  transition:.2s;
+}
+
+.btn-delete{
+
+  background:#fee2e2;
+  color:#dc2626;
+}
+
+.btn-delete:hover{
+
+  background:#fecaca;
+}
+
+.btn-success{
+
+  background:#dcfce7;
+  color:#16a34a;
+}
+
+.btn-success:hover{
+
+  background:#bbf7d0;
+}
+
+.btn-warning{
+
+  background:#fef3c7;
+  color:#d97706;
+}
+
+.btn-warning:hover{
+
+  background:#fde68a;
+}

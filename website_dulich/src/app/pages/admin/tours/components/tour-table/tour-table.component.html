@@ -1,0 +1,257 @@
+<div class="table-card">
+  @if (selectedTours.size > 0) {
+
+    <div class="bulk-toolbar">
+
+      <div class="bulk-toolbar">
+
+        <div class="selected-count">
+
+          Đã chọn
+          <strong>{{ selectedTours.size }}</strong>
+          tour
+
+        </div>
+
+        <div class="bulk-actions">
+
+          <button class="btn-delete">
+
+            <ion-icon name="trash-outline"></ion-icon>
+
+            Xóa
+
+          </button>
+
+          <button class="btn-success">
+
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+
+            Mở bán
+
+          </button>
+
+          <button class="btn-warning">
+
+            <ion-icon name="close-circle-outline"></ion-icon>
+
+            Ngừng bán
+
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+
+  }
+
+  <table class="tour-table">
+    <colgroup>
+      <col style="width:38px">
+      <col style="width:42px">
+      <col style="width:64px">
+      <col style="width:190px">
+      <col style="width:105px">
+      <col style="width:105px">
+      <col style="width:100px">
+      <col style="width:110px">
+      <col style="width:120px">
+      <col style="width:120px">
+      <col style="width:75px">
+      <col style="width:110px">
+    </colgroup>
+    <thead>
+
+    <tr>
+
+      <th class="checkbox-col">
+
+        <input
+          type="checkbox"
+          [checked]="allSelected"
+          (change)="toggleAll($event)">
+
+      </th>
+
+      <th class="index-col">#</th>
+
+      <th class="image-col">Ảnh</th>
+
+      <th class="name-col">Tên tour</th>
+
+      <th class="category-col">Danh mục</th>
+
+      <th class="destination-col">Điểm đến</th>
+
+      <th class="duration-col">Thời gian</th>
+
+      <th class="price-col">Giá gốc</th>
+
+      <th class="sale-col">Giá khuyến mãi</th>
+
+      <th class="status-col">Trạng thái</th>
+
+      <th class="views-col">Lượt xem</th>
+
+      <th class="action-col">Thao tác</th>
+
+    </tr>
+
+    </thead>
+
+    <tbody>
+
+      @for (tour of tours; track tour.id) {
+
+        <tr>
+
+          <td class="checkbox-col">
+
+            <input
+              type="checkbox"
+              [checked]="isSelected(tour.id)"
+              (change)="toggleTour(tour.id, $event)">
+
+          </td>
+
+          <td class="index-col">
+            {{ tour.id }}
+          </td>
+
+          <td class="image-col">
+
+            <img
+              class="tour-image"
+              [src]="tour.image"
+              [alt]="tour.title">
+
+          </td>
+
+          <td class="name-col">
+
+            <div class="tour-info">
+
+              <div class="tour-title">
+
+                {{ tour.title }}
+
+              </div>
+
+              <div class="tour-description">
+
+                {{ tour.description }}
+
+              </div>
+
+            </div>
+
+          </td>
+
+          <td class="category-col">
+
+            {{ tour.category }}
+
+          </td>
+
+          <td class="destination-col">
+
+            {{ tour.destination }}
+
+          </td>
+
+          <td class="duration-col">
+
+            {{ tour.days }}
+
+          </td>
+
+          <td class="price-col old-price">
+
+            {{ tour.oldPrice | number }} đ
+
+          </td>
+
+          <td class="sale-col sale-price">
+
+            {{ tour.salePrice | number }} đ
+
+          </td>
+
+          <td class="status-col">
+
+    <span
+      class="status"
+      [class.active]="tour.status==='Đang mở bán'"
+      [class.coming]="tour.status==='Sắp khởi hành'"
+      [class.closed]="tour.status==='Đã hủy'">
+
+      {{ tour.status }}
+
+    </span>
+
+          </td>
+
+          <td class="views-col">
+
+            {{ tour.views }}
+
+          </td>
+
+          <td class="action-col">
+
+            <div class="actions">
+
+              <button class="btn-action view">
+                <ion-icon name="eye-outline"></ion-icon>
+              </button>
+
+              <button class="btn-action edit">
+                <ion-icon name="create-outline"></ion-icon>
+              </button>
+
+              <button class="btn-action delete">
+                <ion-icon name="trash-outline"></ion-icon>
+              </button>
+
+            </div>
+
+          </td>
+
+        </tr>
+
+      }
+
+    </tbody>
+
+  </table>
+  <div class="table-footer">
+
+    <div class="table-info">
+      Hiển thị 1 - 8 trong tổng số 128 tour
+    </div>
+
+    <div class="pagination">
+
+      <button class="page-btn">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </button>
+
+      <button class="page-btn active">1</button>
+
+      <button class="page-btn">2</button>
+
+      <button class="page-btn">3</button>
+
+      <span class="dots">...</span>
+
+      <button class="page-btn">16</button>
+
+      <button class="page-btn">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </button>
+
+    </div>
+
+  </div>
+</div>

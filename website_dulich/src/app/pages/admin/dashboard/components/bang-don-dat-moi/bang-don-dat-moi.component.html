@@ -1,0 +1,45 @@
+<article class="table-card">
+  <header class="table-header">
+    <h2>Đơn đặt tour mới nhất</h2>
+    <a routerLink="/admin/bookings">Xem tất cả</a>
+  </header>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Mã đơn</th>
+          <th>Khách hàng</th>
+          <th>Tour</th>
+          <th>Ngày đặt</th>
+          <th>Trạng thái</th>
+          <th>Tổng tiền</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (booking of bookings; track booking.id; let index = $index) {
+          <tr>
+            <td>{{ index + 1 }}</td>
+            <td class="order-id">{{ booking.id }}</td>
+            <td>{{ booking.customerName }}</td>
+            <td>{{ booking.tourName }}</td>
+            <td>{{ booking.bookingDate }}</td>
+            <td>
+              <span
+                class="status-badge"
+                [class.pending]="booking.statusClass === 'pending'"
+                [class.confirmed]="booking.statusClass === 'confirmed'"
+                [class.cancelled]="booking.statusClass === 'cancelled'"
+                [class.completed]="booking.statusClass === 'completed'"
+              >
+                {{ booking.status }}
+              </span>
+            </td>
+            <td class="price">{{ booking.totalPrice }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</article>

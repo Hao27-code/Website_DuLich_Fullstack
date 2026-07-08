@@ -1,0 +1,102 @@
+:host {
+  display: block;
+  margin-bottom: 24px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.summary-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  padding: 20px;
+
+  border: 1px solid #E4E7EC;
+
+  border-radius: 12px;
+
+  background: #FFF;
+
+  transition: .2s;
+}
+
+.summary-card:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 12px 28px rgba(15, 23, 42, .08);
+
+}
+
+.summary-icon {
+
+  width: 58px;
+
+  height: 58px;
+
+  border-radius: 14px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  ion-icon {
+
+    font-size: 28px;
+
+  }
+
+}
+
+.summary-content {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+  min-width: 0;
+
+  span {
+
+    font-size: 13px;
+
+    color: #667085;
+
+  }
+
+  strong {
+
+    font-size: 28px;
+
+    font-weight: 700;
+
+    color: #1E293B;
+
+    line-height: 1;
+
+  }
+
+  small {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    color: #16A34A;
+
+    font-size: 12px;
+
+  }
+
+}

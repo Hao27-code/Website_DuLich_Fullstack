@@ -9,7 +9,6 @@ import {
 } from '@ionic/angular/standalone';
 import { RouterLink } from '@angular/router';
 import { PageBannerComponent } from '../../../components/page-banner/page-banner.component';
-import { FooterComponent } from '../../../components/footer/footer.component';
 
 type BlogMedia =
   | { kind: 'image'; src: string; alt: string }
@@ -79,7 +78,6 @@ const BLOG_POSTS: BlogPost[] = [
     FormsModule,
     RouterLink,
     PageBannerComponent,
-    FooterComponent,
   ],
 })
 export class BlogPage implements OnInit {

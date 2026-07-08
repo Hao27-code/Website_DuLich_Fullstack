@@ -1,0 +1,18 @@
+<div class="statistics-grid">
+  @for (item of statistics; track item.title) {
+    <article class="stat-card">
+      <div class="stat-icon" [style.background]="item.backgroundColor" [style.color]="item.iconColor">
+        <ion-icon [name]="item.icon" aria-hidden="true"></ion-icon>
+      </div>
+
+      <div class="stat-copy">
+        <p>{{ item.title }}</p>
+        <strong>{{ item.value }}</strong>
+        <span>
+          <ion-icon name="caret-up-outline" aria-hidden="true"></ion-icon>
+          {{ item.percent }}% so với kỳ trước
+        </span>
+      </div>
+    </article>
+  }
+</div>

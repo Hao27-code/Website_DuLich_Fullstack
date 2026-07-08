@@ -10,7 +10,6 @@ import { PageBannerComponent } from '../../../components/page-banner/page-banner
 import { TourTabsComponent } from '../../../components/tour-detail/tour-tabs/tour-tabs.component';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { FooterComponent } from '../../../components/footer/footer.component';
 
 @Component({
   selector: 'app-tour-details',
@@ -28,7 +27,6 @@ import { FooterComponent } from '../../../components/footer/footer.component';
     RouterModule,
     TourTabsComponent,
     IonicModule,
-    FooterComponent,
   ],
 })
 export class TourDetailsPage implements OnInit {

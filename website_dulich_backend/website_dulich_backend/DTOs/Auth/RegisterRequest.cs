@@ -4,7 +4,7 @@ namespace website_dulich_backend.DTOs.Auth
 {
     public class RegisterRequest
     {
-        [Required(ErrorMessage = "FullName không được để trống")]
+        [Required(ErrorMessage = "Tên không được để trống")]
         [MinLength(3)]
         public string FullName { get; set; } = string.Empty;
 
@@ -14,7 +14,7 @@ namespace website_dulich_backend.DTOs.Auth
         public string Email { get; set; } = string.Empty;
 
 
-        [Required(ErrorMessage = "Email không được để trống")]
+        [Required(ErrorMessage = "Mật khẩu không được để trống")]
         [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$",ErrorMessage = "Mật khẩu phải có ít nhất 6 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt.")]
 
         public string Password { get; set; } = string.Empty;

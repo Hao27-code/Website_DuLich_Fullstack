@@ -1,19 +1,50 @@
-<div class="dashboard">
+<ion-content>
+  <div class="dashboard-container">
+    <app-admin-header></app-admin-header>
+    <section class="dashboard-heading">
+      <div>
+        <h1>Tổng quan</h1>
+        <p>Theo dõi tình hình hoạt động của hệ thống</p>
+      </div>
 
-  <aside class="sidebar">
-    Sidebar
-  </aside>
+      <label class="date-filter">
 
-  <main class="main">
+        <ion-icon
+          name="calendar-outline">
+        </ion-icon>
 
-    <header class="topbar">
-      Topbar
-    </header>
+        <input
+          #dateRange
+          readonly
+          placeholder="Chọn khoảng thời gian">
 
-    <section class="content">
-      Dashboard
+        <ion-icon
+          name="chevron-down-outline">
+        </ion-icon>
+
+      </label>
     </section>
 
-  </main>
+    <app-the-thong-ke></app-the-thong-ke>
 
-</div>
+    <div class="content-grid">
+      <section class="revenue-section">
+        <app-bieu-do-doanh-thu></app-bieu-do-doanh-thu>
+      </section>
+
+      <section class="booking-section">
+        <app-bieu-do-don-dat></app-bieu-do-don-dat>
+      </section>
+    </div>
+
+    <div class="tables-grid">
+      <section class="tours-section">
+        <app-bang-tour-noi-bat></app-bang-tour-noi-bat>
+      </section>
+
+      <section class="orders-section">
+        <app-bang-don-dat-moi></app-bang-don-dat-moi>
+      </section>
+    </div>
+  </div>
+</ion-content>

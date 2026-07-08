@@ -36,7 +36,6 @@ import { TourCardComponent } from '../../../components/tour-card/tour-card.compo
 import { Tour } from '../../../core/models/tour.model';
 import { TourService } from '../../../core/services/tour.service';
 import { FooterComponent } from '../../../components/footer/footer.component';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',

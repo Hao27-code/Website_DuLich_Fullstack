@@ -1,204 +1,156 @@
+<div class="booking-backdrop">
 
-<div class="booking-layout">
+  <div class="booking-modal">
 
-  <!-- LEFT -->
+    <!-- Header -->
+    <div class="booking-header">
 
-  <div class="booking-main">
+      <h2>Đặt Tour</h2>
 
-    <!-- steps -->
+      <button class="close-btn">
+        ✕
+      </button>
 
-    <div class="steps">
+    </div>
 
-      <div
-        class="step"
-        [class.active]="step===1">
+    <!-- Step -->
+    <div class="booking-stepper">
 
-        Date & Time
+      <div class="step active">
+
+        <div class="circle">
+          1
+        </div>
+
+        <span>Chọn ngày</span>
 
       </div>
 
-      <div
-        class="step"
-        [class.active]="step===2">
+      <div class="line active"></div>
 
-        Package Type
+      <div class="step">
+
+        <div class="circle">
+          2
+        </div>
+
+        <span>Thông tin</span>
+
+      </div>
+
+      <div class="line"></div>
+
+      <div class="step">
+
+        <div class="circle">
+          3
+        </div>
+
+        <span>Thanh toán</span>
 
       </div>
 
     </div>
 
-    <!-- STEP 1 -->
+    <!-- Content -->
 
-    <ng-container *ngIf="step===1">
+    <div class="booking-body">
 
-      <ion-datetime
-        presentation="date"
-        [preferWheel]="false"
-        size="cover"
-        locale="vi-VN"
-        [(ngModel)]="selectedDate"
-        class="booking-calendar">
+      <!-- Left -->
 
-      </ion-datetime>
+      <div class="booking-content">
 
-      <div class="calendar-action">
+        <div class="placeholder">
 
-        <button
-          class="continue-btn"
-          (click)="nextStep()">
+          <h3>
+            Bước 1
+          </h3>
 
-          Continue
-
-        </button>
-
-      </div>
-
-    </ng-container>
-
-    <!-- STEP 2 -->
-
-    <ng-container *ngIf="step===2">
-
-      <div class="package-tag">
-        Cơ Bản
-      </div>
-
-      <div class="traveller-header">
-
-        <span>TRAVELLERS</span>
-
-        <span>QUANTITY</span>
-
-      </div>
-
-      <!-- adult -->
-
-      <div class="traveller-row">
-
-        <h3>Người lớn</h3>
-
-        <div class="price">
-          {{
-            (tour.discountPrice || tour.price)
-              | number
-          }}đ / Người
-        </div>
-
-        <div class="qty-box">
-
-          <button
-            (click)="adultQty=adultQty>1 ? adultQty-1 : 1">
-
-            −
-
-          </button>
-
-          <span>{{adultQty}}</span>
-
-          <button
-            (click)="adultQty=adultQty+1">
-
-            +
-
-          </button>
+          <p>
+            Calendar sẽ được xây dựng ở phần tiếp theo.
+          </p>
 
         </div>
 
       </div>
 
-      <!-- child -->
+      <!-- Right -->
 
-      <div class="traveller-row">
+      <div class="booking-summary">
 
-        <h3>Trẻ em</h3>
+        <h3>
+          Thông tin đặt tour
+        </h3>
 
-        <div class="price">
-          599,000đ / Người
+        <div class="summary-item">
+
+          <span>Tour</span>
+
+          <strong>Đà Lạt 3N2Đ</strong>
+
         </div>
 
-        <div class="qty-box">
+        <div class="summary-item">
 
-          <button
-            (click)="childQty=childQty>0 ? childQty-1 : 0">
+          <span>Giá</span>
 
-            −
+          <strong>2.199.000đ</strong>
 
-          </button>
+        </div>
 
-          <span>{{childQty}}</span>
+        <div class="summary-item">
 
-          <button
-            (click)="childQty=childQty+1">
+          <span>Ngày</span>
 
-            +
+          <strong>Chưa chọn</strong>
 
-          </button>
+        </div>
+
+        <div class="summary-item">
+
+          <span>Người lớn</span>
+
+          <strong>1</strong>
+
+        </div>
+
+        <div class="summary-item">
+
+          <span>Trẻ em</span>
+
+          <strong>0</strong>
+
+        </div>
+
+        <hr>
+
+        <div class="summary-total">
+
+          <span>Tổng tiền</span>
+
+          <strong>2.199.000đ</strong>
 
         </div>
 
       </div>
 
-      <div class="bottom-action">
-
-        <a
-          class="back-btn"
-          (click)="backStep()">
-
-          Back
-
-        </a>
-
-        <button class="continue-btn">
-          Proceed To Checkout
-        </button>
-
-      </div>
-
-    </ng-container>
-
-  </div>
-
-  <!-- RIGHT -->
-
-  <div class="summary">
-
-    <button
-      class="close-btn"
-      (click)="close()">
-
-      ×
-
-    </button>
-
-    <h4>BOOKING SUMMARY</h4>
-
-    <h2>{{tour?.title}}</h2>
-
-    <p>
-      Starting Date:
-      <b>
-        {{ selectedDate | date:'dd/MM/yyyy' }}
-      </b>
-    </p>
-
-    <div class="package-box">
-      Package: Cơ bản
     </div>
 
-    <div class="total">
+    <!-- Footer -->
 
-      <span>Total :</span>
+    <div class="booking-footer">
 
-      <strong>
-        {{
-          (
-            adultQty *
-            (tour.discountPrice || tour.price)
-          ) +
-          (childQty * 599000)
-            | number
-        }}đ
-      </strong>
+      <button class="btn-outline">
+
+        Quay lại
+
+      </button>
+
+      <button class="btn-primary">
+
+        Tiếp tục
+
+      </button>
 
     </div>
 

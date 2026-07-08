@@ -1,0 +1,26 @@
+<article class="dashboard-card booking-card">
+  <header class="card-header">
+    <h2>Tổng quan đặt tour</h2>
+  </header>
+
+  <div class="booking-body">
+    <div class="donut-chart" role="img" aria-label="T&#7893;ng quan tr&#7841;ng th&#225;i &#273;&#417;n &#273;&#7863;t">
+      <div class="donut-center">
+        <strong>{{ totalBookings }}</strong>
+        <span>Đơn đặt</span>
+      </div>
+    </div>
+
+    <ul class="status-list">
+      @for (item of statuses; track item.label) {
+        <li>
+          <span class="status-name">
+            <i [style.background]="item.color"></i>
+            {{ item.label }}
+          </span>
+          <strong>{{ item.value }} ({{ item.percent }}%)</strong>
+        </li>
+      }
+    </ul>
+  </div>
+</article>
