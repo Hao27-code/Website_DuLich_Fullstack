@@ -32,7 +32,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddScoped<ITourRepository,TourRepository>();
 
 builder.Services.AddScoped<ITourService,TourService>();
-
+builder.Services.AddScoped<IUploadService, UploadService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -119,7 +119,7 @@ app.UseCors("AngularPolicy");
 app.UseAuthentication();
 
 app.UseAuthorization();
-
+app.UseStaticFiles();
 app.MapControllers();
 using (
     var scope = app.Services.CreateScope()

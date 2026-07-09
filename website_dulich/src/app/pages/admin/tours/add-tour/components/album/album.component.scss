@@ -1,0 +1,165 @@
+.card{
+
+  margin-top:24px;
+
+  padding:30px;
+
+  border:1px solid #edf2f7;
+
+  border-radius:16px;
+
+  background:#fff;
+
+}
+
+.card-title{
+
+  margin:0;
+
+  font-size:28px;
+
+  font-weight:700;
+
+  color:#1e293b;
+
+}
+
+.card-description{
+
+  margin:8px 0 26px;
+
+  color:#94a3b8;
+
+  font-size:14px;
+
+}
+
+.album-grid{
+
+  display:grid;
+
+  grid-template-columns:repeat(5,1fr);
+
+  gap:18px;
+
+}
+
+.image-item{
+
+  position:relative;
+
+  height:150px;
+
+  border-radius:12px;
+
+  overflow:hidden;
+
+  border:1px solid #e5e7eb;
+
+}
+
+.image-item img{
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:cover;
+
+}
+
+.delete-btn{
+
+  position:absolute;
+
+  top:8px;
+
+  right:8px;
+
+  width:30px;
+
+  height:30px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:#ef4444;
+
+  color:#fff;
+
+  cursor:pointer;
+
+  font-size:18px;
+
+}
+
+.upload-item{
+
+  height:150px;
+
+  border:2px dashed #cbd5e1;
+
+  border-radius:12px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+
+  align-items:center;
+
+  cursor:pointer;
+
+  transition:.2s;
+
+}
+
+.upload-item:hover{
+
+  border-color:#22c55e;
+
+  background:#f0fdf4;
+
+}
+
+.plus{
+
+  font-size:36px;
+
+  color:#22c55e;
+
+  font-weight:700;
+
+}
+
+.upload-item span{
+
+  margin-top:8px;
+
+  font-size:15px;
+
+  color:#475569;
+
+}
+
+@media(max-width:1200px){
+
+  .album-grid{
+
+    grid-template-columns:repeat(3,1fr);
+
+  }
+
+}
+
+@media(max-width:768px){
+
+  .album-grid{
+
+    grid-template-columns:repeat(2,1fr);
+
+  }
+
+}

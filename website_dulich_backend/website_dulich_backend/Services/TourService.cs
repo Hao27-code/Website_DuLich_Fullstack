@@ -1,5 +1,4 @@
 ﻿using website_dulich_backend.DTOs.Tour;
-using website_dulich_backend.Models;
 using website_dulich_backend.Repositories;
 
 namespace website_dulich_backend.Services
@@ -8,20 +7,17 @@ namespace website_dulich_backend.Services
     {
         private readonly ITourRepository _tourRepository;
 
-        public TourService(
-            ITourRepository tourRepository
-        )
+        public TourService(ITourRepository tourRepository)
         {
             _tourRepository = tourRepository;
         }
 
-        public async Task<(List<Tour>, int total)> GetToursAsync(TourQueryDto query)
+        public async Task<(List<TourResponse>, int total)> GetToursAsync(TourQueryDto query)
         {
-            return await _tourRepository
-                .GetToursAsync(query);
+            return await _tourRepository.GetToursAsync(query);
         }
 
-        public async Task<Tour> CreateTour(CreateTourRequest request)
+        public async Task<TourResponse> CreateTour(CreateTourRequest request)
         {
 
             ValidateTourRequest(request);
@@ -29,18 +25,15 @@ namespace website_dulich_backend.Services
         }
 
 
-        public async Task<Tour?> UpdateTour(Guid id, UpdateTourRequest request)
+        public async Task<TourResponse?> UpdateTour(Guid id, UpdateTourRequest request)
         {
             ValidateTourRequest(request);
             return await _tourRepository.UpdateTour(id, request);
         }
 
-        public async Task<Tour?> GetTourByIdAsync(Guid id)
+        public async Task<TourResponse?> GetTourByIdAsync(Guid id)
         {
-            return await _tourRepository
-                .GetTourByIdAsync(id);
-
-
+            return await _tourRepository.GetTourByIdAsync(id);
         }
 
         public async Task<bool> DeleteTour(Guid id)
@@ -53,15 +46,12 @@ namespace website_dulich_backend.Services
             if (request.DiscountPrice.HasValue &&
                 request.DiscountPrice > request.Price)
             {
-                throw new ArgumentException(
-                    "Giá khuyến mãi không được lớn hơn giá gốc.");
+                throw new ArgumentException("Giá khuyến mãi không được lớn hơn giá gốc.");
             }
 
-            if (request.DealEndDate.HasValue &&
-                request.DealEndDate.Value < DateTime.UtcNow)
+            if (request.DealEndDate.HasValue && request.DealEndDate.Value.Date < DateTime.UtcNow.Date)
             {
-                throw new ArgumentException(
-                    "Ngày kết thúc khuyến mãi phải lớn hơn thời điểm hiện tại.");
+                throw new ArgumentException("Ngày kết thúc khuyến mãi phải lớn hơn thời điểm hiện tại.");
             }
         }
         private static void ValidateTourRequest(UpdateTourRequest request)

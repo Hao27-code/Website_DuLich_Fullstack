@@ -59,7 +59,8 @@ namespace website_dulich_backend.Controllers
         {
             var createdTour = await _tourService.CreateTour(request);
 
-            return Ok(createdTour);
+           return CreatedAtAction(nameof(GetTourById),new { id = createdTour.Id },createdTour
+);
         }
 
         [Authorize(Roles = "Admin")]

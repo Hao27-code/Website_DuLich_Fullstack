@@ -1,0 +1,280 @@
+<div class="card">
+  <div class="content-grid">
+
+    <!-- ================= LEFT ================= -->
+
+    <div class="left">
+
+      <div class="form-grid">
+
+        <!-- Tên tour -->
+
+        <div class="form-group">
+
+          <label>
+            Tên tour
+            <span class="required">*</span>
+          </label>
+
+          <input
+            type="text"
+            [(ngModel)]="tour.title"
+            placeholder="Nhập tên tour">
+
+        </div>
+
+        <!-- Địa điểm -->
+
+        <div class="form-group">
+
+          <label>
+            Địa điểm
+            <span class="required">*</span>
+          </label>
+
+          <input
+            type="text"
+            [(ngModel)]="tour.location"
+            placeholder="Nhập địa điểm">
+
+        </div>
+
+        <!-- Số ngày -->
+
+        <div class="form-group">
+
+          <label>
+            Số ngày
+            <span class="required">*</span>
+          </label>
+
+          <input
+            type="number"
+            [(ngModel)]="tour.days">
+
+        </div>
+
+        <!-- Giá -->
+
+        <div class="form-group">
+
+          <label>
+            Giá gốc (VNĐ)
+            <span class="required">*</span>
+          </label>
+
+          <input
+            type="number"
+            [(ngModel)]="tour.price"
+            placeholder="VD: 6.500.000">
+
+        </div>
+
+        <!-- Giá KM -->
+
+        <div class="form-group">
+
+          <label>Giá khuyến mãi (VNĐ)</label>
+
+          <input
+            type="number"
+            [(ngModel)]="tour.discountPrice"
+            placeholder="VD: 5.200.000">
+
+        </div>
+
+        <!-- Deal -->
+
+        <div class="form-group">
+
+          <label>Ngày kết thúc khuyến mãi</label>
+
+          <input
+            type="date"
+            [(ngModel)]="tour.dealEndDate">
+
+        </div>
+
+        <!-- Trip Type -->
+
+        <div class="form-group">
+
+          <label>
+            Loại chuyến đi
+            <span class="required">*</span>
+          </label>
+
+          <select [(ngModel)]="tour.tripType">
+
+            <option class="trip-css" value="">-- Chọn loại chuyến đi --</option>
+
+            <option value="Beach">Du lịch biển</option>
+
+            <option value="Mountain">Du lịch núi</option>
+
+            <option value="International">Du lịch quốc tế</option>
+
+          </select>
+
+        </div>
+
+        <!-- Difficulty -->
+
+        <div class="form-group">
+
+          <label>
+            Độ khó
+            <span class="required">*</span>
+          </label>
+
+          <select [(ngModel)]="tour.difficulty">
+
+            <option value="">-- Chọn độ khó --</option>
+
+            <option value="Easy">Dễ</option>
+
+            <option value="Medium">Trung bình</option>
+
+            <option value="Hard">Khó</option>
+
+          </select>
+
+        </div>
+
+        <!-- Activities -->
+
+        <div class="form-group full">
+
+          <label>Hoạt động</label>
+
+          <div class="activity-grid">
+
+            <label class="activity-item">
+              <input type="checkbox" value="Hiking" (change)="toggleActivity($event)">
+              <span>Hiking</span>
+            </label>
+
+            <label class="activity-item">
+              <input type="checkbox" value="Jungle Safari" (change)="toggleActivity($event)">
+              <span>Jungle Safari</span>
+            </label>
+
+            <label class="activity-item">
+              <input type="checkbox" value="Peak Climbing" (change)="toggleActivity($event)">
+              <span>Peak Climbing</span>
+            </label>
+
+            <label class="activity-item">
+              <input type="checkbox" value="Road Cycling" (change)="toggleActivity($event)">
+              <span>Road Cycling</span>
+            </label>
+
+            <label class="activity-item">
+              <input type="checkbox" value="Skiing" (change)="toggleActivity($event)">
+              <span>Skiing</span>
+            </label>
+
+          </div>
+
+        </div>
+
+        <!-- Description -->
+
+        <div class="form-group full">
+
+          <label>Mô tả tour</label>
+
+          <textarea
+            rows="8"
+            maxlength="5000"
+            [(ngModel)]="tour.description"
+            placeholder="Nhập mô tả chi tiết về tour...">
+          </textarea>
+
+          <div class="count">
+
+            {{ tour.description.length }}/5000
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ================= RIGHT ================= -->
+
+    <div class="right">
+
+      <label>
+        Ảnh đại diện
+        <span class="required">*</span>
+      </label>
+
+      <div class="upload-box">
+
+        <ion-icon
+          class="upload-icon"
+          name="image-outline">
+        </ion-icon>
+
+        <h4 class="upload-title">
+
+          Kéo & thả ảnh vào đây
+
+        </h4>
+
+        <div class="upload-or">
+
+          hoặc
+
+        </div>
+
+        <button
+          type="button"
+          class="upload-btn"
+          (click)="fileInput.click()">
+
+          Chọn ảnh
+
+        </button>
+
+        <input
+          #fileInput
+          hidden
+          type="file"
+          accept="image/*"
+          (change)="emitSelectedFile($event)">
+
+      </div>
+
+      <div class="upload-note">
+
+        Kích thước khuyến nghị:
+        <strong>1200×800px</strong>
+
+        <br>
+
+        Định dạng:
+        JPG, PNG (max 2MB)
+
+      </div>
+
+      @if(imagePreview){
+
+        <div class="preview">
+
+          <img
+            [src]="imagePreview"
+            alt="Preview">
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
+</div>

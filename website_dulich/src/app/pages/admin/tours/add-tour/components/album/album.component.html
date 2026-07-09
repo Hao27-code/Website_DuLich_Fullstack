@@ -1,0 +1,55 @@
+<div class="card">
+
+  <h2 class="card-title">
+    2. Album ảnh
+  </h2>
+
+  <p class="card-description">
+    Quản lý các ảnh hiển thị trong trang chi tiết tour.
+  </p>
+
+  <div class="album-grid">
+
+    @for(image of albumImages;track image.url){
+
+      <div class="image-item">
+
+        <img
+          [src]="image.preview"
+          alt="Album">
+
+        <button
+          type="button"
+          class="delete-btn"
+          (click)="removeImage($index)">
+
+          ×
+
+        </button>
+
+      </div>
+
+    }
+
+    <label class="upload-item">
+
+      <input
+        hidden
+        type="file"
+        multiple
+        accept="image/*"
+        (change)="onSelectImages($event)">
+
+      <div class="plus">
+
+        +
+
+      </div>
+
+      <span>Thêm ảnh</span>
+
+    </label>
+
+  </div>
+
+</div>

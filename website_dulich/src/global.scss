@@ -71,10 +71,12 @@ ion-header ion-toolbar{
   :root {
     --header-height: 74px; /* logo 50px + padding 12px*2 */
   }
-  ion-content{
+  /* Apply reserved padding only for client pages (header is outside router-outlet)
+     Admin pages render their own header inside page content and should not
+     receive this global padding. */
+  .client-content ion-content{
     --padding-top: 73px;
   }
-
 
 }
 ion-header{
@@ -89,8 +91,9 @@ ion-toolbar{
 }
 
 
-@media screen and (min-width: 769px){
-  ion-content{
+@media screen and (min-width:769px){
+  /* Desktop: reserve header space only for client pages */
+  .client-content ion-content{
     --padding-top: 103px;
   }
 }
@@ -143,7 +146,8 @@ ion-router-outlet > .ion-page{
     /* Firefox */
     scrollbar-width:none !important;
   }
-  ion-content{
+  /* Tablet: reserve header space only for client pages */
+  .client-content ion-content{
     --padding-top: 60px;
   }
 }

@@ -19,9 +19,11 @@ namespace website_dulich_backend.Models
         public string Description { get; set; } = string.Empty;
 
         public DateTime? DealEndDate { get; set; }
-
+         
+        //ảnh đại diện
         public string CoverImage { get; set; } = string.Empty;
 
+        //là album ảnh của tour, có thể có nhiều ảnh
         public ICollection<TourImage> Images { get; set; } = new List<TourImage>();
 
         public string? Activities { get; set; }

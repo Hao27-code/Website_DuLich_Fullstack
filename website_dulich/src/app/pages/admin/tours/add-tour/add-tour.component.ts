@@ -10,7 +10,15 @@ import { BreadcrumbComponent } from '../components/breadcrumb/breadcrumb.compone
 import { TourService } from '../../../../core/services/tour.service';
 import { CreateTourRequest } from '../../../../core/models/create-tour-request.model';
 import { AdminHeaderComponent } from '../../../../layouts/admin-layout/components/admin-header/admin-header.component';
-
+import { BasicInfoComponent } from './components/basic-info/basic-info.component';
+import { AlbumComponent } from './components/album/album.component';
+import { HighlightsComponent } from './components/highlights/highlights.component';
+import { ItineraryComponent } from './components/itinerary/itinerary.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { ActionFooterComponent } from './components/action-footer/action-footer.component';
+import { UploadService } from '../../../../core/services/upload.service';
+import { environment } from '../../../../../environments/environment';
+import { AlbumImage } from '../../../../core/models/album-image.model';
 @Component({
   selector: 'app-add-tour',
   standalone: true,
@@ -22,16 +30,22 @@ import { AdminHeaderComponent } from '../../../../layouts/admin-layout/component
     IonContent,
     BreadcrumbComponent,
     AdminHeaderComponent,
+    BasicInfoComponent,
+    AlbumComponent,
+    HighlightsComponent,
+    ItineraryComponent,
+    FaqComponent,
+    ActionFooterComponent,
   ],
 })
 export class AddTourComponent {
   private readonly tourService = inject(TourService);
   private readonly router = inject(Router);
-
+  private readonly uploadService = inject(UploadService);
   isSaving = false;
-
+  imagePreview = '';
   selectedFile: File | null = null;
-
+  albumUrls: string[] = [];
   tour: CreateTourRequest = {
     title: '',
     location: '',
@@ -46,19 +60,20 @@ export class AddTourComponent {
     difficulty: '',
   };
 
-  onFileSelected(event: Event): void {
-    const input = event.target as HTMLInputElement;
+  onFileSelected(file: File): void {
+    this.selectedFile = file;
 
-    if (!input.files || input.files.length === 0) {
-      return;
-    }
+    this.uploadService.uploadImage(file).subscribe({
+      next: (response) => {
+        this.tour.coverImage = response.url;
 
-    this.selectedFile = input.files[0];
+        this.imagePreview = `${environment.serverUrl}${response.url}`;
+      },
 
-    // Tạm thời chỉ lưu tên file.
-    // Sau này sẽ upload lên server rồi nhận URL.
-
-    this.tour.coverImage = this.selectedFile.name;
+      error: () => {
+        alert('Upload ảnh thất bại.');
+      },
+    });
   }
 
   saveTour(): void {
@@ -116,5 +131,8 @@ export class AddTourComponent {
 
   cancel(): void {
     this.router.navigate(['/admin/tours']);
+  }
+  onAlbumChanged(images: AlbumImage[]) {
+    this.albumUrls = images.map((x) => x.url);
   }
 }

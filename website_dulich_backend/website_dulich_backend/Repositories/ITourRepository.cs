@@ -5,11 +5,14 @@ namespace website_dulich_backend.Repositories
 {
     public interface ITourRepository
     {
-        Task<(List<Tour>, int total)> GetToursAsync(TourQueryDto query);
-        Task<Tour> CreateTour(CreateTourRequest request);
-        Task<Tour?> UpdateTour(Guid id, UpdateTourRequest request);
+        Task<(List<TourResponse>, int total)> GetToursAsync(TourQueryDto query);
 
-        Task<Tour?> GetTourByIdAsync(Guid id);
+        Task<TourResponse> CreateTour(CreateTourRequest request);
+
+        Task<TourResponse?> UpdateTour(Guid id, UpdateTourRequest request);
+
+        Task<TourResponse?> GetTourByIdAsync(Guid id);
+
         Task<bool> DeleteTour(Guid id);
     }
 }

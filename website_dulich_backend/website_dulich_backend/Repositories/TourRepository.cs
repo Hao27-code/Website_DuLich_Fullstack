@@ -16,9 +16,34 @@ namespace website_dulich_backend.Repositories
             _context = context;
         }
 
-        public async Task<(List<Tour>, int total)> GetToursAsync(TourQueryDto query)
+        private static TourResponse MapTour(Tour tour)
         {
-            IQueryable<Tour> tours =_context.Tours.Include(t => t.Images).AsQueryable();
+            return new TourResponse
+            {
+                Id = tour.Id,
+                Title = tour.Title,
+                Location = tour.Location,
+                Days = tour.Days,
+                Price = tour.Price,
+                DiscountPrice = tour.DiscountPrice,
+                Description = tour.Description,
+                DealEndDate = tour.DealEndDate,
+                CoverImage = tour.CoverImage,
+
+                AlbumImages = tour.Images
+                    .OrderBy(x => x.SortOrder)
+                    .Select(x => x.ImageUrl)
+                    .ToList(),
+
+                Activities = tour.Activities,
+                TripType = tour.TripType,
+                Difficulty = tour.Difficulty
+            };
+        }
+
+        public async Task<(List<TourResponse>, int total)> GetToursAsync(TourQueryDto query)
+        {
+            IQueryable<Tour> tours = _context.Tours.Include(t => t.Images).AsQueryable();
 
             /* destination */
 
@@ -102,15 +127,19 @@ namespace website_dulich_backend.Repositories
 
             int total = await tours.CountAsync();
 
-            var data = await tours
-                .Skip((query.Page - 1) * query.Limit)
-                .Take(query.Limit)
-                .ToListAsync();
+            var toursData = await tours
+            .Skip((query.Page - 1) * query.Limit)
+            .Take(query.Limit)
+            .ToListAsync();
+
+            var data = toursData
+                .Select(MapTour)
+                .ToList();
 
             return (data, total);
         }
 
-        public async Task<Tour> CreateTour(CreateTourRequest request)
+        public async Task<TourResponse> CreateTour(CreateTourRequest request)
         {
             var tour = new Tour
             {
@@ -130,16 +159,24 @@ namespace website_dulich_backend.Repositories
                 UpdatedAt = DateTime.UtcNow
             };
 
-            _context.Tours.Add(tour);
+            var sortOrder = 0;
 
+            foreach (var image in request.AlbumImages)
+            {
+                tour.Images.Add(new TourImage
+                {
+                    ImageUrl = image,
+                    SortOrder = sortOrder++
+                });
+            }
+            _context.Tours.Add(tour);
             await _context.SaveChangesAsync();
 
-            return tour;
+            return MapTour(tour);
         }
-        public async Task<Tour?> UpdateTour(Guid id, UpdateTourRequest request)
+        public async Task<TourResponse?> UpdateTour(Guid id, UpdateTourRequest request)
         {
-            var existingTour =
-                await _context.Tours.FindAsync(id);
+            var existingTour = await _context.Tours.Include(x => x.Images).FirstOrDefaultAsync(x => x.Id == id);
 
             if (existingTour == null)
             {
@@ -161,25 +198,48 @@ namespace website_dulich_backend.Repositories
             existingTour.Difficulty = request.Difficulty;
             existingTour.UpdatedAt = DateTime.UtcNow;
 
+            _context.TourImages.RemoveRange(existingTour.Images);
+
+            existingTour.Images.Clear();
+
+            var index = 0;
+
+            foreach (var image in request.AlbumImages)
+            {
+                existingTour.Images.Add(new TourImage
+                {
+                    ImageUrl = image,
+                    SortOrder = index++
+                });
+            }
             await _context.SaveChangesAsync();
 
-            return existingTour;
+            return MapTour(existingTour);
         }
 
-        public async Task<Tour?> GetTourByIdAsync(Guid id)
+        public async Task<TourResponse?> GetTourByIdAsync(Guid id)
         {
-            return await _context.Tours
-             .Include(t => t.Images)
-             .Include(t => t.Highlights)
-             .Include(t => t.Itineraries)
-             .Include(t => t.Faqs)
-             .FirstOrDefaultAsync(t => t.Id == id);
+            var tour = await _context.Tours
+                .Include(t => t.Images)
+                .Include(t => t.Highlights)
+                .Include(t => t.Itineraries)
+                .Include(t => t.Faqs)
+                .FirstOrDefaultAsync(t => t.Id == id);
+
+            if (tour == null)
+                return null;
+
+            return MapTour(tour);
         }
 
         public async Task<bool> DeleteTour(Guid id)
         {
-            var tour =
-                await _context.Tours.FindAsync(id);
+            var tour = await _context.Tours
+            .Include(t => t.Images)
+            .Include(t => t.Highlights)
+            .Include(t => t.Itineraries)
+            .Include(t => t.Faqs)
+            .FirstOrDefaultAsync(t => t.Id == id);
 
             if (tour == null)
             {

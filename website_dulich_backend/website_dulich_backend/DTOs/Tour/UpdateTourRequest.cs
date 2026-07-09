@@ -25,7 +25,7 @@ namespace website_dulich_backend.DTOs.Tour
         public DateTime? DealEndDate { get; set; }
 
         public string? CoverImage { get; set; } = string.Empty;
-
+        public List<string> AlbumImages { get; set; } = [];
         public string? Activities { get; set; }
 
         public string? TripType { get; set; }
