@@ -29,11 +29,32 @@ namespace website_dulich_backend.Repositories
                 Description = tour.Description,
                 DealEndDate = tour.DealEndDate,
                 CoverImage = tour.CoverImage,
-
+                IsActive = tour.IsActive,
                 AlbumImages = tour.Images
                     .OrderBy(x => x.SortOrder)
                     .Select(x => x.ImageUrl)
                     .ToList(),
+                Highlights = tour.Highlights
+                    .OrderBy(x => x.SortOrder)
+                    .Select(x => x.Content)
+                    .ToList(),
+
+                Itineraries = tour.Itineraries
+                    .OrderBy(x => x.DayNumber)
+                    .Select(x => new ItineraryResponse
+                    {
+                        DayNumber = x.DayNumber,
+                        Title = x.Title,
+                        Description = x.Description
+                    }).ToList(),
+
+                Faqs = tour.Faqs
+                    .OrderBy(x => x.SortOrder)
+                    .Select(x => new FaqResponse
+                    {
+                        Question = x.Question,
+                        Answer = x.Answer
+                    }).ToList(),
 
                 Activities = tour.Activities,
                 TripType = tour.TripType,
@@ -154,6 +175,7 @@ namespace website_dulich_backend.Repositories
                 Activities = request.Activities,
                 TripType = request.TripType,
                 Difficulty = request.Difficulty,
+                IsActive = request.IsActive,
 
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow
@@ -169,6 +191,44 @@ namespace website_dulich_backend.Repositories
                     SortOrder = sortOrder++
                 });
             }
+
+
+            //điểm nổi bật
+            var highlightOrder = 0;
+
+            foreach (var item in request.Highlights)
+            {
+                tour.Highlights.Add(new TourHighlight
+                {
+                    Content = item,
+                    SortOrder = highlightOrder++
+                });
+            }
+
+            //lịch trình
+            foreach (var item in request.Itineraries)
+            {
+                tour.Itineraries.Add(new TourItinerary
+                {
+                    DayNumber = item.DayNumber,
+                    Title = item.Title,
+                    Description = item.Description
+                });
+            }
+
+            //faq
+            var faqOrder = 0;
+
+            foreach (var item in request.Faqs)
+            {
+                tour.Faqs.Add(new TourFaq
+                {
+                    Question = item.Question,
+                    Answer = item.Answer,
+                    SortOrder = faqOrder++
+                });
+            }
+
             _context.Tours.Add(tour);
             await _context.SaveChangesAsync();
 
@@ -192,7 +252,7 @@ namespace website_dulich_backend.Repositories
             existingTour.DealEndDate = request.DealEndDate;
             existingTour.CoverImage = request.CoverImage;
             existingTour.Activities = request.Activities;
-
+            existingTour.IsActive = request.IsActive;
             existingTour.TripType = request.TripType;
 
             existingTour.Difficulty = request.Difficulty;
@@ -212,6 +272,56 @@ namespace website_dulich_backend.Repositories
                     SortOrder = index++
                 });
             }
+
+
+            //điểm nổi bật
+            _context.TourHighlights.RemoveRange(existingTour.Highlights);
+
+            existingTour.Highlights.Clear();
+
+            var highlightOrder = 0;
+
+            foreach (var item in request.Highlights)
+            {
+                existingTour.Highlights.Add(new TourHighlight
+                {
+                    Content = item,
+                    SortOrder = highlightOrder++
+                });
+            }
+
+            //lịch trình
+            _context.TourItineraries.RemoveRange(existingTour.Itineraries);
+
+            existingTour.Itineraries.Clear();
+
+            foreach (var item in request.Itineraries)
+            {
+                existingTour.Itineraries.Add(new TourItinerary
+                {
+                    DayNumber = item.DayNumber,
+                    Title = item.Title,
+                    Description = item.Description
+                });
+            }
+
+            //faq
+            _context.TourFaqs.RemoveRange(existingTour.Faqs);
+
+            existingTour.Faqs.Clear();
+
+            var faqOrder = 0;
+
+            foreach (var item in request.Faqs)
+            {
+                existingTour.Faqs.Add(new TourFaq
+                {
+                    Question = item.Question,
+                    Answer = item.Answer,
+                    SortOrder = faqOrder++
+                });
+            }
+
             await _context.SaveChangesAsync();
 
             return MapTour(existingTour);

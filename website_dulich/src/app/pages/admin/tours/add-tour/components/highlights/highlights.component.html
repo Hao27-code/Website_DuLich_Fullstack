@@ -1,3 +1,176 @@
-<p>
-  highlights works!
-</p>
+<div class="card">
+
+  <h2>3. Điểm nổi bật</h2>
+
+  <p class="subtitle">
+    Thêm các điểm nổi bật của tour (hiển thị trên trang chi tiết)
+  </p>
+
+  <div
+    class="list"
+    cdkDropList
+    (cdkDropListDropped)="drop($event)">
+
+    @for(item of highlights; track $index){
+
+      <div
+        class="highlight-item"
+        cdkDrag>
+
+        <div class="left">
+
+          <div
+            class="drag"
+            cdkDragHandle>
+
+            <ion-icon name="reorder-three-outline"></ion-icon>
+
+          </div>
+
+          <div class="star">
+
+            <ion-icon name="star"></ion-icon>
+
+          </div>
+
+          @if(editingIndex === $index){
+
+            <input
+              class="edit-input"
+              [(ngModel)]="editingText" />
+
+          }
+
+          @else{
+
+            <span>{{ item }}</span>
+
+          }
+
+        </div>
+
+        <div class="right">
+
+          @if(editingIndex === $index){
+
+            <button
+              class="save"
+              type="button"
+              (click)="saveEdit()">
+
+              <ion-icon name="checkmark-outline"></ion-icon>
+
+            </button>
+
+            <button
+              class="cancel"
+              type="button"
+              (click)="cancelEdit()">
+
+              <ion-icon name="close-outline"></ion-icon>
+
+            </button>
+
+          }
+
+          @else{
+
+            <button
+              class="edit"
+              type="button"
+              (click)="edit($index)">
+
+              <ion-icon name="create-outline"></ion-icon>
+
+            </button>
+
+            <button
+              class="delete"
+              type="button"
+              (click)="remove($index)">
+
+              <ion-icon name="trash-outline"></ion-icon>
+
+            </button>
+
+          }
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+  @if(showAddForm){
+
+    <div class="highlight-item adding">
+
+      <div class="left">
+
+        <div class="drag">
+
+          <ion-icon name="reorder-three-outline"></ion-icon>
+
+        </div>
+
+        <div class="star">
+
+          <ion-icon name="star"></ion-icon>
+
+        </div>
+
+        <input
+          class="edit-input"
+          [(ngModel)]="newHighlight"
+          placeholder="Nhập điểm nổi bật..." />
+
+      </div>
+
+      <div class="right">
+
+        <button
+          class="save"
+          type="button"
+          (click)="addHighlight()">
+
+          <ion-icon name="checkmark-outline"></ion-icon>
+
+        </button>
+
+        <button
+          class="cancel"
+          type="button"
+          (click)="cancelAdd()">
+
+          <ion-icon name="close-outline"></ion-icon>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  }
+
+  <div class="bottom">
+
+    <button
+      class="add-link"
+      type="button"
+      (click)="addHighlight()">
+
+      <ion-icon name="add-outline"></ion-icon>
+
+      <span>Thêm điểm nổi bật</span>
+
+    </button>
+
+    <p>
+      Kéo thả để sắp xếp thứ tự hiển thị
+    </p>
+
+  </div>
+
+</div>

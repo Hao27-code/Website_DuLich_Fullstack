@@ -1,0 +1,109 @@
+@if(dialog){
+
+  <div
+    class="dialog-backdrop"
+    (click)="dialog.closeOnBackdrop !== false ? close() : null">
+
+    <div
+
+      class="dialog"
+      (click)="$event.stopPropagation()">
+      <button
+        type="button"
+        class="close-btn"
+        (click)="close()">
+
+        <ion-icon name="close"></ion-icon>
+
+      </button>
+      @if(dialog.type === 'loading'){
+
+        <div class="spinner"></div>
+
+      }
+
+      @if(dialog.type === 'success'){
+
+        <div class="icon success">
+
+          <ion-icon name="checkmark-outline"></ion-icon>
+
+        </div>
+
+      }
+
+      @if(dialog.type === 'warning'){
+
+        <div class="icon warning">
+
+          <ion-icon name="warning-outline"></ion-icon>
+
+        </div>
+
+      }
+
+      @if(dialog.type === 'error'){
+
+        <div class="icon error">
+
+          <ion-icon name="close-outline"></ion-icon>
+
+        </div>
+
+      }
+
+      @if(dialog.type === 'confirm'){
+
+        <div class="icon confirm">
+
+          <ion-icon name="help-outline"></ion-icon>
+
+        </div>
+
+      }
+
+      <h2>
+
+        {{ dialog.title }}
+
+      </h2>
+
+      <p>
+
+        {{ dialog.message }}
+
+      </p>
+
+      @if(dialog.type !== 'loading'){
+
+        <div class="actions">
+
+          @if(dialog.showCancel){
+
+            <button
+              class="cancel"
+              (click)="cancel()">
+
+              {{ dialog.cancelText }}
+
+            </button>
+
+          }
+
+          <button
+            class="confirm"
+            (click)="dialog.showCancel ? confirm() : close()">
+
+            {{ dialog.confirmText }}
+
+          </button>
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
+}

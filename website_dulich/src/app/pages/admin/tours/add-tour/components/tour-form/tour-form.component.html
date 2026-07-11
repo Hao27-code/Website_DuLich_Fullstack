@@ -1,0 +1,36 @@
+<app-basic-info
+  [tour]="tour"
+  [selectedFile]="selectedFile"
+  [imagePreview]="imagePreview"
+  (fileSelected)="coverSelected.emit($event)">
+</app-basic-info>
+
+<app-album
+  [images]="tour.albumImages"
+  (albumChanged)="albumChanged.emit($event)">
+</app-album>
+
+<app-highlights
+  [items]="tour.highlights"
+  (highlightsChanged)="highlightsChanged.emit($event)">
+</app-highlights>
+
+<div class="bottom-grid">
+
+  <app-itinerary
+    [items]="tour.itineraries"
+    (itinerariesChanged)="itinerariesChanged.emit($event)">
+  </app-itinerary>
+
+  <app-faq
+    [items]="tour.faqs"
+    (faqsChanged)="faqsChanged.emit($event)">
+  </app-faq>
+
+</div>
+
+<app-action-footer
+  [loading]="isSaving"
+  (save)="save.emit()"
+  (cancel)="cancelClicked .emit()">
+</app-action-footer>

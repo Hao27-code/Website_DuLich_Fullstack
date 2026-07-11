@@ -31,5 +31,17 @@ namespace website_dulich_backend.DTOs.Tour
         public string? TripType { get; set; }
 
         public string? Difficulty { get; set; }
+
+        //trạng thái
+        public bool IsActive { get; set; }
+
+        //điểm nổi bật
+        public List<string> Highlights { get; set; } = [];
+
+        //lịch trình
+        public List<CreateItineraryItemRequest> Itineraries { get; set; } = [];
+
+        //faq
+        public List<CreateFaqItemRequest> Faqs { get; set; } = [];
     }
 }

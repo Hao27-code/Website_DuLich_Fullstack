@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import {
   IonRouterOutlet,
   IonSplitPane,
@@ -16,8 +16,10 @@ import { AdminSidebarComponent } from './components/admin-sidebar/admin-sidebar.
     AdminSidebarComponent,
   ],
 })
-export class AdminLayoutComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
+export class AdminLayoutComponent implements AfterViewInit {
+  ngAfterViewInit(): void {
+    requestAnimationFrame(() => {
+      window.dispatchEvent(new Event('resize'));
+    });
+  }
 }

@@ -27,5 +27,21 @@
         public string? TripType { get; set; }
 
         public string? Difficulty { get; set; }
+
+        //trạng thái
+        public bool IsActive { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+
+        public DateTime UpdatedAt { get; set; }
+
+        //điểm nổi bật
+        public List<string> Highlights { get; set; } = [];
+
+        //lịch trình
+        public List<ItineraryResponse> Itineraries { get; set; } = [];
+
+        //faq
+        public List<FaqResponse> Faqs { get; set; } = [];
     }
 }

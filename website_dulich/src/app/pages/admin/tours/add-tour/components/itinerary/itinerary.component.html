@@ -1,3 +1,197 @@
-<p>
-  itinerary works!
-</p>
+<div class="card">
+
+  <h2>4. Lịch trình</h2>
+
+  <p class="subtitle">
+    Quản lý lịch trình chi tiết theo từng ngày
+  </p>
+
+  <div
+    class="list"
+    cdkDropList
+    (cdkDropListDropped)="drop($event)">
+
+    @for(item of itineraries; track $index){
+
+      <div
+        class="itinerary-item"
+        cdkDrag>
+
+        <div class="left">
+
+          <div
+            class="drag"
+            cdkDragHandle>
+
+            <ion-icon name="reorder-three-outline"></ion-icon>
+
+          </div>
+
+          <span class="day">
+            Ngày {{ item.dayNumber }}
+          </span>
+
+          @if(editingIndex === $index){
+
+            <div class="edit-form">
+
+              <input
+                [(ngModel)]="editingItem.title"
+                placeholder="Tiêu đề">
+
+              <textarea
+                [(ngModel)]="editingItem.description"
+                placeholder="Mô tả">
+              </textarea>
+
+            </div>
+
+          }
+
+          @else{
+
+            <span class="title">
+
+              {{ item.title }}
+
+            </span>
+
+          }
+
+        </div>
+
+        <div class="right">
+
+          @if(editingIndex === $index){
+
+            <button
+              class="save"
+              type="button"
+              (click)="saveEdit()">
+
+              <ion-icon name="checkmark-outline"></ion-icon>
+
+            </button>
+
+            <button
+              class="cancel"
+              type="button"
+              (click)="cancelEdit()">
+
+              <ion-icon name="close-outline"></ion-icon>
+
+            </button>
+
+          }
+
+          @else{
+
+            <button
+              class="edit"
+              type="button"
+              (click)="edit($index)">
+
+              <ion-icon name="create-outline"></ion-icon>
+
+            </button>
+
+            <button
+              class="delete"
+              type="button"
+              (click)="remove($index)">
+
+              <ion-icon name="trash-outline"></ion-icon>
+
+            </button>
+
+          }
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+
+  @if(showAddForm){
+
+    <div class="itinerary-item adding">
+
+      <div class="left">
+
+        <div class="drag">
+
+          <ion-icon name="reorder-three-outline"></ion-icon>
+
+        </div>
+
+        <span class="day">
+
+          Ngày {{ newItem.dayNumber }}
+
+        </span>
+
+        <div class="edit-form">
+
+          <input
+            [(ngModel)]="newItem.title"
+            placeholder="Tiêu đề">
+
+          <textarea
+            [(ngModel)]="newItem.description"
+            placeholder="Mô tả">
+          </textarea>
+
+        </div>
+
+      </div>
+
+      <div class="right">
+
+        <button
+          class="save"
+          type="button"
+          (click)="addItem()">
+
+          <ion-icon name="checkmark-outline"></ion-icon>
+
+        </button>
+
+        <button
+          class="cancel"
+          type="button"
+          (click)="cancelAdd()">
+
+          <ion-icon name="close-outline"></ion-icon>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  }
+
+  <div class="bottom">
+
+    <button
+      type="button"
+      class="add-link"
+      (click)="addItem()">
+
+      <ion-icon name="add-outline"></ion-icon>
+
+      Thêm ngày
+
+    </button>
+
+    <span>
+
+      Kéo thả để sắp xếp thứ tự
+
+    </span>
+
+  </div>
+
+</div>

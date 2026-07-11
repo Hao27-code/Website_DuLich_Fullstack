@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
-import { IonButton, IonContent, IonIcon } from '@ionic/angular/standalone';
+import { Component, AfterViewInit, ElementRef, ViewChild, OnDestroy } from '@angular/core';
+import { IonContent, IonIcon } from '@ionic/angular/standalone';
 import { BangDonDatMoiComponent } from './components/bang-don-dat-moi/bang-don-dat-moi.component';
 import { BangTourNoiBatComponent } from './components/bang-tour-noi-bat/bang-tour-noi-bat.component';
 import { BieuDoDoanhThuComponent } from './components/bieu-do-doanh-thu/bieu-do-doanh-thu.component';
 import { BieuDoDonDatComponent } from './components/bieu-do-don-dat/bieu-do-don-dat.component';
 import { TheThongKeComponent } from './components/the-thong-ke/the-thong-ke.component';
 import { addIcons } from 'ionicons';
-import { AfterViewInit, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import flatpickr from 'flatpickr';
 import { Vietnamese } from 'flatpickr/dist/l10n/vn.js';
 import {
@@ -25,7 +24,6 @@ import { AdminHeaderComponent } from '../../../layouts/admin-layout/components/a
   styleUrls: ['./dashboard.component.scss'],
   standalone: true,
   imports: [
-    IonButton,
     IonContent,
     IonIcon,
     TheThongKeComponent,
@@ -74,6 +72,10 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
       mode: 'range',
       dateFormat: 'd/m/Y',
       locale: Vietnamese,
+    });
+
+    requestAnimationFrame(() => {
+      window.dispatchEvent(new Event('resize'));
     });
   }
   ngOnDestroy(): void {

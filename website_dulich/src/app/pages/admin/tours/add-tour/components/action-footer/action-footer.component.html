@@ -1,3 +1,22 @@
-<p>
-  action-footer works!
-</p>
+<div class="action-footer">
+
+  <button
+    type="button"
+    class="btn btn-secondary"
+    (click)="onCancel()">
+
+    Hủy
+
+  </button>
+
+  <button
+    type="button"
+    class="btn btn-primary"
+    [disabled]="loading"
+    (click)="onSave()">
+
+    {{ loading ? 'Đang lưu...' : 'Lưu tour' }}
+
+  </button>
+
+</div>

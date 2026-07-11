@@ -1,0 +1,67 @@
+.action-footer {
+
+  margin-top: 22px;
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 12px;
+  padding-bottom: 40px;
+  padding-top: 20px;
+
+}
+
+.btn {
+
+  min-width: 140px;
+
+  height: 42px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+}
+
+.btn-secondary {
+
+  background: #f1f5f9;
+
+  color: #334155;
+
+}
+
+.btn-secondary:hover {
+
+  background: #e2e8f0;
+
+}
+
+.btn-primary {
+
+  background: #17b451;
+
+  color: white;
+
+}
+
+.btn-primary:hover:not(:disabled) {
+
+  background: #16a34a;
+
+}
+
+.btn:disabled {
+
+  opacity: .6;
+
+  cursor: not-allowed;
+
+}

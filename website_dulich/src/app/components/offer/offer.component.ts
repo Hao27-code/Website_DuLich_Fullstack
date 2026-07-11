@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 
 import { TourService } from 'src/app/core/services/tour.service';
 
-import { Tour } from 'src/app/core/models/tour.model';
+import { TourResponse } from 'src/app/core/models/tour-response.model';
 
 @Component({
   selector: 'app-offer',
@@ -19,9 +19,9 @@ export class OfferComponent implements OnInit, OnDestroy {
   minutes = 0;
   seconds = 0;
 
-  dealTours: Tour[] = [];
+  dealTours: TourResponse[] = [];
 
-  activeTour: Tour | null = null;
+  activeTour: TourResponse | null = null;
   openedTourId: string | null = null;
 
   private countdownInterval: any;
@@ -38,7 +38,7 @@ export class OfferComponent implements OnInit, OnDestroy {
 
   loadDeals(): void {
     this.tourService.getDealTours().subscribe({
-      next: (tours: Tour[]) => {
+      next: (tours: TourResponse[]) => {
         this.dealTours = tours;
 
         if (tours.length) {
@@ -49,7 +49,7 @@ export class OfferComponent implements OnInit, OnDestroy {
     });
   }
 
-  selectTour(tour: Tour): void {
+  selectTour(tour: TourResponse): void {
     if (this.openedTourId === tour.id) {
       this.openedTourId = null;
     } else {

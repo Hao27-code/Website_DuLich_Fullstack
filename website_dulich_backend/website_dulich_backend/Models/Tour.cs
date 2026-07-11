@@ -38,6 +38,7 @@ namespace website_dulich_backend.Models
 
         public ICollection<TourFaq> Faqs { get; set; } = new List<TourFaq>();
 
+        public bool IsActive { get; set; } = true;
 
         //lưu thời gian bản ghi được tạo
         public DateTime CreatedAt { get; set; }

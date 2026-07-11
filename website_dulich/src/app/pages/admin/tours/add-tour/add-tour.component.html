@@ -1,32 +1,27 @@
+
 <ion-content>
-
+  <app-admin-header></app-admin-header>
   <div class="page-content">
-    <app-admin-header></app-admin-header>
-    <app-breadcrumb></app-breadcrumb>
+  <app-breadcrumb></app-breadcrumb>
+  <app-tour-form
+    [tour]="tour"
+    [imagePreview]="imagePreview"
+    [selectedFile]="selectedFile"
+    [isSaving]="isSaving"
 
-    <app-basic-info
-      [tour]="tour"
-      [selectedFile]="selectedFile"
-      [imagePreview]="imagePreview"
-      (fileSelected)="onFileSelected($event)">
-    </app-basic-info>
+    (coverSelected)="onFileSelected($event)"
 
-    <app-album
-      (imagesChanged)="onAlbumChanged($event)">
-    </app-album>
+    (albumChanged)="tour.albumImages = $event"
 
-    <app-highlights></app-highlights>
+    (highlightsChanged)="tour.highlights = $event"
 
-    <div class="bottom-grid">
+    (itinerariesChanged)="tour.itineraries = $event"
 
-      <app-itinerary></app-itinerary>
+    (faqsChanged)="tour.faqs = $event"
 
-      <app-faq></app-faq>
+    (save)="saveTour()"
 
-    </div>
-
-    <app-action-footer></app-action-footer>
-
+    (cancelClicked)="cancel()">
+  </app-tour-form>
   </div>
-
 </ion-content>

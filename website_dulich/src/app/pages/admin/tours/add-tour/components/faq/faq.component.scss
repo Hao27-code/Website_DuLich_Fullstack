@@ -1,0 +1,299 @@
+.card {
+  background: #fff;
+  border: 1px solid #edf2f7;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.subtitle {
+  margin: 4px 0 12px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* ===================== */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.faq-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  padding: 8px 10px;
+
+  border: 1px solid #edf2f7;
+  border-radius: 10px;
+
+  background: #fff;
+
+  transition: .25s;
+}
+
+.faq-item:hover {
+  border-color: #22c55e;
+}
+
+/* ===================== */
+
+.left {
+  flex: 1;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 10px;
+}
+
+.drag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: grab;
+
+  color: #94a3b8;
+}
+
+.drag ion-icon {
+  font-size: 22px;
+}
+
+.question {
+  font-size: 15px;
+  font-weight: 600;
+  color: #334155;
+}
+
+/* ===================== */
+
+.edit-form {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.edit-input {
+  width: 100%;
+  height: 38px;
+
+  padding: 0 14px;
+
+  border: 1px solid #dbe5ef;
+  border-radius: 8px;
+
+  font-size: 15px;
+}
+
+.edit-input:focus {
+  outline: none;
+  border-color: #22c55e;
+}
+
+.edit-textarea {
+
+  width: 100%;
+
+  min-height: 92px;
+
+  resize: vertical;
+
+  padding: 12px 14px;
+
+  border: 1px solid #dbe5ef;
+  border-radius: 8px;
+
+  font-size: 15px;
+}
+
+.edit-textarea:focus {
+  outline: none;
+  border-color: #22c55e;
+}
+
+/* ===================== */
+
+.right {
+
+  display: flex;
+
+  gap: 8px;
+
+  margin-left: 12px;
+
+  flex-shrink: 0;
+}
+
+.right button {
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  border: 1px solid #e5e7eb;
+
+  background: #fff;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.right button:hover {
+  transform: translateY(-1px);
+}
+
+.right ion-icon {
+  font-size: 18px;
+}
+
+.edit {
+  color: #2563eb;
+}
+
+.delete {
+  color: #ef4444;
+}
+
+.save {
+  color: #22c55e;
+}
+
+.cancel {
+  color: #f97316;
+}
+
+/* ===================== */
+
+.bottom {
+
+  margin-top: 12px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-link {
+
+  border: none;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  cursor: pointer;
+
+  color: #16a34a;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.add-link ion-icon {
+  font-size: 20px;
+}
+
+.bottom p {
+
+  margin: 0;
+
+  color: #94a3b8;
+
+  font-size: 14px;
+}
+
+/* ===================== */
+
+.adding {
+
+  margin-top: 8px;
+
+  border: 2px dashed #22c55e;
+
+  background: #f8fffb;
+}
+
+/* ===================== */
+
+.cdk-drag-preview {
+
+  background: #fff;
+
+  border-radius: 10px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+}
+
+.cdk-drag-placeholder {
+  opacity: .2;
+}
+
+.cdk-drag-animating {
+  transition: transform .2s;
+}
+
+.list.cdk-drop-list-dragging
+.faq-item:not(.cdk-drag-placeholder) {
+  transition: transform .2s;
+}
+.edit-input,
+.edit-textarea {
+  width: 100%;
+
+  background: #ffffff !important;
+
+  color: #334155 !important;
+
+  border: 1px solid #dbe5ef;
+
+  border-radius: 8px;
+
+  font-size: 15px;
+
+  transition: .2s;
+}
+
+.edit-input {
+  height: 44px;
+  padding: 0 14px;
+}
+
+.edit-textarea {
+  min-height: 120px;
+  padding: 12px 14px;
+  resize: vertical;
+}
+
+.edit-input::placeholder,
+.edit-textarea::placeholder {
+  color: #94a3b8;
+}
+
+.edit-input:focus,
+.edit-textarea:focus {
+  outline: none;
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, .12);
+}

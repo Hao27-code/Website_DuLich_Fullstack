@@ -1,13 +1,38 @@
-import { Tour } from './tour.model';
+import { ItineraryItem } from './itinerary-item.model';
+import { FaqItem } from './faq-item.model';
 
 export interface TourResponse {
-  data: Tour[];
+  id: string;
 
-  total: number;
+  title: string;
 
-  page: number;
+  location: string;
 
-  limit: number;
+  days: number;
 
-  totalPages: number;
+  price: number;
+
+  discountPrice?: number;
+
+  description: string;
+
+  dealEndDate?: string;
+
+  coverImage?: string;
+
+  albumImages: string[];
+
+  activities?: string;
+
+  tripType?: string;
+
+  difficulty?: string;
+
+  isActive: boolean;
+
+  highlights: string[];
+
+  itineraries: ItineraryItem[];
+
+  faqs: FaqItem[];
 }

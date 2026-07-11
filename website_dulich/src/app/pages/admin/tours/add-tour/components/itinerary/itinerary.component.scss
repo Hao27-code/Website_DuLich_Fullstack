@@ -1,0 +1,333 @@
+.card {
+  background: #fff;
+  border: 1px solid #edf2f7;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+/* ===========================
+   Header
+=========================== */
+
+h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.subtitle {
+  margin: 4px 0 12px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* ===========================
+   List
+=========================== */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.itinerary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  min-height: 46px;
+
+  padding: 7px 10px;
+
+  border: 1px solid #edf2f7;
+  border-radius: 10px;
+
+  background: #fff;
+
+  transition: .25s;
+}
+
+.itinerary-item:hover {
+  border-color: #22c55e;
+}
+
+/* ===========================
+   Left
+=========================== */
+
+.left {
+  flex: 1;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 10px;
+}
+
+.drag {
+  width: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: grab;
+
+  color: #94a3b8;
+}
+
+.drag ion-icon {
+  font-size: 22px;
+}
+
+.day {
+  min-width: 72px;
+
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #e8f8ee;
+
+  color: #16a34a;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+
+  min-height: 28px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #334155;
+}
+
+/* ===========================
+   Edit Form
+=========================== */
+
+.edit-form {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.edit-form input,
+.edit-form textarea {
+
+  width: 100%;
+
+  background: #fff !important;
+
+  color: #334155 !important;
+
+  border: 1px solid #dbe5ef;
+
+  border-radius: 8px;
+
+  padding: 10px 14px;
+
+  font-size: 15px;
+
+  transition: .2s;
+}
+
+.edit-form input {
+
+  height: 38px;
+}
+
+.edit-form textarea {
+
+  min-height: 80px;
+
+  resize: vertical;
+}
+
+.edit-form input:focus,
+.edit-form textarea:focus {
+
+  outline: none;
+
+  border-color: #22c55e;
+
+  box-shadow: 0 0 0 3px rgba(34,197,94,.08);
+}
+
+.edit-form input::placeholder,
+.edit-form textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* ===========================
+   Right
+=========================== */
+
+.right {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 8px;
+  margin-left: 12px;
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+.right button {
+
+  width: 38px;
+
+  height: 38px;
+
+  border-radius: 8px;
+
+  border: 1px solid #edf2f7;
+
+  background: #fff;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.right button:hover {
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 4px 10px rgba(0,0,0,.08);
+}
+
+.right ion-icon {
+  font-size: 18px;
+}
+
+.edit {
+  color: #2563eb;
+}
+
+.delete {
+  color: #ef4444;
+}
+
+.save {
+  color: #16a34a;
+}
+
+.cancel {
+  color: #f97316;
+}
+
+/* ===========================
+   Add Form
+=========================== */
+
+.adding {
+
+  margin-top: 8px;
+
+  border: 2px dashed #22c55e;
+
+  background: #f8fffb;
+}
+
+/* ===========================
+   Footer
+=========================== */
+
+.bottom {
+
+  margin-top: 12px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+}
+
+.add-link {
+
+  border: none;
+
+  background: transparent;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  cursor: pointer;
+
+  color: #16a34a;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+.add-link:hover {
+
+  color: #15803d;
+}
+
+.add-link ion-icon {
+
+  font-size: 20px;
+}
+
+.bottom span {
+
+  color: #94a3b8;
+
+  font-size: 14px;
+}
+
+/* ===========================
+   Drag
+=========================== */
+
+.cdk-drag-preview {
+
+  background: white;
+
+  border-radius: 10px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,.15);
+}
+
+.cdk-drag-placeholder {
+
+  opacity: .2;
+}
+
+.cdk-drag-animating {
+
+  transition: transform .2s;
+}
+
+.list.cdk-drop-list-dragging
+.itinerary-item:not(.cdk-drag-placeholder){
+
+  transition: transform .2s;
+}

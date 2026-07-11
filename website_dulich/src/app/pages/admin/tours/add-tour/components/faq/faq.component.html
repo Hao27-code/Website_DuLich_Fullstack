@@ -1,3 +1,202 @@
-<p>
-  faq works!
-</p>
+<div class="card">
+
+  <h2>5. Câu hỏi thường gặp (FAQ)</h2>
+
+  <p class="subtitle">
+    Quản lý các câu hỏi thường gặp của tour
+  </p>
+
+  <div
+    class="list"
+    cdkDropList
+    (cdkDropListDropped)="drop($event)">
+
+    @for(item of faqs; track $index){
+
+      <div
+        class="faq-item"
+        cdkDrag>
+
+        @if(editingIndex === $index){
+
+          <div class="left">
+
+            <div
+              class="drag"
+              cdkDragHandle>
+
+              <ion-icon
+                name="reorder-three-outline">
+              </ion-icon>
+
+            </div>
+
+            <div class="edit-form">
+
+              <input
+                class="edit-input"
+                [(ngModel)]="editingQuestion"
+                placeholder="Câu hỏi">
+
+              <textarea
+                class="edit-textarea"
+                [(ngModel)]="editingAnswer"
+                placeholder="Câu trả lời">
+              </textarea>
+
+            </div>
+
+          </div>
+
+          <div class="right">
+
+            <button
+              class="save"
+              (click)="saveEdit()">
+
+              <ion-icon name="checkmark"></ion-icon>
+
+            </button>
+
+            <button
+              class="cancel"
+              (click)="cancelEdit()">
+
+              <ion-icon name="close"></ion-icon>
+
+            </button>
+
+          </div>
+
+        }
+
+        @else{
+
+          <div class="left">
+
+            <div
+              class="drag"
+              cdkDragHandle>
+
+              <ion-icon
+                name="reorder-three-outline">
+              </ion-icon>
+
+            </div>
+
+            <span class="question">
+
+              {{ item.question }}
+
+            </span>
+
+          </div>
+
+          <div class="right">
+
+            <button
+              class="edit"
+              (click)="edit($index)">
+
+              <ion-icon
+                name="create-outline">
+              </ion-icon>
+
+            </button>
+
+            <button
+              class="delete"
+              (click)="remove($index)">
+
+              <ion-icon
+                name="trash-outline">
+              </ion-icon>
+
+            </button>
+
+          </div>
+
+        }
+
+      </div>
+
+    }
+
+  </div>
+
+  @if(showAddForm){
+
+    <div class="faq-item adding">
+
+      <div class="left">
+
+        <div class="drag">
+
+          <ion-icon
+            name="reorder-three-outline">
+          </ion-icon>
+
+        </div>
+
+        <div class="edit-form">
+
+          <input
+            class="edit-input"
+            [(ngModel)]="newQuestion"
+            placeholder="Câu hỏi">
+
+          <textarea
+            class="edit-textarea"
+            [(ngModel)]="newAnswer"
+            placeholder="Câu trả lời">
+          </textarea>
+
+        </div>
+
+      </div>
+
+      <div class="right">
+
+        <button
+          class="save"
+          (click)="addFaq()">
+
+          <ion-icon name="checkmark-outline"></ion-icon>
+
+        </button>
+
+        <button
+          class="cancel"
+          (click)="cancelAdd()">
+
+          <ion-icon name="close-outline"></ion-icon>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  }
+
+  <div class="bottom">
+
+    <button
+      class="add-link"
+      (click)="showAddForm = true">
+
+      <ion-icon
+        name="add-outline">
+      </ion-icon>
+
+      Thêm FAQ
+
+    </button>
+
+    <p>
+      Kéo thả để sắp xếp thứ tự
+    </p>
+
+  </div>
+
+</div>

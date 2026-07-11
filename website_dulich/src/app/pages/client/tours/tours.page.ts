@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
@@ -50,12 +50,13 @@ export class ToursPage implements OnInit {
   // ! = chắc chắn sẽ được gán giá trị sau
   filters!: TourFilter;
 
+  @Input() tour!: TourResponse;
   destinations: string[] = [];
   allDestinations: string[] = [];
 
   // Biến lưu danh sách tour lấy từ API
   // TourResponse['data'] = lấy kiểu của field data trong TourResponse
-  tours: TourResponse['data'] = [];
+  tours: TourResponse[] = [];
   /*====================
   FILTER DATA
 ====================*/

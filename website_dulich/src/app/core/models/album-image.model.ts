@@ -1,5 +1,5 @@
 export interface AlbumImage {
-  file: File;
+  file?: File;
 
   preview: string;
 

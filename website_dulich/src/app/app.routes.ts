@@ -151,6 +151,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'tours/edit/:id',
+        loadComponent: () =>
+          import('./pages/admin/tours/edit-tour/edit-tour.component').then(
+            (m) => m.EditTourComponent,
+          ),
+      },
+      {
         path: 'news',
         loadComponent: () =>
           import('./pages/admin/news/news.component').then(

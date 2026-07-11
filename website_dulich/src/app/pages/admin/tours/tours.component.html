@@ -10,9 +10,26 @@
 
     <app-tour-filter-bar></app-tour-filter-bar>
 
-    <app-tour-table></app-tour-table>
+    <app-tour-table
 
+      [tours]="tours"
 
+      [loading]="loading"
+
+      [totalItems]="totalItems"
+
+      [currentPage]="currentPage"
+
+      [totalPages]="totalPages"
+
+      [selectedTours]="selectedTours"
+
+      [allSelected]="allSelected"
+
+      (toggleAllEvent)="toggleAll($event)"
+
+      (toggleTourEvent)="toggleTour($event.id, $event.checked)">
+
+    </app-tour-table>
   </div>
-
 </ion-content>

@@ -1,0 +1,269 @@
+.card {
+  background: #fff;
+  border: 1px solid #edf2f7;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px 0 0;
+}
+
+h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.subtitle {
+  margin: 4px 0 12px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* =======================
+   List
+======================= */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 40px;
+
+  padding: 7px 10px;
+
+  border: 1px solid #edf2f7;
+  border-radius: 10px;
+
+  background: #fff;
+
+  transition: .25s;
+}
+
+.highlight-item:hover {
+  border-color: #22c55e;
+}
+
+/* =======================
+   Left
+======================= */
+
+.left {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.drag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: grab;
+
+  color: #94a3b8;
+}
+
+.drag ion-icon {
+  font-size: 22px;
+}
+
+.star {
+  width: 24px;
+  height: 24px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #22c55e;
+}
+
+.star ion-icon {
+  color: #fff;
+  font-size: 14px;
+}
+
+.left span {
+  font-size: 15px;
+  font-weight: 500;
+  color: #334155;
+}
+
+/* =======================
+   Input
+======================= */
+
+.edit-input {
+
+  flex: 1;
+
+  height: 42px;
+
+  padding: 0 14px;
+
+  border: 1px solid #dbe5ef;
+  border-radius: 8px;
+
+  background: #fff;
+
+  color: #334155;
+
+  font-size: 15px;
+}
+
+.edit-input:focus {
+  outline: none;
+  border-color: #22c55e;
+}
+
+/* =======================
+   Right
+======================= */
+
+.right {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-left: 12px;
+}
+
+.right button {
+
+  width: 36px;
+  height: 36px;
+
+  border: 1px solid #edf2f7;
+  border-radius: 8px;
+
+  background: #fff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.right button:hover {
+  transform: translateY(-1px);
+}
+
+.right ion-icon {
+  font-size: 18px;
+}
+
+.edit {
+  color: #2563eb;
+}
+
+.delete {
+  color: #ef4444;
+}
+
+.save {
+  color: #22c55e;
+}
+
+.cancel {
+  color: #f97316;
+}
+
+/* =======================
+   Bottom
+======================= */
+
+.bottom {
+
+  margin-top: 6px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-link {
+
+  border: none;
+  background: transparent;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  cursor: pointer;
+
+  color: #16a34a;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  transition: .2s;
+}
+
+.add-link:hover {
+  color: #15803d;
+}
+
+.add-link ion-icon {
+  font-size: 20px;
+}
+
+.bottom span {
+  color: #16A34A;
+  font-size: 14px;
+}
+.bottom p{
+  color: #94a3b8;
+  font-size: 14px;
+}
+/* =======================
+   Adding
+======================= */
+
+.adding {
+  margin-top: 8px;
+
+  border: 2px dashed #22c55e;
+
+  background: #f8fffb;
+}
+
+/* =======================
+   Drag & Drop
+======================= */
+
+.cdk-drag-preview {
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .15);
+}
+
+.cdk-drag-placeholder {
+  opacity: .2;
+}
+
+.cdk-drag-animating {
+  transition: transform .2s;
+}
+
+.list.cdk-drop-list-dragging
+.highlight-item:not(.cdk-drag-placeholder) {
+  transition: transform .2s;
+}

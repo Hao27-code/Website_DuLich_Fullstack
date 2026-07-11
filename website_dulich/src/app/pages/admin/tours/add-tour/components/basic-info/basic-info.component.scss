@@ -9,14 +9,14 @@
 .card {
   background: #fff;
   border: 1px solid #edf2f7;
-  border-radius: 16px;
-  padding: 26px;
+  border-radius: 12px;
+  padding: 16px;
   box-shadow: 0 8px 30px rgba(15, 23, 42, .04);
 }
 
 .card-title {
-  margin: 0 0 28px;
-  font-size: 34px;
+  margin: 0 0 16px;
+  font-size: 24px;
   font-weight: 700;
   color: #1e293b;
 }
@@ -28,7 +28,7 @@
 .content-grid {
   display: grid;
   grid-template-columns: 1.6fr .95fr;
-  gap: 38px;
+  gap: 18px;
   align-items: start;
 }
 
@@ -47,7 +47,7 @@
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 18px 22px;
+  gap: 8px 12px;
 }
 
 .full {
@@ -64,7 +64,7 @@
 =========================== */
 
 label {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-size: 14px;
   font-weight: 600;
   color: #334155;
@@ -98,8 +98,8 @@ select {
 }
 
 textarea {
-  min-height: 170px;
-  padding: 14px;
+  min-height: 84px;
+  padding: 12px 14px;
   resize: vertical;
   font-size: 14px;
   font-family: inherit;
@@ -155,10 +155,12 @@ input[type=date] {
 =========================== */
 
 .upload-box {
-  height: 396px;
+  min-height: 220px;
+  height: auto;
+  padding: 16px;
 
   border: 2px dashed #d9e4ef;
-  border-radius: 16px;
+  border-radius: 14px;
 
   display: flex;
   flex-direction: column;
@@ -176,32 +178,32 @@ input[type=date] {
 }
 
 .upload-icon {
-  font-size: 62px;
+  font-size: 46px;
   color: #334155;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .upload-title {
   margin: 0;
 
-  font-size: 27px;
+  font-size: 18px;
   font-weight: 700;
   color: #0f172a;
 }
 
 .upload-or {
-  margin: 10px 0 22px;
+  margin: 6px 0 14px;
   color: #94a3b8;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .upload-btn {
-  height: 48px;
+  height: 40px;
 
-  padding: 0 28px;
+  padding: 0 22px;
 
   border: none;
-  border-radius: 10px;
+  border-radius: 8px;
 
   background: #22c55e;
   color: white;
@@ -219,15 +221,15 @@ input[type=date] {
 }
 
 .upload-note {
-  margin-top: 18px;
+  margin-top: 12px;
 
   text-align: center;
 
   color: #94a3b8;
 
-  font-size: 13px;
+  font-size: 12px;
 
-  line-height: 1.7;
+  line-height: 1.5;
 }
 
 /* ===========================
@@ -235,9 +237,9 @@ input[type=date] {
 =========================== */
 
 .preview {
-  margin-top: 22px;
+  margin-top: 16px;
 
-  border-radius: 14px;
+  border-radius: 12px;
 
   overflow: hidden;
 
@@ -247,7 +249,7 @@ input[type=date] {
 .preview img {
   display: block;
   width: 100%;
-  height: 235px;
+  height: 160px;
   object-fit: cover;
 }
 
@@ -256,7 +258,7 @@ input[type=date] {
 =========================== */
 
 .error {
-  margin-top: 7px;
+  margin-top: 4px;
 
   color: #ef4444;
 
@@ -268,7 +270,7 @@ input[type=date] {
 =========================== */
 
 .count {
-  margin-top: 8px;
+  margin-top: 4px;
 
   text-align: right;
 
@@ -315,8 +317,7 @@ input[type=date] {
 
 .activity-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:16px 20px;
+  grid-template-columns:repeat(3,1fr);
   margin-top:6px;
 }
 
@@ -344,7 +345,7 @@ input[type=date] {
 
   gap:14px;
 
-  padding:16px 0px;
+  padding:6px 0px;
 
   cursor:pointer;
 

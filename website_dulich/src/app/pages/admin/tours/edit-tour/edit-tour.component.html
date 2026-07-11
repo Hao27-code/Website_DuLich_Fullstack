@@ -1,0 +1,20 @@
+<app-tour-form
+  [tour]="tour"
+  [imagePreview]="imagePreview"
+  [selectedFile]="selectedFile"
+  [isSaving]="isSaving"
+
+  (coverSelected)="onFileSelected($event)"
+
+  (albumChanged)="tour.albumImages = $event"
+
+  (highlightsChanged)="tour.highlights = $event"
+
+  (itinerariesChanged)="tour.itineraries = $event"
+
+  (faqsChanged)="tour.faqs = $event"
+
+  (save)="save()"
+
+  (cancelClicked)="cancel()">
+</app-tour-form>

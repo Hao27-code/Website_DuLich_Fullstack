@@ -6,9 +6,10 @@ import { map, Observable } from 'rxjs';
 
 import { TourFilter } from '../models/tour-filter.model';
 import { TourResponse } from '../models/tour-response.model';
-import { Tour } from '../models/tour.model';
 import { environment } from '../../../environments/environment';
 import { CreateTourRequest } from '../models/create-tour-request.model';
+import { TourListResponse } from '../models/tour-list-response.model';
+import { UpdateTourRequest } from '../models/update-tour-request.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -21,7 +22,7 @@ export class TourService {
 
   /* lấy danh sách tour */
 
-  getTours(filters: TourFilter): Observable<TourResponse> {
+  getTours(filters: TourFilter): Observable<TourListResponse> {
     /* tạo query params rỗng */
     let params = new HttpParams();
 
@@ -110,22 +111,20 @@ export class TourService {
 
     /* gọi API GET và gửi params */
 
-    return this.http.get<TourResponse>(this.apiUrl, {
-      params,
-    });
+    return this.http.get<TourListResponse>(this.apiUrl, { params });
   }
   /*lấy riêng tour đang deal*/
   /* lấy riêng tour đang deal */
 
-  getDealTours(): Observable<Tour[]> {
+  getDealTours(): Observable<TourResponse[]> {
     const emptyFilter: TourFilter = {};
 
     return this.getTours(emptyFilter).pipe(
-      map((response: TourResponse) => {
+      map((response: TourListResponse) => {
         const now = new Date();
 
         return response.data.filter(
-          (tour: Tour) =>
+          (tour) =>
             !!tour.discountPrice &&
             !!tour.dealEndDate &&
             new Date(tour.dealEndDate) > now,
@@ -135,10 +134,17 @@ export class TourService {
   }
 
   getTourById(id: string) {
-    return this.http.get<Tour>(`${environment.apiUrl}/Tour/${id}`);
+    return this.http.get<TourResponse>(`${this.apiUrl}/${id}`);
   }
 
-  createTour(request: CreateTourRequest) {
-    return this.http.post<Tour>(this.apiUrl, request);
+  createTour(request: CreateTourRequest): Observable<TourResponse> {
+    return this.http.post<TourResponse>(this.apiUrl, request);
+  }
+
+  updateTour(id: string, request: UpdateTourRequest): Observable<TourResponse> {
+    return this.http.put<TourResponse>(`${this.apiUrl}/${id}`, request);
+  }
+  deleteTour(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

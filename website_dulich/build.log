@@ -1,0 +1,1069 @@
+[33m❯[39m Building...
+● [DEBUG] Failed to read directory "d:\\Projects\\website_dulich\\angular:script\\global:scripts": open d:\Projects\website_dulich\angular:script: The system cannot find the file specified.
+
+
+  scripts.js       7.0kb
+  scripts.js.map  14.3kb
+
+Done in 460ms
+▲ [WARNING] NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.html:36:5:
+      36 │     *ngIf="activeTab==='overview'"
+         ╵      ~~~~
+
+  Warning occurs in the template of component TourTabsComponent.
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.ts:8:15:
+      8 │   templateUrl: './tour-tabs.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+▲ [WARNING] NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.html:58:11:
+      58 │       <li *ngIf="tour.activities">
+         ╵            ~~~~
+
+  Warning occurs in the template of component TourTabsComponent.
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.ts:8:15:
+      8 │   templateUrl: './tour-tabs.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+▲ [WARNING] NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.html:63:11:
+      63 │       <li *ngIf="tour.tripType">
+         ╵            ~~~~
+
+  Warning occurs in the template of component TourTabsComponent.
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.ts:8:15:
+      8 │   templateUrl: './tour-tabs.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+▲ [WARNING] NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.html:68:11:
+      68 │       <li *ngIf="tour.difficulty">
+         ╵            ~~~~
+
+  Warning occurs in the template of component TourTabsComponent.
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.ts:8:15:
+      8 │   templateUrl: './tour-tabs.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+▲ [WARNING] NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.html:80:5:
+      80 │     *ngIf="activeTab==='itinerary'"
+         ╵      ~~~~
+
+  Warning occurs in the template of component TourTabsComponent.
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.ts:8:15:
+      8 │   templateUrl: './tour-tabs.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+▲ [WARNING] NG8103: The `*ngFor` directive was used in the template, but neither the `NgFor` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @for or make sure that either the `NgFor` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.html:90:9:
+      90 │         *ngFor="
+         ╵          ~~~~~
+
+  Warning occurs in the template of component TourTabsComponent.
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.ts:8:15:
+      8 │   templateUrl: './tour-tabs.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+▲ [WARNING] NG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler]
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.html:122:5:
+      122 │     *ngIf="activeTab==='faq'"
+          ╵      ~~~~
+
+  Warning occurs in the template of component TourTabsComponent.
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.ts:8:15:
+      8 │   templateUrl: './tour-tabs.component.html',
+        ╵                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+▲ [WARNING] NG8113: DecimalPipe is not used within the template of TourFilterComponent [plugin angular-compiler]
+
+    src/app/components/tour-filter/tour-filter.component.ts:30:12:
+      30 │   imports: [DecimalPipe, CommonModule, IonIcon],
+         ╵             ~~~~~~~~~~~
+
+▲ [WARNING] NG8113: FooterComponent is not used within the template of ClientLayoutComponent [plugin angular-compiler]
+
+    src/app/layouts/client-layout/client-layout.component.ts:16:4:
+      16 │     FooterComponent,
+         ╵     ~~~~~~~~~~~~~~~
+
+▲ [WARNING] NG8113: NgClass is not used within the template of TourTableComponent [plugin angular-compiler]
+
+    src/app/pages/admin/tours/components/tour-table/tour-table.component.ts:29:34:
+      29 │   imports: [IonIcon, DecimalPipe, NgClass, NgIf],
+         ╵                                   ~~~~~~~
+
+▲ [WARNING] NG8113: NgIf is not used within the template of TourTableComponent [plugin angular-compiler]
+
+    src/app/pages/admin/tours/components/tour-table/tour-table.component.ts:29:43:
+      29 │   imports: [IonIcon, DecimalPipe, NgClass, NgIf],
+         ╵                                            ~~~~
+
+▲ [WARNING] NG8113: IonHeader is not used within the template of AboutPage [plugin angular-compiler]
+
+    src/app/pages/client/about/about.page.ts:27:4:
+      27 │     IonHeader,
+         ╵     ~~~~~~~~~
+
+▲ [WARNING] NG8113: IonTitle is not used within the template of AboutPage [plugin angular-compiler]
+
+    src/app/pages/client/about/about.page.ts:28:4:
+      28 │     IonTitle,
+         ╵     ~~~~~~~~
+
+▲ [WARNING] NG8113: IonToolbar is not used within the template of AboutPage [plugin angular-compiler]
+
+    src/app/pages/client/about/about.page.ts:29:4:
+      29 │     IonToolbar,
+         ╵     ~~~~~~~~~~
+
+▲ [WARNING] NG8113: IonIcon is not used within the template of AboutPage [plugin angular-compiler]
+
+    src/app/pages/client/about/about.page.ts:33:4:
+      33 │     IonIcon,
+         ╵     ~~~~~~~
+
+▲ [WARNING] NG8113: IonHeader is not used within the template of BlogDetailsPage [plugin angular-compiler]
+
+    src/app/pages/client/blog-details/blog-details.page.ts:75:4:
+      75 │     IonHeader,
+         ╵     ~~~~~~~~~
+
+▲ [WARNING] NG8113: IonTitle is not used within the template of BlogDetailsPage [plugin angular-compiler]
+
+    src/app/pages/client/blog-details/blog-details.page.ts:76:4:
+      76 │     IonTitle,
+         ╵     ~~~~~~~~
+
+▲ [WARNING] NG8113: IonToolbar is not used within the template of BlogDetailsPage [plugin angular-compiler]
+
+    src/app/pages/client/blog-details/blog-details.page.ts:77:4:
+      77 │     IonToolbar,
+         ╵     ~~~~~~~~~~
+
+▲ [WARNING] NG8113: IonHeader is not used within the template of BlogPage [plugin angular-compiler]
+
+    src/app/pages/client/blog/blog.page.ts:74:4:
+      74 │     IonHeader,
+         ╵     ~~~~~~~~~
+
+▲ [WARNING] NG8113: IonTitle is not used within the template of BlogPage [plugin angular-compiler]
+
+    src/app/pages/client/blog/blog.page.ts:75:4:
+      75 │     IonTitle,
+         ╵     ~~~~~~~~
+
+▲ [WARNING] NG8113: IonToolbar is not used within the template of BlogPage [plugin angular-compiler]
+
+    src/app/pages/client/blog/blog.page.ts:76:4:
+      76 │     IonToolbar,
+         ╵     ~~~~~~~~~~
+
+▲ [WARNING] NG8113: IonHeader is not used within the template of ContactPage [plugin angular-compiler]
+
+    src/app/pages/client/contact/contact.page.ts:29:4:
+      29 │     IonHeader,
+         ╵     ~~~~~~~~~
+
+▲ [WARNING] NG8113: IonTitle is not used within the template of ContactPage [plugin angular-compiler]
+
+    src/app/pages/client/contact/contact.page.ts:30:4:
+      30 │     IonTitle,
+         ╵     ~~~~~~~~
+
+▲ [WARNING] NG8113: IonToolbar is not used within the template of ContactPage [plugin angular-compiler]
+
+    src/app/pages/client/contact/contact.page.ts:31:4:
+      31 │     IonToolbar,
+         ╵     ~~~~~~~~~~
+
+▲ [WARNING] NG8113: IonHeader is not used within the template of ForgotPasswordPage [plugin angular-compiler]
+
+    src/app/pages/client/forgot-password/forgot-password.page.ts:25:4:
+      25 │     IonHeader,
+         ╵     ~~~~~~~~~
+
+▲ [WARNING] NG8113: IonTitle is not used within the template of ForgotPasswordPage [plugin angular-compiler]
+
+    src/app/pages/client/forgot-password/forgot-password.page.ts:26:4:
+      26 │     IonTitle,
+         ╵     ~~~~~~~~
+
+▲ [WARNING] NG8113: IonToolbar is not used within the template of ForgotPasswordPage [plugin angular-compiler]
+
+    src/app/pages/client/forgot-password/forgot-password.page.ts:27:4:
+      27 │     IonToolbar,
+         ╵     ~~~~~~~~~~
+
+▲ [WARNING] NG8113: IonHeader is not used within the template of HomePage [plugin angular-compiler]
+
+    src/app/pages/client/home/home.page.ts:47:4:
+      47 │     IonHeader,
+         ╵     ~~~~~~~~~
+
+▲ [WARNING] NG8113: IonTitle is not used within the template of HomePage [plugin angular-compiler]
+
+    src/app/pages/client/home/home.page.ts:48:4:
+      48 │     IonTitle,
+         ╵     ~~~~~~~~
+
+▲ [WARNING] NG8113: IonToolbar is not used within the template of HomePage [plugin angular-compiler]
+
+    src/app/pages/client/home/home.page.ts:49:4:
+      49 │     IonToolbar,
+         ╵     ~~~~~~~~~~
+
+▲ [WARNING] NG8113: IonGrid is not used within the template of HomePage [plugin angular-compiler]
+
+    src/app/pages/client/home/home.page.ts:54:4:
+      54 │     IonGrid,
+         ╵     ~~~~~~~
+
+▲ [WARNING] NG8113: IonRow is not used within the template of HomePage [plugin angular-compiler]
+
+    src/app/pages/client/home/home.page.ts:55:4:
+      55 │     IonRow,
+         ╵     ~~~~~~
+
+▲ [WARNING] NG8113: IonCol is not used within the template of HomePage [plugin angular-compiler]
+
+    src/app/pages/client/home/home.page.ts:56:4:
+      56 │     IonCol,
+         ╵     ~~~~~~
+
+▲ [WARNING] NG8113: IonCardHeader is not used within the template of HomePage [plugin angular-compiler]
+
+    src/app/pages/client/home/home.page.ts:57:4:
+      57 │     IonCardHeader,
+         ╵     ~~~~~~~~~~~~~
+
+▲ [WARNING] NG8113: IonCard is not used within the template of HomePage [plugin angular-compiler]
+
+    src/app/pages/client/home/home.page.ts:58:4:
+      58 │     IonCard,
+         ╵     ~~~~~~~
+
+▲ [WARNING] NG8113: IonCardTitle is not used within the template of HomePage [plugin angular-compiler]
+
+    src/app/pages/client/home/home.page.ts:59:4:
+      59 │     IonCardTitle,
+         ╵     ~~~~~~~~~~~~
+
+▲ [WARNING] NG8113: IonCardContent is not used within the template of HomePage [plugin angular-compiler]
+
+    src/app/pages/client/home/home.page.ts:60:4:
+      60 │     IonCardContent,
+         ╵     ~~~~~~~~~~~~~~
+
+▲ [WARNING] NG8113: IonButton is not used within the template of HomePage [plugin angular-compiler]
+
+    src/app/pages/client/home/home.page.ts:61:4:
+      61 │     IonButton,
+         ╵     ~~~~~~~~~
+
+▲ [WARNING] NG8113: IonHeader is not used within the template of LoginPage [plugin angular-compiler]
+
+    src/app/pages/client/login/login.page.ts:26:4:
+      26 │     IonHeader,
+         ╵     ~~~~~~~~~
+
+▲ [WARNING] NG8113: IonTitle is not used within the template of LoginPage [plugin angular-compiler]
+
+    src/app/pages/client/login/login.page.ts:27:4:
+      27 │     IonTitle,
+         ╵     ~~~~~~~~
+
+▲ [WARNING] NG8113: IonToolbar is not used within the template of LoginPage [plugin angular-compiler]
+
+    src/app/pages/client/login/login.page.ts:28:4:
+      28 │     IonToolbar,
+         ╵     ~~~~~~~~~~
+
+▲ [WARNING] NG8113: IonHeader is not used within the template of NotFoundPage [plugin angular-compiler]
+
+    src/app/pages/client/not-found/not-found.page.ts:20:4:
+      20 │     IonHeader,
+         ╵     ~~~~~~~~~
+
+▲ [WARNING] NG8113: IonTitle is not used within the template of NotFoundPage [plugin angular-compiler]
+
+    src/app/pages/client/not-found/not-found.page.ts:21:4:
+      21 │     IonTitle,
+         ╵     ~~~~~~~~
+
+▲ [WARNING] NG8113: IonToolbar is not used within the template of NotFoundPage [plugin angular-compiler]
+
+    src/app/pages/client/not-found/not-found.page.ts:22:4:
+      22 │     IonToolbar,
+         ╵     ~~~~~~~~~~
+
+▲ [WARNING] NG8113: IonText is not used within the template of RegisterPage [plugin angular-compiler]
+
+    src/app/pages/client/register/register.page.ts:25:4:
+      25 │     IonText,
+         ╵     ~~~~~~~
+
+▲ [WARNING] NG8113: IonHeader is not used within the template of ResetPasswordPage [plugin angular-compiler]
+
+    src/app/pages/client/reset-password/reset-password.page.ts:28:4:
+      28 │     IonHeader,
+         ╵     ~~~~~~~~~
+
+▲ [WARNING] NG8113: IonTitle is not used within the template of ResetPasswordPage [plugin angular-compiler]
+
+    src/app/pages/client/reset-password/reset-password.page.ts:29:4:
+      29 │     IonTitle,
+         ╵     ~~~~~~~~
+
+▲ [WARNING] NG8113: IonToolbar is not used within the template of ResetPasswordPage [plugin angular-compiler]
+
+    src/app/pages/client/reset-password/reset-password.page.ts:30:4:
+      30 │     IonToolbar,
+         ╵     ~~~~~~~~~~
+
+▲ [WARNING] NG8113: IonHeader is not used within the template of TourDetailsPage [plugin angular-compiler]
+
+    src/app/pages/client/tour-details/tour-details.page.ts:20:4:
+      20 │     IonHeader,
+         ╵     ~~~~~~~~~
+
+▲ [WARNING] NG8113: IonTitle is not used within the template of TourDetailsPage [plugin angular-compiler]
+
+    src/app/pages/client/tour-details/tour-details.page.ts:21:4:
+      21 │     IonTitle,
+         ╵     ~~~~~~~~
+
+▲ [WARNING] NG8113: IonToolbar is not used within the template of TourDetailsPage [plugin angular-compiler]
+
+    src/app/pages/client/tour-details/tour-details.page.ts:22:4:
+      22 │     IonToolbar,
+         ╵     ~~~~~~~~~~
+
+▲ [WARNING] NG8113: IonHeader is not used within the template of ToursPage [plugin angular-compiler]
+
+    src/app/pages/client/tours/tours.page.ts:37:4:
+      37 │     IonHeader,
+         ╵     ~~~~~~~~~
+
+▲ [WARNING] NG8113: IonTitle is not used within the template of ToursPage [plugin angular-compiler]
+
+    src/app/pages/client/tours/tours.page.ts:38:4:
+      38 │     IonTitle,
+         ╵     ~~~~~~~~
+
+▲ [WARNING] NG8113: IonToolbar is not used within the template of ToursPage [plugin angular-compiler]
+
+    src/app/pages/client/tours/tours.page.ts:39:4:
+      39 │     IonToolbar,
+         ╵     ~~~~~~~~~~
+
+▲ [WARNING] NG8113: TourFilterComponent is not used within the template of ToursPage [plugin angular-compiler]
+
+    src/app/pages/client/tours/tours.page.ts:42:4:
+      42 │     TourFilterComponent,
+         ╵     ~~~~~~~~~~~~~~~~~~~
+
+
+  polyfills.js       87.7kb
+  polyfills.js.map  188.7kb
+
+Done in 4884ms
+● [DEBUG] This "import" expression will not be bundled because the argument is not a string literal [unsupported-dynamic-import]
+
+    node_modules/ionicons/dist/esm-es5/index-b72adede.js:2:44:
+      2 │ ...ATIC_IMPORT_SWITCH__*/return import("./".concat(a,".entry.js").c...
+        ╵                                 ~~~~~~
+
+55 warnings
+
+  chunk-LOIP6JMW.js        2.2mb
+  chunk-DQUIIZYO.js      875.4kb
+  chunk-H4Z3CLXU.js      313.0kb
+  home.page-DVPJBBZL.js  267.1kb
+  chunk-JLDX426Z.js      229.4kb
+  ...and 305 more output files...
+
+Done in 6630ms
+[32m✔[39m Building...
+[1mInitial chunk files[22m                        [2m | [22m[1mNames[22m                          [2m | [22m [1mRaw size[22m
+[32mchunk-LOIP6JMW.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m2.26 MB[39m[2m | [22m
+[32mchunk-DQUIIZYO.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m[36m896.37 kB[39m[2m | [22m
+[32mchunk-H4Z3CLXU.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m[36m320.50 kB[39m[2m | [22m
+[32mstyles.css[39m                                 [2m | [22m[2mstyles[22m                         [2m | [22m[36m155.69 kB[39m[2m | [22m
+[32mpolyfills.js[39m                               [2m | [22m[2mpolyfills[22m                      [2m | [22m [36m89.84 kB[39m[2m | [22m
+[32mchunk-CODWS2MM.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m [36m55.34 kB[39m[2m | [22m
+[32mmain.js[39m                                    [2m | [22m[2mmain[22m                           [2m | [22m [36m48.29 kB[39m[2m | [22m
+[32mchunk-LZJBBD2J.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m [36m13.43 kB[39m[2m | [22m
+[32mchunk-B4QRZDQS.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m [36m13.28 kB[39m[2m | [22m
+[32mchunk-7D2IXJO2.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m8.84 kB[39m[2m | [22m
+[32mscripts.js[39m                                 [2m | [22m[2mscripts[22m                        [2m | [22m  [36m7.14 kB[39m[2m | [22m
+[32mchunk-AVKBR3MH.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m4.38 kB[39m[2m | [22m
+[32mchunk-UL2P3LPA.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m3.34 kB[39m[2m | [22m
+[32mchunk-4UAEI4VX.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m1.94 kB[39m[2m | [22m
+[32mchunk-OL3WNRC6.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m1.82 kB[39m[2m | [22m
+[32mchunk-FZZSIR43.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m1.60 kB[39m[2m | [22m
+[32mchunk-ZANXXOCD.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m1.42 kB[39m[2m | [22m
+[32mchunk-P4JTPYNW.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m1.37 kB[39m[2m | [22m
+[32mchunk-XHJY2F2U.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m1.34 kB[39m[2m | [22m
+[32mchunk-X4NBNE3H.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m1.04 kB[39m[2m | [22m
+[32mchunk-6GY55RSK.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m[36m418 bytes[39m[2m | [22m
+[32mchunk-YAS4LRVC.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m[36m376 bytes[39m[2m | [22m
+
+[1m [22m                                          [2m | [22m[1mInitial total[22m                  [2m | [22m  [1m3.89 MB[22m
+
+[1mLazy chunk files[22m                           [2m | [22m[1mNames[22m                          [2m | [22m [1mRaw size[22m
+[32mhome.page-DVPJBBZL.js[39m                      [2m | [22m[2mhome-page[22m                      [2m | [22m[36m273.55 kB[39m[2m | [22m
+[32mchunk-JLDX426Z.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m[36m234.89 kB[39m[2m | [22m
+[32mdashboard.component-L2MG7UGW.js[39m            [2m | [22m[2mdashboard-component[22m            [2m | [22m[36m159.64 kB[39m[2m | [22m
+[32mchunk-43EQWNSQ.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m[36m120.26 kB[39m[2m | [22m
+[32mchunk-TLOM5UAU.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m[36m117.35 kB[39m[2m | [22m
+[32mion-datetime_3.entry-PW35VQ6F.js[39m           [2m | [22m[2mion-datetime_3-entry[22m           [2m | [22m[36m112.92 kB[39m[2m | [22m
+[32mion-modal.entry-62SOXUMO.js[39m                [2m | [22m[2mion-modal-entry[22m                [2m | [22m [36m82.48 kB[39m[2m | [22m
+[32mabout.page-6R7OYAYU.js[39m                     [2m | [22m[2mabout-page[22m                     [2m | [22m [36m82.08 kB[39m[2m | [22m
+[32mtours.component-6GHYXXXL.js[39m                [2m | [22m[2mtours-component[22m                [2m | [22m [36m65.27 kB[39m[2m | [22m
+[32mion-app_8.entry-2WFL7326.js[39m                [2m | [22m[2mion-app_8-entry[22m                [2m | [22m [36m62.77 kB[39m[2m | [22m
+[32mion-item_8.entry-6TEUIMJO.js[39m               [2m | [22m[2mion-item_8-entry[22m               [2m | [22m [36m62.01 kB[39m[2m | [22m
+[32madd-tour.component-6QES5LVW.js[39m             [2m | [22m[2madd-tour-component[22m             [2m | [22m [36m61.23 kB[39m[2m | [22m
+[32mtours.page-XWLR3XFN.js[39m                     [2m | [22m[2mtours-page[22m                     [2m | [22m [36m57.89 kB[39m[2m | [22m
+[32mion-select_3.entry-EJSXQJRG.js[39m             [2m | [22m[2mion-select_3-entry[22m             [2m | [22m [36m57.24 kB[39m[2m | [22m
+[32mion-textarea.entry-IP52HHDL.js[39m             [2m | [22m[2mion-textarea-entry[22m             [2m | [22m [36m53.33 kB[39m[2m | [22m
+[32mion-input.entry-JC7NY6EL.js[39m                [2m | [22m[2mion-input-entry[22m                [2m | [22m [36m49.12 kB[39m[2m | [22m
+[32mion-popover.entry-EYXGOCNZ.js[39m              [2m | [22m[2mion-popover-entry[22m              [2m | [22m [36m48.90 kB[39m[2m | [22m
+[32mtour-details.page-6HF57JKR.js[39m              [2m | [22m[2mtour-details-page[22m              [2m | [22m [36m44.40 kB[39m[2m | [22m
+[32mion-alert.entry-NF7GZQLA.js[39m                [2m | [22m[2mion-alert-entry[22m                [2m | [22m [36m43.86 kB[39m[2m | [22m
+[32mion-range.entry-7B7XSH74.js[39m                [2m | [22m[2mion-range-entry[22m                [2m | [22m [36m43.10 kB[39m[2m | [22m
+[32mion-refresher_2.entry-32VSICAZ.js[39m          [2m | [22m[2mion-refresher_2-entry[22m          [2m | [22m [36m39.58 kB[39m[2m | [22m
+[32mion-segment_2.entry-DEIXVL4G.js[39m            [2m | [22m[2mion-segment_2-entry[22m            [2m | [22m [36m38.70 kB[39m[2m | [22m
+[32mregister.page-WZ3AYN5O.js[39m                  [2m | [22m[2mregister-page[22m                  [2m | [22m [36m36.12 kB[39m[2m | [22m
+[32mion-button_2.entry-EPECJXB2.js[39m             [2m | [22m[2mion-button_2-entry[22m             [2m | [22m [36m35.89 kB[39m[2m | [22m
+[32mchunk-USPLRVD7.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m [36m34.68 kB[39m[2m | [22m
+[32mchunk-XN2QZNUX.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m [36m34.32 kB[39m[2m | [22m
+[32mclient-layout.component-TZGS6F76.js[39m        [2m | [22m[2mclient-layout-component[22m        [2m | [22m [36m33.68 kB[39m[2m | [22m
+[32mreset-password.page-YN7LIJRU.js[39m            [2m | [22m[2mreset-password-page[22m            [2m | [22m [36m33.58 kB[39m[2m | [22m
+[32mion-menu_3.entry-6S4QH3CU.js[39m               [2m | [22m[2mion-menu_3-entry[22m               [2m | [22m [36m33.55 kB[39m[2m | [22m
+[32mion-action-sheet.entry-XEUHA2L6.js[39m         [2m | [22m[2mion-action-sheet-entry[22m         [2m | [22m [36m32.95 kB[39m[2m | [22m
+[32mion-input-otp.entry-NMG7HHB5.js[39m            [2m | [22m[2mion-input-otp-entry[22m            [2m | [22m [36m32.40 kB[39m[2m | [22m
+[32mblog.page-XHHUXTXF.js[39m                      [2m | [22m[2mblog-page[22m                      [2m | [22m [36m32.40 kB[39m[2m | [22m
+[32mion-toast.entry-NREM3TME.js[39m                [2m | [22m[2mion-toast-entry[22m                [2m | [22m [36m31.24 kB[39m[2m | [22m
+[32mion-searchbar.entry-5XIAEYSX.js[39m            [2m | [22m[2mion-searchbar-entry[22m            [2m | [22m [36m30.34 kB[39m[2m | [22m
+[32mlogin.page-N76TCRG3.js[39m                     [2m | [22m[2mlogin-page[22m                     [2m | [22m [36m29.08 kB[39m[2m | [22m
+[32mion-nav_2.entry-LCBFFTF7.js[39m                [2m | [22m[2mion-nav_2-entry[22m                [2m | [22m [36m28.09 kB[39m[2m | [22m
+[32mion-item-option_3.entry-2HM4O7SP.js[39m        [2m | [22m[2mion-item-option_3-entry[22m        [2m | [22m [36m27.56 kB[39m[2m | [22m
+[32mion-toggle.entry-KJDXMO5P.js[39m               [2m | [22m[2mion-toggle-entry[22m               [2m | [22m [36m26.96 kB[39m[2m | [22m
+[32mchunk-C3PXR4YG.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m [36m26.82 kB[39m[2m | [22m
+[32mforgot-password.page-UCQOI2KD.js[39m           [2m | [22m[2mforgot-password-page[22m           [2m | [22m [36m26.40 kB[39m[2m | [22m
+[32mcontact.page-3UNEV2BN.js[39m                   [2m | [22m[2mcontact-page[22m                   [2m | [22m [36m24.54 kB[39m[2m | [22m
+[32madmin-layout.component-KKIJUIYZ.js[39m         [2m | [22m[2madmin-layout-component[22m         [2m | [22m [36m24.36 kB[39m[2m | [22m
+[32mion-fab_3.entry-UPARJPZQ.js[39m                [2m | [22m[2mion-fab_3-entry[22m                [2m | [22m [36m24.05 kB[39m[2m | [22m
+[32mchunk-6TBOSTCF.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m [36m24.04 kB[39m[2m | [22m
+[32mion-radio_2.entry-LJI4EPJJ.js[39m              [2m | [22m[2mion-radio_2-entry[22m              [2m | [22m [36m23.93 kB[39m[2m | [22m
+[32mion-route_4.entry-NJ5T3IDZ.js[39m              [2m | [22m[2mion-route_4-entry[22m              [2m | [22m [36m23.58 kB[39m[2m | [22m
+[32mion-tab-bar_2.entry-TZBSWNYL.js[39m            [2m | [22m[2mion-tab-bar_2-entry[22m            [2m | [22m [36m21.10 kB[39m[2m | [22m
+[32mion-accordion_2.entry-R4BXGZ75.js[39m          [2m | [22m[2mion-accordion_2-entry[22m          [2m | [22m [36m21.09 kB[39m[2m | [22m
+[32mion-progress-bar.entry-XKQJ4POG.js[39m         [2m | [22m[2mion-progress-bar-entry[22m         [2m | [22m [36m20.36 kB[39m[2m | [22m
+[32mion-checkbox.entry-TRLINIHI.js[39m             [2m | [22m[2mion-checkbox-entry[22m             [2m | [22m [36m20.28 kB[39m[2m | [22m
+[32mblog-details.page-HTYQRR4B.js[39m              [2m | [22m[2mblog-details-page[22m              [2m | [22m [36m19.66 kB[39m[2m | [22m
+[32mchunk-FDDYGYGS.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m [36m19.43 kB[39m[2m | [22m
+[32mchunk-334UYHZU.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m [36m17.81 kB[39m[2m | [22m
+[32mion-breadcrumb_2.entry-RTEECT2L.js[39m         [2m | [22m[2mion-breadcrumb_2-entry[22m         [2m | [22m [36m17.59 kB[39m[2m | [22m
+[32mion-picker-column.entry-ZVHBPZFT.js[39m        [2m | [22m[2mion-picker-column-entry[22m        [2m | [22m [36m15.53 kB[39m[2m | [22m
+[32mion-picker.entry-ZU5H2CMM.js[39m               [2m | [22m[2mion-picker-entry[22m               [2m | [22m [36m15.40 kB[39m[2m | [22m
+[32minput-shims-AaDhOpKN-YKJUVM7C.js[39m           [2m | [22m[2minput-shims-AaDhOpKN[22m           [2m | [22m [36m13.99 kB[39m[2m | [22m
+[32mion-loading.entry-S7PVUWWM.js[39m              [2m | [22m[2mion-loading-entry[22m              [2m | [22m [36m13.74 kB[39m[2m | [22m
+[32mion-back-button.entry-AA5DPCQN.js[39m          [2m | [22m[2mion-back-button-entry[22m          [2m | [22m [36m13.10 kB[39m[2m | [22m
+[32mion-card_5.entry-JSTLPVCZ.js[39m               [2m | [22m[2mion-card_5-entry[22m               [2m | [22m [36m12.96 kB[39m[2m | [22m
+[32mion-datetime-button.entry-A5EHQCAL.js[39m      [2m | [22m[2mion-datetime-button-entry[22m      [2m | [22m [36m12.07 kB[39m[2m | [22m
+[32mion-reorder_2.entry-XOSM6P3R.js[39m            [2m | [22m[2mion-reorder_2-entry[22m            [2m | [22m [36m11.46 kB[39m[2m | [22m
+[32mion-col_3.entry-4DSXYPUO.js[39m                [2m | [22m[2mion-col_3-entry[22m                [2m | [22m [36m10.90 kB[39m[2m | [22m
+[32mchunk-F3JJ4YWB.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m [36m10.48 kB[39m[2m | [22m
+[32mchunk-77AAWLX4.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m [36m10.36 kB[39m[2m | [22m
+[32mion-infinite-scroll_2.entry-HB5PRE7E.js[39m    [2m | [22m[2mion-infinite-scroll_2-entry[22m    [2m | [22m  [36m9.80 kB[39m[2m | [22m
+[32mchunk-Z73SJXZ4.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m9.58 kB[39m[2m | [22m
+[32mchunk-LBJSUFYP.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m8.43 kB[39m[2m | [22m
+[32mchunk-T3SAXEFI.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m8.26 kB[39m[2m | [22m
+[32mion-tab_2.entry-AHQ366NH.js[39m                [2m | [22m[2mion-tab_2-entry[22m                [2m | [22m  [36m8.03 kB[39m[2m | [22m
+[32mnot-found.page-YTIERJAC.js[39m                 [2m | [22m[2mnot-found-page[22m                 [2m | [22m  [36m7.91 kB[39m[2m | [22m
+[32mchunk-S2YG6D3V.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m7.85 kB[39m[2m | [22m
+[32mp-Cwv-vmkN-N5MVRDNG.js[39m                     [2m | [22m[2mp-Cwv-vmkN[22m                     [2m | [22m  [36m7.49 kB[39m[2m | [22m
+[32mion-chip.entry-35DGBAYR.js[39m                 [2m | [22m[2mion-chip-entry[22m                 [2m | [22m  [36m7.15 kB[39m[2m | [22m
+[32mion-spinner.entry-BQYXNQTI.js[39m              [2m | [22m[2mion-spinner-entry[22m              [2m | [22m  [36m7.09 kB[39m[2m | [22m
+[32mion-select-modal.entry-IXJOVIJI.js[39m         [2m | [22m[2mion-select-modal-entry[22m         [2m | [22m  [36m7.08 kB[39m[2m | [22m
+[32mchunk-KZX4GXCT.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m6.66 kB[39m[2m | [22m
+[32mion-split-pane.entry-NQ22B3AF.js[39m           [2m | [22m[2mion-split-pane-entry[22m           [2m | [22m  [36m5.54 kB[39m[2m | [22m
+[32mchunk-FIUTHZFE.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m5.49 kB[39m[2m | [22m
+[32mion-segment-view.entry-NOHEMVOD.js[39m         [2m | [22m[2mion-segment-view-entry[22m         [2m | [22m  [36m5.18 kB[39m[2m | [22m
+[32mion-ripple-effect.entry-PAG5OQQQ.js[39m        [2m | [22m[2mion-ripple-effect-entry[22m        [2m | [22m  [36m5.11 kB[39m[2m | [22m
+[32mchunk-QOQL43QQ.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m5.09 kB[39m[2m | [22m
+[32mion-avatar_3.entry-3PPSKRZ3.js[39m             [2m | [22m[2mion-avatar_3-entry[22m             [2m | [22m  [36m4.36 kB[39m[2m | [22m
+[32mion-picker-column-option.entry-RDSX4ZWO.js[39m [2m | [22m[2mion-picker-column-option-entry[22m [2m | [22m  [36m4.22 kB[39m[2m | [22m
+[32mchunk-7QP77CX7.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m4.22 kB[39m[2m | [22m
+[32mindex-BtUdxPjv-N4GRTPYZ.js[39m                 [2m | [22m[2mindex-BtUdxPjv[22m                 [2m | [22m  [36m4.13 kB[39m[2m | [22m
+[32mchunk-7CUNJC52.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m3.95 kB[39m[2m | [22m
+[32mchunk-PLB5D5WG.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m3.60 kB[39m[2m | [22m
+[32mchunk-Y3UST4D3.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m3.43 kB[39m[2m | [22m
+[32mchunk-7SLBDTUQ.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m3.37 kB[39m[2m | [22m
+[32mchunk-WSMY7LFE.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m3.32 kB[39m[2m | [22m
+[32mion-input-password-toggle.entry-DHPACWWH.js[39m[2m | [22m[2mion-input-password-toggle-entry[22m[2m | [22m  [36m3.28 kB[39m[2m | [22m
+[32mchunk-HYXHLUX7.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m3.19 kB[39m[2m | [22m
+[32mchunk-MHHFNNI6.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m3.13 kB[39m[2m | [22m
+[32mion-img.entry-WZLOYFBM.js[39m                  [2m | [22m[2mion-img-entry[22m                  [2m | [22m  [36m3.09 kB[39m[2m | [22m
+[32mchunk-RGD2TZNY.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m3.07 kB[39m[2m | [22m
+[32mbooking.page-AZGDW6FW.js[39m                   [2m | [22m[2mbooking-page[22m                   [2m | [22m  [36m2.86 kB[39m[2m | [22m
+[32mchunk-Q7YETTZB.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m2.77 kB[39m[2m | [22m
+[32mchunk-HN5PFBTI.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m2.73 kB[39m[2m | [22m
+[32mchunk-KUOFPSOG.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m2.63 kB[39m[2m | [22m
+[32mp-BgwEQWW6-WNVDVPZD.js[39m                     [2m | [22m[2mp-BgwEQWW6[22m                     [2m | [22m  [36m2.56 kB[39m[2m | [22m
+[32mswipe-back-BZBFwTQV-2V4UE4MY.js[39m            [2m | [22m[2mswipe-back-BZBFwTQV[22m            [2m | [22m  [36m2.36 kB[39m[2m | [22m
+[32mchunk-W7NNY2EY.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m2.28 kB[39m[2m | [22m
+[32mchunk-XADA766P.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m2.15 kB[39m[2m | [22m
+[32mchunk-7GWGUCOI.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m2.15 kB[39m[2m | [22m
+[32mchunk-FDTINQBO.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m2.13 kB[39m[2m | [22m
+[32mion-backdrop.entry-4LMEHQYH.js[39m             [2m | [22m[2mion-backdrop-entry[22m             [2m | [22m  [36m2.05 kB[39m[2m | [22m
+[32mbookings.component-ZP7HVINW.js[39m             [2m | [22m[2mbookings-component[22m             [2m | [22m  [36m1.50 kB[39m[2m | [22m
+[32musers.component-53Y57BR6.js[39m                [2m | [22m[2musers-component[22m                [2m | [22m  [36m1.43 kB[39m[2m | [22m
+[32mchunk-OM75IFBM.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m1.42 kB[39m[2m | [22m
+[32mnews.component-4IFJVTWL.js[39m                 [2m | [22m[2mnews-component[22m                 [2m | [22m  [36m1.40 kB[39m[2m | [22m
+[32mchunk-KJBBQORM.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m1.37 kB[39m[2m | [22m
+[32mstatus-tap-BfJqFSLF-GM32RSAG.js[39m            [2m | [22m[2mstatus-tap-BfJqFSLF[22m            [2m | [22m  [36m1.28 kB[39m[2m | [22m
+[32mp-Cz5nLPGT-RQHYSUX7.js[39m                     [2m | [22m[2mp-Cz5nLPGT[22m                     [2m | [22m  [36m1.27 kB[39m[2m | [22m
+[32mchunk-L42UVOXQ.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m1.19 kB[39m[2m | [22m
+[32mchunk-HDOEHXW5.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m  [36m1.06 kB[39m[2m | [22m
+[32mion-segment-content.entry-3WHIB4TG.js[39m      [2m | [22m[2mion-segment-content-entry[22m      [2m | [22m[36m985 bytes[39m[2m | [22m
+[32mp-CneGxKsZ-4U7YPL26.js[39m                     [2m | [22m[2mp-CneGxKsZ[22m                     [2m | [22m[36m957 bytes[39m[2m | [22m
+[32mion-text.entry-LJYOPSBH.js[39m                 [2m | [22m[2mion-text-entry[22m                 [2m | [22m[36m934 bytes[39m[2m | [22m
+[32mkeyboard-ywgs5efA-3TTBYQHH.js[39m              [2m | [22m[2mkeyboard-ywgs5efA[22m              [2m | [22m[36m692 bytes[39m[2m | [22m
+[32mchunk-RQD4YPJN.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m[36m652 bytes[39m[2m | [22m
+[32mp-D6Ynv7Xh-J3HGSFY6.js[39m                     [2m | [22m[2mp-D6Ynv7Xh[22m                     [2m | [22m[36m531 bytes[39m[2m | [22m
+[32mchunk-PKLQCMK6.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m[36m493 bytes[39m[2m | [22m
+[32mhardware-back-button-CTe4XmL7-NBRNMZIJ.js[39m  [2m | [22m[2mhardware-back-button-CTe4XmL7[22m  [2m | [22m[36m486 bytes[39m[2m | [22m
+[32mchunk-MQS4DBMV.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m[36m483 bytes[39m[2m | [22m
+[32mchunk-CUYIUJP7.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m[36m425 bytes[39m[2m | [22m
+[32mchunk-IVBL4Y7V.js[39m                          [2m | [22m[2m-[22m                              [2m | [22m[36m390 bytes[39m[2m | [22m
+[32mp-vEbVo2hO-IQIN3MUT.js[39m                     [2m | [22m[2mp-vEbVo2hO[22m                     [2m | [22m[36m377 bytes[39m[2m | [22m
+[32mios.transition--aMF-pDH-HIY77QVA.js[39m        [2m | [22m[2mios-transition--aMF-pDH[22m        [2m | [22m[36m362 bytes[39m[2m | [22m
+[32mmd.transition-BEVbfm8j-7OBNVL6R.js[39m         [2m | [22m[2mmd-transition-BEVbfm8j[22m         [2m | [22m[36m339 bytes[39m[2m | [22m
+[32mp-CBzELu-H-I2FTT4BF.js[39m                     [2m | [22m[2mp-CBzELu-H[22m                     [2m | [22m[36m303 bytes[39m[2m | [22m
+[32mp-CU1SSH8_-4UTJLMEO.js[39m                     [2m | [22m[2mp-CU1SSH8_[22m                     [2m | [22m[36m282 bytes[39m[2m | [22m
+[32mindex-CfgBF1SE-A6CX6CP6.js[39m                 [2m | [22m[2mindex-CfgBF1SE[22m                 [2m | [22m[36m247 bytes[39m[2m | [22m
+[32mp-Cl0B-RWe-AQCUPG65.js[39m                     [2m | [22m[2mp-Cl0B-RWe[22m                     [2m | [22m[36m186 bytes[39m[2m | [22m
+[32mfocus-visible-BmVRXR1y-56KZZ2SX.js[39m         [2m | [22m[2mfocus-visible-BmVRXR1y[22m         [2m | [22m[36m181 bytes[39m[2m | [22m
+[32mp-BmVRXR1y-KNVFYAXG.js[39m                     [2m | [22m[2mp-BmVRXR1y[22m                     [2m | [22m[36m158 bytes[39m[2m | [22m
+
+Application bundle generation complete. [7.055 seconds] - 2026-07-10T11:17:11.617Z
+
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.html:36:5:
+[37m      36 │     *[32mngIf[37m="activeTab==='overview'"
+         ╵      [32m~~~~[0m
+
+  Warning occurs in the template of component TourTabsComponent.
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.ts:8:15:
+[37m      8 │   templateUrl: [32m'./tour-tabs.component.html'[37m,
+        ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.html:58:11:
+[37m      58 │       <li *[32mngIf[37m="tour.activities">
+         ╵            [32m~~~~[0m
+
+  Warning occurs in the template of component TourTabsComponent.
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.ts:8:15:
+[37m      8 │   templateUrl: [32m'./tour-tabs.component.html'[37m,
+        ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.html:63:11:
+[37m      63 │       <li *[32mngIf[37m="tour.tripType">
+         ╵            [32m~~~~[0m
+
+  Warning occurs in the template of component TourTabsComponent.
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.ts:8:15:
+[37m      8 │   templateUrl: [32m'./tour-tabs.component.html'[37m,
+        ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.html:68:11:
+[37m      68 │       <li *[32mngIf[37m="tour.difficulty">
+         ╵            [32m~~~~[0m
+
+  Warning occurs in the template of component TourTabsComponent.
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.ts:8:15:
+[37m      8 │   templateUrl: [32m'./tour-tabs.component.html'[37m,
+        ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.html:80:5:
+[37m      80 │     *[32mngIf[37m="activeTab==='itinerary'"
+         ╵      [32m~~~~[0m
+
+  Warning occurs in the template of component TourTabsComponent.
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.ts:8:15:
+[37m      8 │   templateUrl: [32m'./tour-tabs.component.html'[37m,
+        ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngFor` directive was used in the template, but neither the `NgFor` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @for or make sure that either the `NgFor` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.html:90:9:
+[37m      90 │         *[32mngFor[37m="
+         ╵          [32m~~~~~[0m
+
+  Warning occurs in the template of component TourTabsComponent.
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.ts:8:15:
+[37m      8 │   templateUrl: [32m'./tour-tabs.component.html'[37m,
+        ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8103: The `*ngIf` directive was used in the template, but neither the `NgIf` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @if or make sure that either the `NgIf` directive or the `CommonModule` is included in the `@Component.imports` array of this component.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.html:122:5:
+[37m      122 │     *[32mngIf[37m="activeTab==='faq'"
+          ╵      [32m~~~~[0m
+
+  Warning occurs in the template of component TourTabsComponent.
+
+    src/app/components/tour-detail/tour-tabs/tour-tabs.component.ts:8:15:
+[37m      8 │   templateUrl: [32m'./tour-tabs.component.html'[37m,
+        ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: DecimalPipe is not used within the template of TourFilterComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/components/tour-filter/tour-filter.component.ts:30:12:
+[37m      30 │   imports: [[32mDecimalPipe[37m, CommonModule, IonIcon],
+         ╵             [32m~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: FooterComponent is not used within the template of ClientLayoutComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/layouts/client-layout/client-layout.component.ts:16:4:
+[37m      16 │     [32mFooterComponent[37m,
+         ╵     [32m~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NgClass is not used within the template of TourTableComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/admin/tours/components/tour-table/tour-table.component.ts:29:34:
+[37m      29 │   imports: [IonIcon, DecimalPipe, [32mNgClass[37m, NgIf],
+         ╵                                   [32m~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: NgIf is not used within the template of TourTableComponent[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/admin/tours/components/tour-table/tour-table.component.ts:29:43:
+[37m      29 │   imports: [IonIcon, DecimalPipe, NgClass, [32mNgIf[37m],
+         ╵                                            [32m~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonHeader is not used within the template of AboutPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/about/about.page.ts:27:4:
+[37m      27 │     [32mIonHeader[37m,
+         ╵     [32m~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonTitle is not used within the template of AboutPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/about/about.page.ts:28:4:
+[37m      28 │     [32mIonTitle[37m,
+         ╵     [32m~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonToolbar is not used within the template of AboutPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/about/about.page.ts:29:4:
+[37m      29 │     [32mIonToolbar[37m,
+         ╵     [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonIcon is not used within the template of AboutPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/about/about.page.ts:33:4:
+[37m      33 │     [32mIonIcon[37m,
+         ╵     [32m~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonHeader is not used within the template of BlogDetailsPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/blog-details/blog-details.page.ts:75:4:
+[37m      75 │     [32mIonHeader[37m,
+         ╵     [32m~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonTitle is not used within the template of BlogDetailsPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/blog-details/blog-details.page.ts:76:4:
+[37m      76 │     [32mIonTitle[37m,
+         ╵     [32m~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonToolbar is not used within the template of BlogDetailsPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/blog-details/blog-details.page.ts:77:4:
+[37m      77 │     [32mIonToolbar[37m,
+         ╵     [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonHeader is not used within the template of BlogPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/blog/blog.page.ts:74:4:
+[37m      74 │     [32mIonHeader[37m,
+         ╵     [32m~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonTitle is not used within the template of BlogPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/blog/blog.page.ts:75:4:
+[37m      75 │     [32mIonTitle[37m,
+         ╵     [32m~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonToolbar is not used within the template of BlogPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/blog/blog.page.ts:76:4:
+[37m      76 │     [32mIonToolbar[37m,
+         ╵     [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonHeader is not used within the template of ContactPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/contact/contact.page.ts:29:4:
+[37m      29 │     [32mIonHeader[37m,
+         ╵     [32m~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonTitle is not used within the template of ContactPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/contact/contact.page.ts:30:4:
+[37m      30 │     [32mIonTitle[37m,
+         ╵     [32m~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonToolbar is not used within the template of ContactPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/contact/contact.page.ts:31:4:
+[37m      31 │     [32mIonToolbar[37m,
+         ╵     [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonHeader is not used within the template of ForgotPasswordPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/forgot-password/forgot-password.page.ts:25:4:
+[37m      25 │     [32mIonHeader[37m,
+         ╵     [32m~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonTitle is not used within the template of ForgotPasswordPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/forgot-password/forgot-password.page.ts:26:4:
+[37m      26 │     [32mIonTitle[37m,
+         ╵     [32m~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonToolbar is not used within the template of ForgotPasswordPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/forgot-password/forgot-password.page.ts:27:4:
+[37m      27 │     [32mIonToolbar[37m,
+         ╵     [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonHeader is not used within the template of HomePage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/home/home.page.ts:47:4:
+[37m      47 │     [32mIonHeader[37m,
+         ╵     [32m~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonTitle is not used within the template of HomePage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/home/home.page.ts:48:4:
+[37m      48 │     [32mIonTitle[37m,
+         ╵     [32m~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonToolbar is not used within the template of HomePage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/home/home.page.ts:49:4:
+[37m      49 │     [32mIonToolbar[37m,
+         ╵     [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonGrid is not used within the template of HomePage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/home/home.page.ts:54:4:
+[37m      54 │     [32mIonGrid[37m,
+         ╵     [32m~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonRow is not used within the template of HomePage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/home/home.page.ts:55:4:
+[37m      55 │     [32mIonRow[37m,
+         ╵     [32m~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonCol is not used within the template of HomePage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/home/home.page.ts:56:4:
+[37m      56 │     [32mIonCol[37m,
+         ╵     [32m~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonCardHeader is not used within the template of HomePage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/home/home.page.ts:57:4:
+[37m      57 │     [32mIonCardHeader[37m,
+         ╵     [32m~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonCard is not used within the template of HomePage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/home/home.page.ts:58:4:
+[37m      58 │     [32mIonCard[37m,
+         ╵     [32m~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonCardTitle is not used within the template of HomePage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/home/home.page.ts:59:4:
+[37m      59 │     [32mIonCardTitle[37m,
+         ╵     [32m~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonCardContent is not used within the template of HomePage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/home/home.page.ts:60:4:
+[37m      60 │     [32mIonCardContent[37m,
+         ╵     [32m~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonButton is not used within the template of HomePage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/home/home.page.ts:61:4:
+[37m      61 │     [32mIonButton[37m,
+         ╵     [32m~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonHeader is not used within the template of LoginPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/login/login.page.ts:26:4:
+[37m      26 │     [32mIonHeader[37m,
+         ╵     [32m~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonTitle is not used within the template of LoginPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/login/login.page.ts:27:4:
+[37m      27 │     [32mIonTitle[37m,
+         ╵     [32m~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonToolbar is not used within the template of LoginPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/login/login.page.ts:28:4:
+[37m      28 │     [32mIonToolbar[37m,
+         ╵     [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonHeader is not used within the template of NotFoundPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/not-found/not-found.page.ts:20:4:
+[37m      20 │     [32mIonHeader[37m,
+         ╵     [32m~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonTitle is not used within the template of NotFoundPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/not-found/not-found.page.ts:21:4:
+[37m      21 │     [32mIonTitle[37m,
+         ╵     [32m~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonToolbar is not used within the template of NotFoundPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/not-found/not-found.page.ts:22:4:
+[37m      22 │     [32mIonToolbar[37m,
+         ╵     [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonText is not used within the template of RegisterPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/register/register.page.ts:25:4:
+[37m      25 │     [32mIonText[37m,
+         ╵     [32m~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonHeader is not used within the template of ResetPasswordPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/reset-password/reset-password.page.ts:28:4:
+[37m      28 │     [32mIonHeader[37m,
+         ╵     [32m~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonTitle is not used within the template of ResetPasswordPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/reset-password/reset-password.page.ts:29:4:
+[37m      29 │     [32mIonTitle[37m,
+         ╵     [32m~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonToolbar is not used within the template of ResetPasswordPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/reset-password/reset-password.page.ts:30:4:
+[37m      30 │     [32mIonToolbar[37m,
+         ╵     [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonHeader is not used within the template of TourDetailsPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/tour-details/tour-details.page.ts:20:4:
+[37m      20 │     [32mIonHeader[37m,
+         ╵     [32m~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonTitle is not used within the template of TourDetailsPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/tour-details/tour-details.page.ts:21:4:
+[37m      21 │     [32mIonTitle[37m,
+         ╵     [32m~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonToolbar is not used within the template of TourDetailsPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/tour-details/tour-details.page.ts:22:4:
+[37m      22 │     [32mIonToolbar[37m,
+         ╵     [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonHeader is not used within the template of ToursPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/tours/tours.page.ts:37:4:
+[37m      37 │     [32mIonHeader[37m,
+         ╵     [32m~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonTitle is not used within the template of ToursPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/tours/tours.page.ts:38:4:
+[37m      38 │     [32mIonTitle[37m,
+         ╵     [32m~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: IonToolbar is not used within the template of ToursPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/tours/tours.page.ts:39:4:
+[37m      39 │     [32mIonToolbar[37m,
+         ╵     [32m~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mNG8113: TourFilterComponent is not used within the template of ToursPage[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/pages/client/tours/tours.page.ts:42:4:
+[37m      42 │     [32mTourFilterComponent[37m,
+         ╵     [32m~~~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mDeprecation[0m [1m[35m[plugin angular-sass][0m
+
+    src/global.scss:29:8:
+[37m      29 │ @import [32m[37m'swiper/css';
+         ╵         [32m^[0m
+
+
+  Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+  
+  More info and automated migrator: [4mhttps://sass-lang.com/d/import[0m
+
+  The plugin "angular-sass" was triggered by this import
+
+    angular:styles/global:styles:3:8:
+[37m      3 │ @import [32m'src/global.scss'[37m;
+        ╵         [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mDeprecation[0m [1m[35m[plugin angular-sass][0m
+
+    src/global.scss:30:8:
+[37m      30 │ @import [32m[37m'swiper/css/navigation';
+         ╵         [32m^[0m
+
+
+  Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+  
+  More info and automated migrator: [4mhttps://sass-lang.com/d/import[0m
+
+  The plugin "angular-sass" was triggered by this import
+
+    angular:styles/global:styles:3:8:
+[37m      3 │ @import [32m'src/global.scss'[37m;
+        ╵         [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mDeprecation[0m [1m[35m[plugin angular-sass][0m
+
+    src/global.scss:31:8:
+[37m      31 │ @import [32m[37m'swiper/css/pagination';
+         ╵         [32m^[0m
+
+
+  Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+  
+  More info and automated migrator: [4mhttps://sass-lang.com/d/import[0m
+
+  The plugin "angular-sass" was triggered by this import
+
+    angular:styles/global:styles:3:8:
+[37m      3 │ @import [32m'src/global.scss'[37m;
+        ╵         [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mDeprecation[0m [1m[35m[plugin angular-sass][0m
+
+    src/global.scss:32:8:
+[37m      32 │ @import [32m[37m'swiper/css/effect-coverflow';
+         ╵         [32m^[0m
+
+
+  Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+  
+  More info and automated migrator: [4mhttps://sass-lang.com/d/import[0m
+
+  The plugin "angular-sass" was triggered by this import
+
+    angular:styles/global:styles:3:8:
+[37m      3 │ @import [32m'src/global.scss'[37m;
+        ╵         [32m~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+Output location: d:\Projects\website_dulich\www
+

@@ -3,6 +3,7 @@ import { Tour } from '../../core/models/tour.model';
 import { DecimalPipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { TourResponse } from '../../core/models/tour-response.model';
 
 @Component({
   selector: 'app-tour-card',
@@ -11,6 +12,5 @@ import { RouterLink } from '@angular/router';
   imports: [DecimalPipe, CommonModule, RouterLink],
 })
 export class TourCardComponent {
-  @Input()
-  tour!: Tour;
+  @Input({ required: true }) tour!: TourResponse;
 }

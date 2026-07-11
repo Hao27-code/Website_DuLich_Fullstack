@@ -1,6 +1,7 @@
 :host {
   display: block;
   width: 100%;
+  min-height: 100vh;
   height: 100%;
 }
 
@@ -9,9 +10,12 @@ ion-split-pane {
   --side-max-width: 230px;
   --side-min-width: 230px;
   width: 100%;
+  min-height: 100vh;
   height: 100%;
 }
 
 ion-router-outlet {
+  display: block;
+  min-height: 100vh;
   background: #f4f7fb;
 }

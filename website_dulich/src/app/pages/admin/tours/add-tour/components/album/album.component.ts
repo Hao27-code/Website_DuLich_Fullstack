@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { AlbumImage } from '../../../../../../core/models/album-image.model';
 import { UploadService } from '../../../../../../core/services/upload.service';
 @Component({
@@ -9,20 +16,25 @@ import { UploadService } from '../../../../../../core/services/upload.service';
   templateUrl: './album.component.html',
   styleUrl: './album.component.scss',
 })
-export class AlbumComponent {
+export class AlbumComponent implements OnInit {
   private readonly uploadService = inject(UploadService);
   @Input() images: string[] = [];
+  @Output() albumChanged = new EventEmitter<string[]>();
 
-  @Output() imagesChanged = new EventEmitter<AlbumImage[]>();
+  ngOnInit(): void {
+    this.albumImages = this.images.map((url) => ({
+      preview: url,
+
+      url: url,
+    }));
+  }
 
   albumImages: AlbumImage[] = [];
 
   onSelectImages(event: Event): void {
     const input = event.target as HTMLInputElement;
 
-    if (!input.files) {
-      return;
-    }
+    if (!input.files) return;
 
     const files = Array.from(input.files);
 
@@ -32,30 +44,31 @@ export class AlbumComponent {
       reader.onload = () => {
         const preview = reader.result as string;
 
-        this.uploadService.uploadImage(file).subscribe({
-          next: (response) => {
-            this.albumImages.push({
-              file,
+        this.uploadService
+          .uploadImage(file)
 
-              preview,
+          .subscribe({
+            next: (response) => {
+              this.albumImages.push({
+                file,
 
-              url: response.url,
-            });
+                preview,
 
-            this.imagesChanged.emit(this.albumImages);
-          },
-        });
+                url: response.url,
+              });
+
+              this.albumChanged.emit(this.albumImages.map((x) => x.url));
+            },
+          });
       };
 
       reader.readAsDataURL(file);
     });
-
-    input.value = '';
   }
 
-  removeImage(index: number) {
+  removeImage(index: number): void {
     this.albumImages.splice(index, 1);
 
-    this.imagesChanged.emit(this.albumImages);
+    this.albumChanged.emit(this.albumImages.map((x) => x.url));
   }
 }
