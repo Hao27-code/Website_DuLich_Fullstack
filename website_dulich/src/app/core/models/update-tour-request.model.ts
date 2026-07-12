@@ -16,7 +16,7 @@ export interface UpdateTourRequest {
 
   dealEndDate?: string;
 
-  coverImage: string;
+  coverImage?: string;
 
   albumImages: string[];
 

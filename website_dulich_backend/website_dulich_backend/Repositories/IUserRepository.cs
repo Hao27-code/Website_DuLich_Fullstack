@@ -15,6 +15,8 @@ namespace website_dulich_backend.Repositories
         Task<User?> GetByVerificationTokenAsync(string token);
         Task UpdateAsync(User user);
 
+
+
         Task<User?> GetByResetTokenAsync(string token);
     }
 }

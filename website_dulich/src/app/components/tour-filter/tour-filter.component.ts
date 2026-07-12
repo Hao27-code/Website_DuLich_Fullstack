@@ -21,7 +21,7 @@ import { DecimalPipe } from '@angular/common';
 import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { chevronDownOutline } from 'ionicons/icons';
-import { Tour } from '../../core/models/tour.model';
+import { TourResponse } from '../../core/models/tour-response.model';
 
 @Component({
   selector: 'app-tour-filter',
@@ -61,7 +61,7 @@ export class TourFilterComponent implements AfterViewInit, OnChanges {
   filters?: TourFilter;
 
   @Input()
-  tours: Tour[] = [];
+  tours: TourResponse[] = [];
 
   /* ======================
       OUTPUT

@@ -36,6 +36,7 @@ import { TourCardComponent } from '../../../components/tour-card/tour-card.compo
 import { Tour } from '../../../core/models/tour.model';
 import { TourService } from '../../../core/services/tour.service';
 import { FooterComponent } from '../../../components/footer/footer.component';
+import { TourResponse } from '../../../core/models/tour-response.model';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -180,17 +181,17 @@ export class HomePage implements AfterViewInit, OnInit, OnDestroy {
 
   private tourService = inject(TourService);
 
-  tours: Tour[] = [];
+  tours: TourResponse[] = [];
   filters: TourFilter = {};
 
   ngOnInit(): void {
     this.tourService.getTours(this.filters).subscribe({
-      next: (data) => {
-        this.tours = data.data;
+      next: (response) => {
+        this.tours = response.data;
       },
 
-      error: (err: any) => {
-        console.error(err);
+      error: (error) => {
+        console.error(error);
       },
     });
   }

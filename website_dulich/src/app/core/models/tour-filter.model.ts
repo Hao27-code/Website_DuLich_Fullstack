@@ -11,6 +11,7 @@ export interface TourFilter {
 
   /* search */
   keyword?: string;
+  isActive?: boolean;
 
   activities?: string[];
 

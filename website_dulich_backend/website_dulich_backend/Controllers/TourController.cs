@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using website_dulich_backend.DTOs.Tour;
-using website_dulich_backend.Models;
 using website_dulich_backend.Services;
 
 namespace website_dulich_backend.Controllers
@@ -23,25 +22,13 @@ namespace website_dulich_backend.Controllers
         [HttpGet]
         public async Task<IActionResult> GetTours([FromQuery] TourQueryDto query)
         {
-            var result =
-                await _tourService.GetToursAsync(query);
+            var response = await _tourService.GetToursAsync(query);
 
-            return Ok(new
-            {
-                data = result.Item1,
-                total = result.Item2,
-                page = query.Page,
-                limit = query.Limit,
-                totalPages =
-                    (int)Math.Ceiling(
-                        (double)result.Item2 /
-                        query.Limit
-                    )
-            });
+            return Ok(response);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult>GetTourById(Guid id)
+        public async Task<IActionResult> GetTourById(Guid id)
         {
             var tour =await _tourService.GetTourByIdAsync(id);
 
@@ -57,31 +44,58 @@ namespace website_dulich_backend.Controllers
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateTourRequest request)
         {
-            var createdTour = await _tourService.CreateTour(request);
+            try
+            {
+                var createdTour = await _tourService.CreateTour(request);
 
-           return CreatedAtAction(nameof(GetTourById),new { id = createdTour.Id },createdTour
-);
+                return CreatedAtAction(
+                    nameof(GetTourById),
+                    new { id = createdTour.Id },
+                    createdTour);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new
+                {
+                    message = ex.Message
+                });
+            }
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTour(Guid id, [FromBody] UpdateTourRequest request)
+        public async Task<IActionResult> UpdateTour( Guid id,[FromBody] UpdateTourRequest request)
         {
-            var updatedTour = await _tourService.UpdateTour(id, request);
-
-            if (updatedTour == null)
+            try
             {
-                return NotFound();
-            }
+                var updatedTour =
+                    await _tourService.UpdateTour(id, request);
 
-            return Ok(updatedTour);
+                if (updatedTour == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(updatedTour);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new
+                {
+                    message = ex.Message
+                });
+            }
         }
 
         [Authorize]
         [HttpGet("profile")]
         public IActionResult Profile()
         {
-            return Ok("Đã đăng nhập");
+            return Ok(new
+            {
+                User.Identity?.Name,
+                User.Claims
+            });
         }
 
 
@@ -97,7 +111,94 @@ namespace website_dulich_backend.Controllers
                 return NotFound();
             }
 
-            return Ok("Xóa thành công");
+            return NoContent();
+        }
+
+        [HttpGet("statistics")]
+        public async Task<IActionResult> GetStatistics()
+        {
+            var response =
+                await _tourService.GetStatisticsAsync();
+
+            return Ok(response);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPatch("{id}/status")]
+        public async Task<IActionResult> UpdateStatus(Guid id,[FromBody] UpdateTourStatusRequest request)
+        {
+            var updated = await _tourService.UpdateStatusAsync(id,request.IsActive);
+
+            if (!updated)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
+        }
+
+
+        //thay đổi trạng thái bán tour hàng loạt
+        [Authorize(Roles = "Admin")]
+        [HttpPatch("status")]
+        public async Task<IActionResult> BulkUpdateStatus([FromBody] BulkUpdateStatusRequest request)
+        {
+            try
+            {
+                var updated =
+                    await _tourService.BulkUpdateStatusAsync(
+                        request.TourIds,
+                        request.IsActive);
+
+                return Ok(new
+                {
+                    Updated = updated
+                });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new
+                {
+                    message = ex.Message
+                });
+            }
+        }
+
+        //xóa tour hàng loạt
+        [Authorize(Roles = "Admin")]
+        [HttpDelete("bulk")]
+        public async Task<IActionResult> BulkDelete([FromBody] BulkDeleteTourRequest request)
+        {
+            try
+            {
+                var deleted =
+                    await _tourService.BulkDeleteAsync(
+                        request.TourIds);
+
+                return Ok(new
+                {
+                    Deleted = deleted
+                });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new
+                {
+                    message = ex.Message
+                });
+            }
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("export")]
+        public async Task<IActionResult> ExportExcel([FromQuery] TourQueryDto query)
+        {
+            var file = await _tourService.ExportExcelAsync(query);
+
+            return File(
+                file,
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                $"Tours_{DateTime.Now:yyyyMMddHHmmss}.xlsx");
         }
     }
 }

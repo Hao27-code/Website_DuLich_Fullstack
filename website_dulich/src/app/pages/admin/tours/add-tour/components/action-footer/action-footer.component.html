@@ -15,7 +15,7 @@
     [disabled]="loading"
     (click)="onSave()">
 
-    {{ loading ? 'Đang lưu...' : 'Lưu tour' }}
+    {{ isEditMode ? 'Cập nhật Tour' : 'Thêm Tour' }}
 
   </button>
 

@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { IonContent } from '@ionic/angular/standalone';
 
@@ -42,12 +42,18 @@ import { DialogService } from '../../../../shared/services/dialog.service';
     TourFormComponent,
   ],
 })
-export class AddTourComponent {
+export class AddTourComponent implements OnInit {
   private readonly tourService = inject(TourService);
   private readonly router = inject(Router);
   private readonly uploadService = inject(UploadService);
   private readonly dialogService = inject(DialogService);
+  private readonly route = inject(ActivatedRoute);
+
   isSaving = false;
+  isEditMode = false;
+
+  tourId = '';
+
   imagePreview = '';
   selectedFile: File | null = null;
   tour: CreateTourRequest = {
@@ -67,6 +73,35 @@ export class AddTourComponent {
     tripType: '',
     difficulty: '',
   };
+
+  ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (id) {
+      this.isEditMode = true;
+      this.tourId = id;
+      this.loadTour();
+    }
+  }
+  loadTour(): void {
+    this.tourService.getTourById(this.tourId).subscribe({
+      next: (tour) => {
+        this.tour = {
+          ...tour,
+        };
+
+        this.imagePreview = tour.coverImage
+          ? `${environment.serverUrl}${tour.coverImage}`
+          : '';
+      },
+
+      error: () => {
+        this.dialogService.error('Lỗi', 'Không thể tải thông tin tour.');
+
+        this.router.navigate(['/admin/tours']);
+      },
+    });
+  }
 
   onFileSelected(file: File): void {
     this.selectedFile = file;
@@ -94,12 +129,20 @@ export class AddTourComponent {
     this.normalizeData();
 
     this.isSaving = true;
+    const request = this.isEditMode
+      ? this.tourService.updateTour(this.tourId, this.tour)
+      : this.tourService.createTour(this.tour);
 
-    this.tourService.createTour(this.tour).subscribe({
+    request.subscribe({
       next: () => {
         this.isSaving = false;
 
-        this.dialogService.success('Thành công', 'Đã thêm tour thành công.');
+        this.dialogService.success(
+          'Thành công',
+          this.isEditMode
+            ? 'Cập nhật tour thành công.'
+            : 'Thêm tour thành công.',
+        );
 
         setTimeout(() => {
           this.router.navigate(['/admin/tours']);
@@ -108,6 +151,7 @@ export class AddTourComponent {
 
       error: (err) => {
         this.isSaving = false;
+
         this.handleApiError(err.status);
       },
     });

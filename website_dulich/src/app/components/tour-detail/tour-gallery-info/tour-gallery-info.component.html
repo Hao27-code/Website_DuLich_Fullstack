@@ -26,10 +26,10 @@
       speed="800">
 
       <swiper-slide
-        *ngFor="let img of tour.images">
+        *ngFor="let img of tour.albumImages">
 
         <img
-          [src]="img.imageUrl"
+          [src]="serverUrl + img"
           [alt]="tour.title">
 
       </swiper-slide>

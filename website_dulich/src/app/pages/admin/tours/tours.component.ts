@@ -12,6 +12,8 @@ import { DialogService } from '../../../shared/services/dialog.service';
 import { TourResponse } from '../../../core/models/tour-response.model';
 import { TourFilter } from '../../../core/models/tour-filter.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
+import { TourStatisticsResponse } from '../../../core/models/tour-statistics-response.model';
 
 @Component({
   selector: 'app-tours',
@@ -53,6 +55,8 @@ export class ToursComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadTours();
+
+    this.loadStatistics();
   }
 
   loadTours(): void {
@@ -70,6 +74,8 @@ export class ToursComponent implements OnInit {
           this.totalPages = response.totalPages;
 
           this.currentPage = response.page;
+
+          this.resetSelection();
         },
 
         error: () => {
@@ -81,9 +87,195 @@ export class ToursComponent implements OnInit {
         },
       });
   }
-  toggleAll(checked: boolean): void {
-    this.allSelected = checked;
 
+  exportExcel(): void {
+    this.tourService.exportExcel(this.query).subscribe({
+      next: (blob) => {
+        const url = window.URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+
+        link.href = url;
+        link.download = `Tours.xlsx`;
+
+        link.click();
+
+        window.URL.revokeObjectURL(url);
+      },
+
+      error: () => {
+        this.dialogService.error('Lỗi', 'Không thể xuất file Excel.');
+      },
+    });
+  }
+
+  private readonly router = inject(Router);
+
+  goToAddTour(): void {
+    this.router.navigate(['/admin/tours/add']);
+  }
+  readonly pageSize = 10;
+  onFilterChanged(filter: TourFilter): void {
+    this.query = {
+      ...filter,
+      page: 1,
+      limit: this.pageSize,
+    };
+
+    this.loadTours();
+  }
+
+  previousPage(): void {
+    if (this.currentPage <= 1) {
+      return;
+    }
+
+    this.query.page = this.currentPage - 1;
+
+    this.loadTours();
+  }
+  nextPage(): void {
+    if (this.currentPage >= this.totalPages) {
+      return;
+    }
+
+    this.query.page = this.currentPage + 1;
+
+    this.loadTours();
+  }
+  statistics: TourStatisticsResponse = {
+    totalTours: 0,
+
+    activeTours: 0,
+
+    upcomingTours: 0,
+
+    inactiveTours: 0,
+  };
+
+  loadStatistics(): void {
+    this.tourService
+      .getStatistics()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (response) => {
+          this.statistics = response;
+        },
+
+        error: () => {
+          this.dialogService.error('Lỗi', 'Không thể tải thống kê.');
+        },
+      });
+  }
+  bulkDelete(ids: string[]): void {
+    if (ids.length === 0) {
+      return;
+    }
+
+    this.dialogService.confirm({
+      title: 'Xóa tour',
+
+      message: `Bạn có chắc muốn xóa ${ids.length} tour đã chọn?`,
+
+      confirmText: 'Xóa',
+
+      cancelText: 'Hủy',
+
+      onConfirm: () => {
+        this.tourService
+          .bulkDelete(ids)
+          .pipe(takeUntilDestroyed(this.destroyRef))
+          .subscribe({
+            next: () => {
+              this.dialogService.success('Thành công', 'Đã xóa tour.');
+
+              this.resetSelection();
+
+              this.loadTours();
+
+              this.loadStatistics();
+            },
+
+            error: () => {
+              this.dialogService.error('Lỗi', 'Không thể xóa tour.');
+            },
+          });
+      },
+    });
+  }
+  bulkActivate(ids: string[]): void {
+    if (!ids.length) {
+      return;
+    }
+
+    this.dialogService.confirm({
+      title: 'Mở bán tour',
+
+      message: `Mở bán ${ids.length} tour đã chọn?`,
+
+      confirmText: 'Đồng ý',
+
+      cancelText: 'Hủy',
+
+      onConfirm: () => {
+        this.tourService
+          .bulkUpdateStatus(ids, true)
+          .pipe(takeUntilDestroyed(this.destroyRef))
+          .subscribe({
+            next: () => {
+              this.dialogService.success('Thành công', 'Đã mở bán tour.');
+
+              this.resetSelection();
+
+              this.loadTours();
+
+              this.loadStatistics();
+            },
+
+            error: () => {
+              this.dialogService.error('Lỗi', 'Không thể xóa tour.');
+            },
+          });
+      },
+    });
+  }
+  bulkDeactivate(ids: string[]): void {
+    if (!ids.length) {
+      return;
+    }
+
+    this.dialogService.confirm({
+      title: 'Ngừng bán',
+
+      message: `Ngừng bán ${ids.length} tour đã chọn?`,
+
+      confirmText: 'Đồng ý',
+
+      cancelText: 'Hủy',
+
+      onConfirm: () => {
+        this.tourService
+          .bulkUpdateStatus(ids, false)
+          .pipe(takeUntilDestroyed(this.destroyRef))
+          .subscribe({
+            next: () => {
+              this.dialogService.success('Thành công', 'Đã ngừng bán tour.');
+
+              this.resetSelection();
+
+              this.loadTours();
+
+              this.loadStatistics();
+            },
+
+            error: () => {
+              this.dialogService.error('Lỗi', 'Không thể xóa tour.');
+            },
+          });
+      },
+    });
+  }
+  onToggleAll(checked: boolean): void {
     this.selectedTours.clear();
 
     if (checked) {
@@ -92,18 +284,26 @@ export class ToursComponent implements OnInit {
       });
     }
 
-    this.selectedTours = new Set(this.selectedTours);
+    this.allSelected = checked;
   }
-
-  toggleTour(id: string, checked: boolean): void {
-    if (checked) {
-      this.selectedTours.add(id);
+  onToggleTour(event: { id: string; checked: boolean }): void {
+    if (event.checked) {
+      this.selectedTours.add(event.id);
     } else {
-      this.selectedTours.delete(id);
+      this.selectedTours.delete(event.id);
     }
 
-    this.selectedTours = new Set(this.selectedTours);
+    this.allSelected =
+      this.tours.length > 0 && this.selectedTours.size === this.tours.length;
+  }
 
-    this.allSelected = this.selectedTours.size === this.tours.length;
+  private resetSelection(): void {
+    this.selectedTours.clear();
+
+    this.allSelected = false;
+  }
+
+  editTour(id: string): void {
+    this.router.navigate(['/admin/tours/edit', id]);
   }
 }

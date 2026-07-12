@@ -10,6 +10,7 @@ import { environment } from '../../../environments/environment';
 import { CreateTourRequest } from '../models/create-tour-request.model';
 import { TourListResponse } from '../models/tour-list-response.model';
 import { UpdateTourRequest } from '../models/update-tour-request.model';
+import { TourStatisticsResponse } from '../models/tour-statistics-response.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -73,7 +74,7 @@ export class TourService {
     ======================= */
 
     if (filters.keyword) {
-      params = params.set('keyword', filters.keyword);
+      params = params.set('keyword', filters.keyword ?? '');
     }
 
     if (filters.activities && filters.activities.length > 0) {
@@ -146,5 +147,54 @@ export class TourService {
   }
   deleteTour(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  // trạng thái bán tour
+  updateStatus(id: string, isActive: boolean): Observable<void> {
+    return this.http.patch<void>(`${this.apiUrl}/${id}/status`, {
+      isActive,
+    });
+  }
+
+  //thay đổi trạng thái bán tour hàng loạt
+  bulkUpdateStatus(
+    ids: string[],
+    isActive: boolean,
+  ): Observable<{ updated: number }> {
+    return this.http.patch<{ updated: number }>(`${this.apiUrl}/status`, {
+      tourIds: ids,
+      isActive,
+    });
+  }
+
+  bulkDelete(ids: string[]): Observable<{ deleted: number }> {
+    return this.http.request<{ deleted: number }>(
+      'DELETE',
+      `${this.apiUrl}/bulk`,
+      {
+        body: {
+          tourIds: ids,
+        },
+      },
+    );
+  }
+
+  exportExcel(filters: TourFilter): Observable<Blob> {
+    let params = new HttpParams();
+
+    if (filters.keyword) {
+      params = params.set('keyword', filters.keyword);
+    }
+
+    // Thêm các filter khác giống getTours()
+
+    return this.http.get(`${this.apiUrl}/export`, {
+      params,
+      responseType: 'blob',
+    });
+  }
+
+  getStatistics(): Observable<TourStatisticsResponse> {
+    return this.http.get<TourStatisticsResponse>(`${this.apiUrl}/statistics`);
   }
 }

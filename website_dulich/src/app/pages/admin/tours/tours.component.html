@@ -1,14 +1,22 @@
+
 <ion-content>
   <app-admin-header></app-admin-header>
   <div class="page-content">
 
     <app-breadcrumb></app-breadcrumb>
 
-    <app-tour-toolbar></app-tour-toolbar>
+    <app-tour-toolbar
+      (export)="exportExcel()"
+      (add)="goToAddTour()">
+    </app-tour-toolbar>
 
-    <app-tour-summary-cards></app-tour-summary-cards>
+    <app-tour-summary-cards
+      [statistics]="statistics">
+    </app-tour-summary-cards>
 
-    <app-tour-filter-bar></app-tour-filter-bar>
+    <app-tour-filter-bar
+      (filterChanged)="onFilterChanged($event)">
+    </app-tour-filter-bar>
 
     <app-tour-table
 
@@ -16,19 +24,33 @@
 
       [loading]="loading"
 
-      [totalItems]="totalItems"
-
       [currentPage]="currentPage"
 
+      [pageSize]="query.limit ?? 10"
+
       [totalPages]="totalPages"
+
+      [totalItems]="totalItems"
 
       [selectedTours]="selectedTours"
 
       [allSelected]="allSelected"
 
-      (toggleAllEvent)="toggleAll($event)"
+      (edit)="editTour($event)"
 
-      (toggleTourEvent)="toggleTour($event.id, $event.checked)">
+      (toggleAllEvent)="onToggleAll($event)"
+
+      (toggleTourEvent)="onToggleTour($event)"
+
+      (bulkDelete)="bulkDelete($event)"
+
+      (bulkActivate)="bulkActivate($event)"
+
+      (bulkDeactivate)="bulkDeactivate($event)"
+
+      (previous)="previousPage()"
+
+      (next)="nextPage()">
 
     </app-tour-table>
   </div>

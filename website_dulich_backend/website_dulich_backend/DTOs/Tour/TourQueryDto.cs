@@ -18,6 +18,8 @@ public class TourQueryDto
 
     public string? Difficulty { get; set; }
 
+    public bool? IsActive { get; set; }
+
     public string? Sort { get; set; }
 
     public int Page { get; set; } = 1;

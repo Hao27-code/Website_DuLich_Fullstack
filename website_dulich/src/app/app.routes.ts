@@ -109,6 +109,7 @@ export const routes: Routes = [
         (m) => m.ResetPasswordPage,
       ),
   },
+
   //================ ADMIN ===================
 
   {
@@ -153,8 +154,8 @@ export const routes: Routes = [
       {
         path: 'tours/edit/:id',
         loadComponent: () =>
-          import('./pages/admin/tours/edit-tour/edit-tour.component').then(
-            (m) => m.EditTourComponent,
+          import('./pages/admin/tours/add-tour/add-tour.component').then(
+            (c) => c.AddTourComponent,
           ),
       },
       {

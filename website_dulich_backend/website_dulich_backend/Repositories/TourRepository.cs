@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using ClosedXML.Excel;
+using Microsoft.EntityFrameworkCore;
 using website_dulich_backend.Data;
 using website_dulich_backend.DTOs.Tour;
 using website_dulich_backend.Models;
@@ -61,10 +63,33 @@ namespace website_dulich_backend.Repositories
                 Difficulty = tour.Difficulty
             };
         }
-
-        public async Task<(List<TourResponse>, int total)> GetToursAsync(TourQueryDto query)
+        private IQueryable<Tour> BuildTourQuery(TourQueryDto query)
         {
-            IQueryable<Tour> tours = _context.Tours.Include(t => t.Images).AsQueryable();
+            IQueryable<Tour> tours = _context.Tours
+           .AsNoTracking()
+           .Include(t => t.Images)
+           .Include(t => t.Highlights)
+           .Include(t => t.Itineraries)
+           .Include(t => t.Faqs)
+           .AsQueryable();
+
+
+
+            // ======================
+            // Search
+            // ======================
+
+            if (!string.IsNullOrWhiteSpace(query.Keyword))
+            {
+                var keyword = query.Keyword.Trim();
+
+                tours = tours.Where(t =>
+                    EF.Functions.Like(t.Title, $"%{keyword}%") ||
+                    EF.Functions.Like(t.Location, $"%{keyword}%") ||
+                    EF.Functions.Like(t.TripType, $"%{keyword}%") ||
+                    EF.Functions.Like(t.Description, $"%{keyword}%"));
+            }
+
 
             /* destination */
 
@@ -107,12 +132,36 @@ namespace website_dulich_backend.Repositories
                     t.Days <= query.MaxDays);
             }
 
-            /* keyword */
+            /* activities */
 
-            if (!string.IsNullOrEmpty(query.Keyword))
+            if (query.Activities != null && query.Activities.Any())
             {
                 tours = tours.Where(t =>
-                    t.Title.Contains(query.Keyword) || t.Description.Contains(query.Keyword));
+                    query.Activities.Contains(t.Activities!));
+            }
+
+            /* trip type */
+
+            if (query.TripTypes != null && query.TripTypes.Any())
+            {
+                tours = tours.Where(t =>
+                    query.TripTypes.Contains(t.TripType!));
+            }
+
+            /* difficulty */
+
+            if (!string.IsNullOrWhiteSpace(query.Difficulty))
+            {
+                tours = tours.Where(t =>
+                    t.Difficulty == query.Difficulty);
+            }
+
+            /* status */
+
+            if (query.IsActive.HasValue)
+            {
+                tours = tours.Where(t =>
+                    t.IsActive == query.IsActive.Value);
             }
 
             /* sort */
@@ -121,12 +170,12 @@ namespace website_dulich_backend.Repositories
             switch (query.Sort?.ToLower())
             {
                 //giá tăng dần
-                case "priceAsc":
+                case "priceasc":
                     tours = tours.OrderBy(t => t.Price);
                     break;
 
                 //giá giảm dần
-                case "priceDesc":
+                case "pricedesc":
                     tours = tours.OrderByDescending(t => t.Price);
                     break;
 
@@ -146,6 +195,13 @@ namespace website_dulich_backend.Repositories
                     break;
             }
 
+
+            return tours;
+        }
+        public async Task<TourListResponse> GetToursAsync(TourQueryDto query)
+        {
+            var tours = BuildTourQuery(query);
+
             int total = await tours.CountAsync();
 
             var toursData = await tours
@@ -153,11 +209,71 @@ namespace website_dulich_backend.Repositories
             .Take(query.Limit)
             .ToListAsync();
 
-            var data = toursData
-                .Select(MapTour)
-                .ToList();
+            return new TourListResponse
+            {
+                Data = toursData.Select(MapTour).ToList(),
+                TotalItems = total,
+                Page = query.Page,
+                Limit = query.Limit,
+                TotalPages = (int)Math.Ceiling((double)total / query.Limit)
+            };
+        }
 
-            return (data, total);
+        public async Task<byte[]> ExportExcelAsync(TourQueryDto query)
+        {
+            var tours = await BuildTourQuery(query).ToListAsync();
+            if (!tours.Any())
+            {
+                throw new InvalidOperationException("Không có dữ liệu để xuất.");
+            }
+            using var workbook = new XLWorkbook();
+
+            var worksheet = workbook.Worksheets.Add("Tours");
+            worksheet.Cell(1, 1).Value = "STT";
+            worksheet.Cell(1, 2).Value = "Tên tour";
+            worksheet.Cell(1, 3).Value = "Điểm đến";
+            worksheet.Cell(1, 4).Value = "Loại tour";
+            worksheet.Cell(1, 5).Value = "Số ngày";
+            worksheet.Cell(1, 6).Value = "Giá";
+            worksheet.Cell(1, 7).Value = "Giá khuyến mãi";
+            worksheet.Cell(1, 8).Value = "Trạng thái";
+            // Ghi dữ liệu...
+            int row = 2;
+            int stt = 1;
+
+            foreach (var tour in tours)
+            {
+                worksheet.Cell(row, 1).Value = stt++;
+                worksheet.Cell(row, 2).Value = tour.Title;
+                worksheet.Cell(row, 3).Value = tour.Location;
+                worksheet.Cell(row, 4).Value = tour.TripType;
+                worksheet.Cell(row, 5).Value = tour.Days;
+                worksheet.Cell(row, 6).Value = tour.Price;
+                worksheet.Cell(row, 7).Value =tour.DiscountPrice.HasValue? tour.DiscountPrice.Value: "";
+                worksheet.Cell(row, 8).Value = tour.IsActive
+                    ? "Đang mở bán"
+                    : "Ngừng bán";
+
+                row++;
+            }
+            worksheet.RangeUsed().SetAutoFilter();
+            worksheet.SheetView.FreezeRows(1);
+            worksheet.Columns().AdjustToContents();
+            worksheet.Row(1).Style.Font.Bold = true;
+            worksheet.Row(1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+            worksheet.Row(1).Style.Fill.BackgroundColor = XLColor.LightGreen;
+            worksheet.Column(6).Style.NumberFormat.Format = "#,##0 ₫";
+            worksheet.Column(7).Style.NumberFormat.Format = "#,##0 ₫";
+            worksheet.Column(1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+
+            worksheet.Column(5).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+
+            worksheet.Column(8).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+            using var stream = new MemoryStream();
+
+            workbook.SaveAs(stream);
+
+            return stream.ToArray();
         }
 
         public async Task<TourResponse> CreateTour(CreateTourRequest request)
@@ -236,7 +352,12 @@ namespace website_dulich_backend.Repositories
         }
         public async Task<TourResponse?> UpdateTour(Guid id, UpdateTourRequest request)
         {
-            var existingTour = await _context.Tours.Include(x => x.Images).FirstOrDefaultAsync(x => x.Id == id);
+            var existingTour = await _context.Tours
+            .Include(x => x.Images)
+            .Include(x => x.Highlights)
+            .Include(x => x.Itineraries)
+            .Include(x => x.Faqs)
+            .FirstOrDefaultAsync(x => x.Id == id);
 
             if (existingTour == null)
             {
@@ -259,7 +380,6 @@ namespace website_dulich_backend.Repositories
             existingTour.UpdatedAt = DateTime.UtcNow;
 
             _context.TourImages.RemoveRange(existingTour.Images);
-
             existingTour.Images.Clear();
 
             var index = 0;
@@ -330,6 +450,7 @@ namespace website_dulich_backend.Repositories
         public async Task<TourResponse?> GetTourByIdAsync(Guid id)
         {
             var tour = await _context.Tours
+                .AsNoTracking()
                 .Include(t => t.Images)
                 .Include(t => t.Highlights)
                 .Include(t => t.Itineraries)
@@ -361,6 +482,102 @@ namespace website_dulich_backend.Repositories
             await _context.SaveChangesAsync();
 
             return true;
+        }
+
+
+        //thẻ thống kê tour
+        public async Task<TourStatisticsResponse> GetStatisticsAsync()
+        {
+            var now = DateTime.UtcNow;
+
+            return new TourStatisticsResponse
+            {
+                TotalTours = await _context.Tours.CountAsync(),
+
+                ActiveTours = await _context.Tours
+                    .CountAsync(x => x.IsActive),
+
+                InactiveTours = await _context.Tours
+                    .CountAsync(x => !x.IsActive),
+
+                DealTours = await _context.Tours
+                    .CountAsync(x =>
+                        x.DiscountPrice != null &&
+                        x.DealEndDate != null &&
+                        x.DealEndDate > now)
+            };
+        }
+
+        //trang thái mở bán/ ngừng/đang mở
+        public async Task<bool> UpdateStatusAsync(Guid id,bool isActive)
+        {
+            var tour = await _context.Tours.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (tour == null)
+            {
+                return false;
+            }
+
+            tour.IsActive = isActive;
+
+            tour.UpdatedAt = DateTime.UtcNow;
+
+            await _context.SaveChangesAsync();
+
+            return true;
+        }
+
+
+        //thay đổi trạng thái bán tour hàng loạt
+        public async Task<int> BulkUpdateStatusAsync( List<Guid> ids,bool isActive)
+        {
+            return await _context.Tours
+                .Where(x => ids.Contains(x.Id))
+                .ExecuteUpdateAsync(setters =>
+                    setters
+                        .SetProperty(x => x.IsActive, isActive)
+                        .SetProperty(
+                            x => x.UpdatedAt,
+                            DateTime.UtcNow));
+        }
+
+        //xoá tour hàng loạt
+        public async Task<int> BulkDeleteAsync(List<Guid> ids)
+        {
+            var tours = await _context.Tours
+
+                .Include(x => x.Images)
+
+                .Include(x => x.Highlights)
+
+                .Include(x => x.Itineraries)
+
+                .Include(x => x.Faqs)
+
+                .Where(x => ids.Contains(x.Id))
+
+                .ToListAsync();
+
+            if (!tours.Any())
+                return 0;
+
+            _context.TourImages.RemoveRange(
+                tours.SelectMany(x => x.Images));
+
+            _context.TourHighlights.RemoveRange(
+                tours.SelectMany(x => x.Highlights));
+
+            _context.TourItineraries.RemoveRange(
+                tours.SelectMany(x => x.Itineraries));
+
+            _context.TourFaqs.RemoveRange(
+                tours.SelectMany(x => x.Faqs));
+
+            _context.Tours.RemoveRange(tours);
+
+            await _context.SaveChangesAsync();
+
+            return tours.Count;
         }
     }
 

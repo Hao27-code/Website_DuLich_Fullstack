@@ -150,27 +150,46 @@
           <div class="activity-grid">
 
             <label class="activity-item">
-              <input type="checkbox" value="Hiking" (change)="toggleActivity($event)">
+              <input
+                type="checkbox"
+                value="Hiking"
+                [checked]="selectedActivities.includes('Hiking')"
+                (change)="toggleActivity($event)">
               <span>Hiking</span>
             </label>
 
             <label class="activity-item">
-              <input type="checkbox" value="Jungle Safari" (change)="toggleActivity($event)">
+              <input type="checkbox"
+                     value="Jungle Safari"
+                     [checked]="selectedActivities.includes('Jungle Safari')"
+                     (change)="toggleActivity($event)">
               <span>Jungle Safari</span>
             </label>
 
             <label class="activity-item">
-              <input type="checkbox" value="Peak Climbing" (change)="toggleActivity($event)">
+              <input
+                type="checkbox"
+                value="Peak Climbing"
+                [checked]="selectedActivities.includes('Peak Climbing')"
+                (change)="toggleActivity($event)">
               <span>Peak Climbing</span>
             </label>
 
             <label class="activity-item">
-              <input type="checkbox" value="Road Cycling" (change)="toggleActivity($event)">
+              <input
+                type="checkbox"
+                value="Road Cycling"
+                [checked]="selectedActivities.includes('Road Cycling')"
+                (change)="toggleActivity($event)">
               <span>Road Cycling</span>
             </label>
 
             <label class="activity-item">
-              <input type="checkbox" value="Skiing" (change)="toggleActivity($event)">
+              <input
+                type="checkbox"
+                value="Skiing"
+                [checked]="selectedActivities.includes('Skiing')"
+                (change)="toggleActivity($event)">
               <span>Skiing</span>
             </label>
 

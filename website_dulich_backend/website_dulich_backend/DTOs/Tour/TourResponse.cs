@@ -18,7 +18,7 @@
 
         public DateTime? DealEndDate { get; set; }
 
-        public string? CoverImage { get; set; }
+        public string CoverImage { get; set; }
 
         public List<string> AlbumImages { get; set; } = [];
 

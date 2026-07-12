@@ -6,7 +6,13 @@ import { IonIcon } from '@ionic/angular/standalone';
 
 import { DialogService } from '../../services/dialog.service';
 import { DialogData } from '../../models/dialog.model';
-import { close } from 'ionicons/icons';
+import {
+  close,
+  checkmarkOutline,
+  warningOutline,
+  closeOutline,
+  helpOutline,
+} from 'ionicons/icons';
 
 import { addIcons } from 'ionicons';
 @Component({
@@ -20,6 +26,10 @@ export class DialogComponent {
   constructor() {
     addIcons({
       close,
+      checkmarkOutline,
+      warningOutline,
+      closeOutline,
+      helpOutline,
     });
   }
   readonly dialogService = inject(DialogService);

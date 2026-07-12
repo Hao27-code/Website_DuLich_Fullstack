@@ -75,15 +75,10 @@ export class DialogService {
 
   confirm(options: {
     title: string;
-
     message: string;
-
     confirmText?: string;
-
     cancelText?: string;
-
     onConfirm?: () => void;
-
     onCancel?: () => void;
   }): void {
     this.open({

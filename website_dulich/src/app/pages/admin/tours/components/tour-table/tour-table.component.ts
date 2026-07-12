@@ -32,6 +32,19 @@ export class TourTableComponent {
       closeCircleOutline,
     });
   }
+
+  @Output() bulkDelete = new EventEmitter<string[]>();
+
+  @Output() bulkActivate = new EventEmitter<string[]>();
+
+  @Output() bulkDeactivate = new EventEmitter<string[]>();
+
+  @Output() previous = new EventEmitter<void>();
+
+  @Output() next = new EventEmitter<void>();
+
+  @Output() edit = new EventEmitter<string>();
+
   @Input() tours: TourResponse[] = [];
 
   @Input() loading = false;
@@ -71,5 +84,37 @@ export class TourTableComponent {
       id,
       checked,
     });
+  }
+
+  private readonly apiUrl = 'https://localhost:7040';
+
+  getImageUrl(path?: string): string {
+    if (!path) return 'assets/images/no-image.png';
+
+    if (path.startsWith('http')) return path;
+
+    return this.apiUrl + path;
+  }
+
+  previousPage(): void {
+    this.previous.emit();
+  }
+
+  nextPage(): void {
+    this.next.emit();
+  }
+
+  deleteSelected(): void {
+    this.bulkDelete.emit([...this.selectedTours]);
+  }
+  activateSelected(): void {
+    this.bulkActivate.emit([...this.selectedTours]);
+  }
+  deactivateSelected(): void {
+    this.bulkDeactivate.emit([...this.selectedTours]);
+  }
+
+  editTour(id: string): void {
+    this.edit.emit(id);
   }
 }

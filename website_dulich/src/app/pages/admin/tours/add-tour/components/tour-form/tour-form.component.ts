@@ -30,7 +30,7 @@ import { ActionFooterComponent } from '../action-footer/action-footer.component'
 })
 export class TourFormComponent {
   @Input({ required: true }) tour!: CreateTourRequest;
-
+  @Input() isEditMode = false;
   @Input() imagePreview = '';
 
   @Input() selectedFile: File | null = null;

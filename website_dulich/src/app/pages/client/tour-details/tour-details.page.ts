@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { TourGalleryInfoComponent } from '../../../components/tour-detail/tour-gallery-info/tour-gallery-info.component';
 import { ActivatedRoute } from '@angular/router';
 import { TourService } from 'src/app/core/services/tour.service';
-import { Tour } from 'src/app/core/models/tour.model';
 import { PageBannerComponent } from '../../../components/page-banner/page-banner.component';
 import { TourTabsComponent } from '../../../components/tour-detail/tour-tabs/tour-tabs.component';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { TourResponse } from '../../../core/models/tour-response.model';
 
 @Component({
   selector: 'app-tour-details',
@@ -30,7 +30,8 @@ import { IonicModule } from '@ionic/angular';
   ],
 })
 export class TourDetailsPage implements OnInit {
-  tour?: Tour;
+  @Input({ required: true })
+  tour!: TourResponse;
   constructor(
     private route: ActivatedRoute,
     private tourService: TourService,

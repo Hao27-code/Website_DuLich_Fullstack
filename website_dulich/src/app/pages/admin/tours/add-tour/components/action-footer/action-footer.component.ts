@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ActionFooterComponent {
   @Input() loading = false;
-
+  @Input() isEditMode = false;
   @Output() save = new EventEmitter<void>();
 
   @Output() cancelClicked = new EventEmitter<void>();

@@ -5,6 +5,7 @@ import { addIcons } from 'ionicons';
 import { imageOutline, checkmarkOutline } from 'ionicons/icons';
 import { CreateTourRequest } from '../../../../../../core/models/create-tour-request.model';
 import { IonIcon } from '@ionic/angular/standalone';
+import { OnChanges, SimpleChanges } from '@angular/core';
 @Component({
   selector: 'app-basic-info',
   standalone: true,
@@ -12,7 +13,7 @@ import { IonIcon } from '@ionic/angular/standalone';
   templateUrl: './basic-info.component.html',
   styleUrl: './basic-info.component.scss',
 })
-export class BasicInfoComponent {
+export class BasicInfoComponent implements OnChanges {
   constructor() {
     addIcons({
       imageOutline,
@@ -28,6 +29,13 @@ export class BasicInfoComponent {
   /** Danh sách hoạt động đang được chọn */
   selectedActivities: string[] = [];
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['tour'] && this.tour.activities) {
+      this.selectedActivities = this.tour.activities
+        .split(',')
+        .map((x) => x.trim());
+    }
+  }
   emitSelectedFile(event: Event): void {
     const input = event.target as HTMLInputElement;
 

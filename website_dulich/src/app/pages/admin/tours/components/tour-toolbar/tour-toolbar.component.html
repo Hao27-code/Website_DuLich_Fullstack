@@ -10,7 +10,10 @@
 
   <div class="toolbar-right">
 
-    <button class="btn btn-outline" type="button">
+    <button
+      class="btn btn-outline"
+      type="button"
+      (click)="onExport()">
 
       <ion-icon name="download-outline"></ion-icon>
 
@@ -18,15 +21,10 @@
 
     </button>
 
-    <button class="btn btn-outline" type="button">
-
-      <ion-icon name="filter-outline"></ion-icon>
-
-      <span>Bộ lọc</span>
-
-    </button>
-
-    <button class="btn btn-primary" type="button">
+    <button
+      class="btn btn-primary"
+      type="button"
+      (click)="onAdd()">
 
       <ion-icon name="add-outline"></ion-icon>
 
