@@ -35,19 +35,27 @@ export class TourFilterBarComponent {
     });
   }
 
-  query: TourFilter = {};
+  query: TourFilter = {
+    keyword: '',
+    isActive: null,
+    sort: '',
+    page: 1,
+    limit: 10,
+  };
   @Output() filterChanged = new EventEmitter<TourFilter>();
 
   applyFilter(): void {
     this.filterChanged.emit({ ...this.query });
   }
   resetFilter(): void {
-    this.query = {};
-
-    this.filterChanged.emit({
+    this.query = {
+      keyword: '',
+      isActive: null,
+      sort: '',
       page: 1,
-
       limit: 10,
-    });
+    };
+
+    this.filterChanged.emit({ ...this.query });
   }
 }

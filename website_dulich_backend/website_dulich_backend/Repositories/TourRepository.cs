@@ -303,6 +303,7 @@ namespace website_dulich_backend.Repositories
             {
                 tour.Images.Add(new TourImage
                 {
+                    TourId = tour.Id,
                     ImageUrl = image,
                     SortOrder = sortOrder++
                 });
@@ -316,6 +317,7 @@ namespace website_dulich_backend.Repositories
             {
                 tour.Highlights.Add(new TourHighlight
                 {
+                    TourId = tour.Id,
                     Content = item,
                     SortOrder = highlightOrder++
                 });
@@ -326,6 +328,7 @@ namespace website_dulich_backend.Repositories
             {
                 tour.Itineraries.Add(new TourItinerary
                 {
+                    TourId = tour.Id,
                     DayNumber = item.DayNumber,
                     Title = item.Title,
                     Description = item.Description
@@ -339,6 +342,7 @@ namespace website_dulich_backend.Repositories
             {
                 tour.Faqs.Add(new TourFaq
                 {
+                    TourId = tour.Id,
                     Question = item.Question,
                     Answer = item.Answer,
                     SortOrder = faqOrder++
@@ -353,16 +357,16 @@ namespace website_dulich_backend.Repositories
         public async Task<TourResponse?> UpdateTour(Guid id, UpdateTourRequest request)
         {
             var existingTour = await _context.Tours
-            .Include(x => x.Images)
-            .Include(x => x.Highlights)
-            .Include(x => x.Itineraries)
-            .Include(x => x.Faqs)
-            .FirstOrDefaultAsync(x => x.Id == id);
+                .FirstOrDefaultAsync(x => x.Id == id);
 
             if (existingTour == null)
             {
                 return null;
             }
+
+            // =========================
+            // Cập nhật thông tin Tour
+            // =========================
 
             existingTour.Title = request.Title;
             existingTour.Location = request.Location;
@@ -371,71 +375,98 @@ namespace website_dulich_backend.Repositories
             existingTour.DiscountPrice = request.DiscountPrice;
             existingTour.Description = request.Description;
             existingTour.DealEndDate = request.DealEndDate;
-            existingTour.CoverImage = request.CoverImage;
+            existingTour.CoverImage = request.CoverImage ?? string.Empty;
             existingTour.Activities = request.Activities;
-            existingTour.IsActive = request.IsActive;
             existingTour.TripType = request.TripType;
-
             existingTour.Difficulty = request.Difficulty;
+            existingTour.IsActive = request.IsActive;
             existingTour.UpdatedAt = DateTime.UtcNow;
 
-            _context.TourImages.RemoveRange(existingTour.Images);
-            existingTour.Images.Clear();
+            // =========================
+            // Xóa dữ liệu cũ
+            // =========================
 
-            var index = 0;
+            await _context.TourImages
+                .Where(x => x.TourId == id)
+                .ExecuteDeleteAsync();
+
+            await _context.TourHighlights
+                .Where(x => x.TourId == id)
+                .ExecuteDeleteAsync();
+
+            await _context.TourItineraries
+                .Where(x => x.TourId == id)
+                .ExecuteDeleteAsync();
+
+            await _context.TourFaqs
+                .Where(x => x.TourId == id)
+                .ExecuteDeleteAsync();
+
+            // =========================
+            // Album ảnh
+            // =========================
+
+            int imageOrder = 0;
 
             foreach (var image in request.AlbumImages)
             {
-                existingTour.Images.Add(new TourImage
+                _context.TourImages.Add(new TourImage
                 {
+                    Id = Guid.NewGuid(),
+                    TourId = id,
                     ImageUrl = image,
-                    SortOrder = index++
+                    SortOrder = imageOrder++
                 });
             }
 
+            // =========================
+            // Highlights
+            // =========================
 
-            //điểm nổi bật
-            _context.TourHighlights.RemoveRange(existingTour.Highlights);
-
-            existingTour.Highlights.Clear();
-
-            var highlightOrder = 0;
+            int highlightOrder = 0;
 
             foreach (var item in request.Highlights)
             {
-                existingTour.Highlights.Add(new TourHighlight
+                _context.TourHighlights.Add(new TourHighlight
                 {
+                    Id = Guid.NewGuid(),
+                    TourId = id,
                     Content = item,
                     SortOrder = highlightOrder++
                 });
             }
 
-            //lịch trình
-            _context.TourItineraries.RemoveRange(existingTour.Itineraries);
+            // =========================
+            // Itinerary
+            // =========================
 
-            existingTour.Itineraries.Clear();
+            int itineraryOrder = 0;
 
             foreach (var item in request.Itineraries)
             {
-                existingTour.Itineraries.Add(new TourItinerary
+                _context.TourItineraries.Add(new TourItinerary
                 {
+                    Id = Guid.NewGuid(),
+                    TourId = id,
                     DayNumber = item.DayNumber,
                     Title = item.Title,
-                    Description = item.Description
+                    Description = item.Description,
+                    SortOrder = itineraryOrder++
                 });
             }
 
-            //faq
-            _context.TourFaqs.RemoveRange(existingTour.Faqs);
+            // =========================
+            // FAQ
+            // =========================
 
-            existingTour.Faqs.Clear();
-
-            var faqOrder = 0;
+            int faqOrder = 0;
 
             foreach (var item in request.Faqs)
             {
-                existingTour.Faqs.Add(new TourFaq
+                _context.TourFaqs.Add(new TourFaq
                 {
+                    Id = Guid.NewGuid(),
+                    TourId = id,
                     Question = item.Question,
                     Answer = item.Answer,
                     SortOrder = faqOrder++
@@ -444,9 +475,8 @@ namespace website_dulich_backend.Repositories
 
             await _context.SaveChangesAsync();
 
-            return MapTour(existingTour);
+            return await GetTourByIdAsync(id);
         }
-
         public async Task<TourResponse?> GetTourByIdAsync(Guid id)
         {
             var tour = await _context.Tours

@@ -41,16 +41,20 @@ export class TourService {
        filter giá
     ======================= */
 
-    /* giá nhỏ nhất */
-
-    if (filters.minPrice !== undefined) {
+    if (filters.minPrice !== undefined && filters.minPrice !== 1299000) {
       params = params.set('minPrice', filters.minPrice);
     }
 
-    /* giá lớn nhất */
-
-    if (filters.maxPrice !== undefined) {
+    if (filters.maxPrice !== undefined && filters.maxPrice !== 2799000) {
       params = params.set('maxPrice', filters.maxPrice);
+    }
+
+    if (filters.minDays !== undefined && filters.minDays !== 0) {
+      params = params.set('minDays', filters.minDays);
+    }
+
+    if (filters.maxDays !== undefined && filters.maxDays !== 5) {
+      params = params.set('maxDays', filters.maxDays);
     }
 
     /* =======================

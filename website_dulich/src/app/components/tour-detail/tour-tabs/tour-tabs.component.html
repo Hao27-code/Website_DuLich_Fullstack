@@ -1,156 +1,107 @@
 <div class="tour-tabs">
 
-  <!-- tab menu -->
-
+  <!-- TAB -->
   <div class="tab-header">
-
-    <button
-      [class.active]="activeTab==='overview'"
-      (click)="activeTab='overview'">
-
+    <button [class.active]="activeTab==='overview'" (click)="scrollTo('overview')">
       Tổng quan
-
     </button>
-
-    <button
-      [class.active]="activeTab==='itinerary'"
-      (click)="activeTab='itinerary'">
-
+    <button [class.active]="activeTab==='itinerary'" (click)="scrollTo('itinerary')">
       Hành trình
-
     </button>
-
-    <button
-      [class.active]="activeTab==='faq'"
-      (click)="activeTab='faq'">
-
+    <button [class.active]="activeTab==='faq'" (click)="scrollTo('faq')">
       FAQs
-
     </button>
-
   </div>
 
   <!-- OVERVIEW -->
-
-  <div
-    *ngIf="activeTab==='overview'"
-    class="tab-content">
-
-    <h3>
-      Tổng quan
-    </h3>
-
-    <p>
-      {{ tour.description }}
-    </p>
-
-    <h4>
-      Điểm nổi bật
-    </h4>
-
-    <ul>
-
-      <li>
-        Khám phá vẻ đẹp thiên nhiên
-        {{ tour.location }}
-      </li>
-
-      <li *ngIf="tour.activities">
-        Hoạt động:
-        {{ tour.activities }}
-      </li>
-
-      <li *ngIf="tour.tripType">
-        Loại tour:
-        {{ tour.tripType }}
-      </li>
-
-      <li *ngIf="tour.difficulty">
-        Độ khó:
-        {{ tour.difficulty }}
-      </li>
-
+  <section id="overview" class="tab-section">
+    <h2>Tổng quan</h2>
+    <p class="description">{{tour.description}}</p>
+    <h3>Điểm nổi bật</h3>
+    <ul class="highlight-list">
+      <li *ngFor="let item of tour.highlights">{{item}}</li>
     </ul>
-
-  </div>
+  </section>
 
   <!-- ITINERARY -->
-
-  <div
-    *ngIf="activeTab==='itinerary'"
-    class="tab-content">
-
-    <h3>
-      Hành trình
-    </h3>
+  <section id="itinerary" class="tab-section">
+    <div class="itinerary-header">
+      <h2>Hành trình</h2>
+      <div class="expand-all">
+        <span>Mở rộng</span>
+        <label class="switch">
+          <input
+            type="checkbox"
+            [checked]="expandAll"
+            (change)="toggleAll()">
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
 
     <div class="timeline">
-
       <div
-        *ngFor="
-          let day of [].constructor(
-            tour.days
-          );
-          let i=index
-        "
-        class="timeline-item">
+        class="timeline-item"
+        *ngFor="let item of tour.itineraries; let first = first; let last = last; trackBy: trackByFn">
 
-        <div class="dot"></div>
+        <!-- Dấu chấm tròn -->
+        <div class="marker">
+          <div class="dot" [class.dot-big]="first || last">
+            <ion-icon *ngIf="first || last" name="location-outline"></ion-icon>
+          </div>
+        </div>
 
-        <div>
+        <!-- Nội dung -->
+        <div class="content">
+          <div class="title-row" (click)="toggle(item)">
+            <h3>Ngày {{item.dayNumber | number:'2.0'}} : {{item.title}}</h3>
+            <button class="toggle-btn">
+              <ion-icon [name]="item.expanded ? 'remove-circle-outline' : 'add-circle-outline'"></ion-icon>
+            </button>
+          </div>
 
-          <h4>
-            Ngày {{ i+1 }}
-          </h4>
-
-          <p>
-            Hành trình khám phá
-            {{ tour.location }}
-          </p>
-
+          <div class="description" [class.show]="item.expanded">
+            <div class="description-content" *ngIf="item.expanded">
+              <div *ngFor="let line of item.descriptionLines" class="desc-line">
+                <span class="bullet">•</span>
+                <span>{{ line }}</span>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
-
     </div>
-
-  </div>
+  </section>
 
   <!-- FAQ -->
-
-  <div
-    *ngIf="activeTab==='faq'"
-    class="tab-content">
-
-    <h3>
-      FAQs
-    </h3>
-
-    <div class="faq-item">
-
-      <h4>
-        Tour này bao gồm gì?
-      </h4>
-
-      <p>
-        Bao gồm dịch vụ cơ bản và
-        trải nghiệm tham quan.
-      </p>
-
+  <section id="faq" class="tab-section">
+    <div class="faq-header">
+      <h2>FAQs</h2>
+      <div class="expand-all">
+        <span>Mở rộng</span>
+        <label class="switch">
+          <input
+            type="checkbox"
+            [checked]="expandAllFaq"
+            (change)="toggleAllFaq()">
+          <span class="slider"></span>
+        </label>
+      </div>
     </div>
 
-    <div class="faq-item">
-
-      <h4>
-        Có phù hợp cho gia đình?
-      </h4>
-
-      <p>
-        Có, phù hợp nhiều đối tượng.
-      </p>
-
+    <div class="faq-list">
+      <div class="faq-item" *ngFor="let faq of tour.faqs; let i = index">
+        <div class="faq-title-row" (click)="toggleFaq(i)">
+          <summary>{{faq.question}}</summary>
+          <button class="toggle-btn">
+            <ion-icon [name]="faq.expanded ? 'remove-circle-outline' : 'add-circle-outline'"></ion-icon>
+          </button>
+        </div>
+        <div class="faq-answer" [class.show]="faq.expanded">
+          <p>{{faq.answer}}</p>
+        </div>
+      </div>
     </div>
-
-  </div>
-
+  </section>
 </div>

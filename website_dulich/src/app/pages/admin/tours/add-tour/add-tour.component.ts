@@ -48,7 +48,7 @@ export class AddTourComponent implements OnInit {
   private readonly uploadService = inject(UploadService);
   private readonly dialogService = inject(DialogService);
   private readonly route = inject(ActivatedRoute);
-
+  hasChanges = false;
   isSaving = false;
   isEditMode = false;
 
@@ -88,6 +88,9 @@ export class AddTourComponent implements OnInit {
       next: (tour) => {
         this.tour = {
           ...tour,
+          dealEndDate: tour.dealEndDate
+            ? tour.dealEndDate.slice(0, 10)
+            : undefined,
         };
 
         this.imagePreview = tour.coverImage
@@ -120,7 +123,9 @@ export class AddTourComponent implements OnInit {
       },
     });
   }
-
+  markAsChanged(): void {
+    this.hasChanges = true;
+  }
   saveTour(): void {
     if (!this.validateForm()) {
       return;
@@ -135,6 +140,7 @@ export class AddTourComponent implements OnInit {
 
     request.subscribe({
       next: () => {
+        this.hasChanges = false;
         this.isSaving = false;
 
         this.dialogService.success(
@@ -347,18 +353,35 @@ export class AddTourComponent implements OnInit {
     return true;
   }
   cancel(): void {
-    this.router.navigate(['/admin/tours']);
+    if (!this.hasChanges) {
+      this.router.navigate(['/admin/tours']);
+      return;
+    }
+
+    this.dialogService.confirm({
+      title: 'Hủy chỉnh sửa',
+      message: 'Các thay đổi chưa được lưu. Bạn có chắc muốn thoát?',
+      confirmText: 'Thoát',
+      cancelText: 'Ở lại',
+      onConfirm: () => {
+        this.router.navigate(['/admin/tours']);
+      },
+    });
   }
   onAlbumChanged(urls: string[]) {
     this.tour.albumImages = [...urls];
+    this.markAsChanged();
   }
   onHighlightsChanged(items: string[]) {
     this.tour.highlights = [...items];
+    this.markAsChanged();
   }
   onItinerariesChanged(items: ItineraryItem[]) {
     this.tour.itineraries = [...items];
+    this.markAsChanged();
   }
   onFaqsChanged(items: FaqItem[]) {
     this.tour.faqs = [...items];
+    this.markAsChanged();
   }
 }

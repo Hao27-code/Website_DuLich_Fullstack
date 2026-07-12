@@ -4,7 +4,7 @@
     //FAQs
     public class TourFaq
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public Guid TourId { get; set; }
 

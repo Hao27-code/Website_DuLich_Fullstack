@@ -4,4 +4,7 @@ export interface ItineraryItem {
   title: string;
 
   description: string;
+
+  expanded?: boolean;
+  descriptionLines?: string[];
 }

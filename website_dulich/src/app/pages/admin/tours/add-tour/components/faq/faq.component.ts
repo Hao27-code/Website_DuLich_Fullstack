@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FaqItem } from '../../../../../../core/models/faq-item.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -40,7 +48,7 @@ import { addIcons } from 'ionicons';
     CdkDropList,
   ],
 })
-export class FaqComponent implements OnInit {
+export class FaqComponent implements OnChanges {
   constructor() {
     addIcons({
       addOutline,
@@ -63,8 +71,10 @@ export class FaqComponent implements OnInit {
 
   newQuestion = '';
   newAnswer = '';
-  ngOnInit() {
-    this.faqs = [...this.items];
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['items']) {
+      this.faqs = [...this.items];
+    }
   }
   faqs: FaqItem[] = [];
 

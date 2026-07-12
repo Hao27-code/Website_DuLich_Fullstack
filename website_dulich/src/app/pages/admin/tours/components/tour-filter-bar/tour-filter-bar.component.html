@@ -14,8 +14,13 @@
     </div>
 
     <!-- Trạng thái -->
-    <select class="filter-select">
-      <option [ngValue]="undefined">
+    <select
+      class="filter-select"
+      [(ngModel)]="query.isActive">
+
+      <option [ngValue]="null"
+              disabled
+              hidden>
         Trạng thái
       </option>
 
@@ -26,19 +31,36 @@
       <option [ngValue]="false">
         Ngừng bán
       </option>
+
     </select>
 
     <!-- Sắp xếp -->
-    <select class="filter-select"
-            [(ngModel)]="query.sort">
-      <option value="" selected disabled hidden>
+    <select
+      class="filter-select"
+      [(ngModel)]="query.sort">
+
+      <option value=""
+              disabled
+              hidden>
         Sắp xếp
       </option>
 
-      <option value="newest">Mới nhất</option>
-      <option value="oldest">Cũ nhất</option>
-      <option value="priceAsc">Giá tăng dần</option>
-      <option value="priceDesc">Giá giảm dần</option>
+      <option value="newest">
+        Mới nhất
+      </option>
+
+      <option value="oldest">
+        Cũ nhất
+      </option>
+
+      <option value="priceAsc">
+        Giá tăng dần
+      </option>
+
+      <option value="priceDesc">
+        Giá giảm dần
+      </option>
+
     </select>
 
     <!-- Button -->

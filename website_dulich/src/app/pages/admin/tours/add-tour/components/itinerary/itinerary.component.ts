@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { ItineraryItem } from '../../../../../../core/models/itinerary-item.model';
 import {
   CdkDrag,
@@ -40,7 +48,7 @@ import { FormsModule } from '@angular/forms';
     CdkDropList,
   ],
 })
-export class ItineraryComponent implements OnInit {
+export class ItineraryComponent implements OnChanges {
   constructor() {
     addIcons({
       addOutline,
@@ -70,8 +78,10 @@ export class ItineraryComponent implements OnInit {
     description: '',
   };
 
-  ngOnInit() {
-    this.itineraries = [...this.items];
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['items']) {
+      this.itineraries = [...this.items];
+    }
   }
   itineraries: ItineraryItem[] = [];
 

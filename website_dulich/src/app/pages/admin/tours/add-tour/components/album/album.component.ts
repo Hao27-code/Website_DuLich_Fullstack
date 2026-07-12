@@ -4,8 +4,9 @@ import {
   EventEmitter,
   inject,
   Input,
-  OnInit,
+  OnChanges,
   Output,
+  SimpleChanges,
 } from '@angular/core';
 import { AlbumImage } from '../../../../../../core/models/album-image.model';
 import { UploadService } from '../../../../../../core/services/upload.service';
@@ -16,17 +17,18 @@ import { UploadService } from '../../../../../../core/services/upload.service';
   templateUrl: './album.component.html',
   styleUrl: './album.component.scss',
 })
-export class AlbumComponent implements OnInit {
+export class AlbumComponent implements OnChanges {
   private readonly uploadService = inject(UploadService);
   @Input() images: string[] = [];
   @Output() albumChanged = new EventEmitter<string[]>();
 
-  ngOnInit(): void {
-    this.albumImages = this.images.map((url) => ({
-      preview: url,
-
-      url: url,
-    }));
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['images']) {
+      this.albumImages = this.images.map((url) => ({
+        preview: url,
+        url,
+      }));
+    }
   }
 
   albumImages: AlbumImage[] = [];

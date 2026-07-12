@@ -11,7 +11,7 @@ import {
   checkmarkOutline,
   warningOutline,
   closeOutline,
-  helpOutline,
+  alertCircle,
 } from 'ionicons/icons';
 
 import { addIcons } from 'ionicons';
@@ -29,7 +29,7 @@ export class DialogComponent {
       checkmarkOutline,
       warningOutline,
       closeOutline,
-      helpOutline,
+      alertCircle,
     });
   }
   readonly dialogService = inject(DialogService);

@@ -19,11 +19,13 @@
 
     (faqsChanged)="tour.faqs = $event"
 
+    [isEditMode]="isEditMode"
+
     (save)="saveTour()"
 
     (cancelClicked)="cancel()"
 
-    [isEditMode]="isEditMode">
+    >
   </app-tour-form>
   </div>
 </ion-content>

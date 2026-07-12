@@ -90,13 +90,11 @@ export class ToursPage implements OnInit {
 
       /* default slider */
 
-      this.filters.minPrice ??= 1299000;
+      this.filters.minPrice ??= undefined;
+      this.filters.maxPrice ??= undefined;
 
-      this.filters.maxPrice ??= 2799000;
-
-      this.filters.minDays ??= 0;
-
-      this.filters.maxDays ??= 5;
+      this.filters.minDays ??= undefined;
+      this.filters.maxDays ??= undefined;
 
       // update slider position
       this.updateSliderPercents();
@@ -293,9 +291,8 @@ export class ToursPage implements OnInit {
     const priceMin = 1299000;
     const priceMax = 2799000;
 
-    const minPrice = this.filters.minPrice ?? priceMin;
-
-    const maxPrice = this.filters.maxPrice ?? priceMax;
+    const minPrice = this.filters.minPrice ?? 1299000;
+    const maxPrice = this.filters.maxPrice ?? 2799000;
 
     const minDays = this.filters.minDays ?? 0;
 

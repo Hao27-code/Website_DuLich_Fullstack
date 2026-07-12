@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
   CdkDrag,
@@ -38,7 +45,7 @@ import { addIcons } from 'ionicons';
   templateUrl: './highlights.component.html',
   styleUrls: ['./highlights.component.scss'],
 })
-export class HighlightsComponent {
+export class HighlightsComponent implements OnChanges {
   constructor() {
     addIcons({
       addOutline,
@@ -56,8 +63,10 @@ export class HighlightsComponent {
   @Output()
   highlightsChanged = new EventEmitter<string[]>();
 
-  ngOnInit() {
-    this.highlights = [...this.items];
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['items']) {
+      this.highlights = [...this.items];
+    }
   }
   highlights: string[] = [];
   showAddForm = false;
